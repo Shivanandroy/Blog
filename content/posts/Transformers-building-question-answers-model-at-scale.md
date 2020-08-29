@@ -1,5 +1,5 @@
 ---
-title: "🤗Transformers: Building Question & Answering Model at Scale"
+title: "Building Question & Answering Model at Scale with Transformers"
 date: 2020-08-19T00:42:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
