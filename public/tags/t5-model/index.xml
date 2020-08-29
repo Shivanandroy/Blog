@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>T5 Model - Tag - Shivanand Roy | Deep Learning</title>
+        <link>http://example.org/tags/t5-model/</link>
+        <description>T5 Model - Tag - Shivanand Roy | Deep Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>Shivanandroy.official@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>Shivanandroy.official@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Wed, 19 Aug 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://example.org/tags/t5-model/" rel="self" type="application/rss+xml" /><item>
+    <title>🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts</title>
+    <link>http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/</link>
+    <pubDate>Wed, 19 Aug 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/</guid>
+    <description><![CDATA[In this article, we will see how to use a T5 model to generate research paper&rsquo;s title based on paper&rsquo;s abstracts. T5 model is seq-to-seq model i.e. A Sequence to Sequence model fully capable to perform any text to text tasks. What does it mean - It means that T5 model can take any input text and convert it into any output text. Such text-to-text conversion is useful in NLP tasks like language translation, summarization etc.]]></description>
+</item></channel>
+</rss>

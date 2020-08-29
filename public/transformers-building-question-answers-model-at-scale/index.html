@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>🤗Transformers: Building Question &amp; Answering Model at Scale - Shivanand Roy | Deep Learning</title><meta name="Description" content="This is My New Hugo Site"><meta property="og:title" content="🤗Transformers: Building Question &amp; Answering Model at Scale" />
+<meta property="og:description" content="Introduction This article details neural question and answering using transformers models (ALBERT) at SCALE. The below approach is capable to perform Q &amp; A across millions of documents in few seconds.
+For this tutorial - I will use ArXiV&rsquo;s research papers abstracts to do Q&amp;A. The data is uploaded on Kaggle here..
+Now let&rsquo;s dive in&hellip;
+Reading the entire json metadata and then limiting my analysis to just 50,000 documents because of the compute limit on Kaggle." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/transformers-building-question-answers-model-at-scale/" />
+<meta property="og:image" content="http://example.org/logo.png"/>
+<meta property="article:published_time" content="2020-08-19T00:42:27+05:30" />
+<meta property="article:modified_time" content="2020-08-19T00:42:27+05:30" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="🤗Transformers: Building Question &amp; Answering Model at Scale"/>
+<meta name="twitter:description" content="Introduction This article details neural question and answering using transformers models (ALBERT) at SCALE. The below approach is capable to perform Q &amp; A across millions of documents in few seconds.
+For this tutorial - I will use ArXiV&rsquo;s research papers abstracts to do Q&amp;A. The data is uploaded on Kaggle here..
+Now let&rsquo;s dive in&hellip;
+Reading the entire json metadata and then limiting my analysis to just 50,000 documents because of the compute limit on Kaggle."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/transformers-building-question-answers-model-at-scale/" /><link rel="prev" href="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "🤗Transformers: Building Question \u0026 Answering Model at Scale",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/transformers-building-question-answers-model-at-scale\/"
+        },"genre": "posts","keywords": "Deep Learning, Transformers, Question \u0026 Answering","wordcount":  1760 ,
+        "url": "http:\/\/example.org\/transformers-building-question-answers-model-at-scale\/","datePublished": "2020-08-19T00:42:27+05:30","dateModified": "2020-08-19T00:42:27+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Shivanand Roy"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Shivanand Roy | Deep Learning">Shivanand Roy</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Shivanand Roy | Deep Learning">Shivanand Roy</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">🤗Transformers: Building Question &amp; Answering Model at Scale</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Shivanand Roy</a></span>&nbsp;<span class="post-category">included in <a href="/categories/deep-learning/"><i class="far fa-folder fa-fw"></i>Deep Learning</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-19">2020-08-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1760 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;9 minutes&nbsp;</div>
+        </div><div class="content" id="content"><h3 id="introduction">Introduction</h3>
+<p>This article details neural question and answering using transformers models (ALBERT) at SCALE. The below approach is capable to perform Q &amp; A across millions of documents in few seconds.</p>
+<p>For this tutorial - I will use ArXiV&rsquo;s research papers abstracts to do Q&amp;A. The data is uploaded on Kaggle <a href="https://www.kaggle.com/Cornell-University/arxiv" target="_blank" rel="noopener noreffer">here.</a>.</p>
+<p>Now let&rsquo;s dive in&hellip;</p>
+<p>Reading the entire json metadata and then limiting my analysis to just 50,000 documents because of the compute limit on Kaggle.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">data</span>  <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&#34;/kaggle/input/arxiv/arxiv-metadata-oai-snapshot.json&#34;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span> 
+        <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">))</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[:</span><span class="mi">50000</span><span class="p">])</span>
+
+<span class="c1"># Let&#39;s look at the data</span>
+<span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><figure>
+    <img src="/images/dataframe1.png"/> 
+</figure>
+
+<p>We will use <code>abstract</code> column to train our QA model.</p>
+<p>Now, Welcome <code>Haystack</code>!
+<figure>
+    <img src="/images/haystack1.png"/> 
+</figure>
+</p>
+<p>The secret sauce behind scaling up is <code>Haystack</code>. It lets you scale QA models to large collections of documents! You can read more about this amazing library here <a href="https://github.com/deepset-ai/haystack">https://github.com/deepset-ai/haystack</a></p>
+<p>For installation: <code>! pip install git+https://github.com/deepset-ai/haystack.git</code></p>
+<p>But just to give a background, there are 3 major components to Haystack.</p>
+<ul>
+<li><strong>Document Store</strong>: Database storing the documents for our search. We recommend Elasticsearch, but have also more light-weight options for fast prototyping (SQL or In-Memory).</li>
+<li><strong>Retriever</strong>: Fast, simple algorithm that identifies candidate passages from a large collection of documents. Algorithms include TF-IDF or BM25, custom Elasticsearch queries, and embedding-based approaches. The Retriever helps to narrow down the scope for Reader to smaller units of text where a given question could be answered.</li>
+<li><strong>Reader</strong>: Powerful neural model that reads through texts in detail to find an answer. Use diverse models like BERT, RoBERTa or XLNet trained via FARM or Transformers on SQuAD like tasks. The Reader takes multiple passages of text as input and returns top-n answers with corresponding confidence scores. You can just load a pretrained model from Hugging Face&rsquo;s model hub or fine-tune it to your own domain data.</li>
+</ul>
+<p>And then there is Finder which glues together a Reader and a Retriever as a pipeline to provide an easy-to-use question answering interface.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># installing haystack</span>
+<span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">deepset</span><span class="o">-</span><span class="n">ai</span><span class="o">/</span><span class="n">haystack</span><span class="o">.</span><span class="n">git</span>
+
+<span class="c1"># importing necessary dependencies</span>
+<span class="kn">from</span> <span class="nn">haystack</span> <span class="kn">import</span> <span class="n">Finder</span>
+<span class="kn">from</span> <span class="nn">haystack.indexing.cleaning</span> <span class="kn">import</span> <span class="n">clean_wiki_text</span>
+<span class="kn">from</span> <span class="nn">haystack.indexing.utils</span> <span class="kn">import</span> <span class="n">convert_files_to_dicts</span><span class="p">,</span> <span class="n">fetch_archive_from_http</span>
+<span class="kn">from</span> <span class="nn">haystack.reader.farm</span> <span class="kn">import</span> <span class="n">FARMReader</span>
+<span class="kn">from</span> <span class="nn">haystack.reader.transformers</span> <span class="kn">import</span> <span class="n">TransformersReader</span>
+<span class="kn">from</span> <span class="nn">haystack.utils</span> <span class="kn">import</span> <span class="n">print_answers</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>Setting up DocumentStore</strong>
+Haystack finds answers to queries within the documents stored in a <code>DocumentStore</code>. The current implementations of <code>DocumentStore</code> include <code>ElasticsearchDocumentStore</code>, <code>SQLDocumentStore</code>, and <code>InMemoryDocumentStore</code>.</p>
+<p>But they recommend <code>ElasticsearchDocumentStore</code> because as it comes preloaded with features like full-text queries, BM25 retrieval, and vector storage for text embeddings.</p>
+<p>So - Let&rsquo;s set up a <code>ElasticsearchDocumentStore</code>.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="err">!</span> <span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">artifacts</span><span class="o">.</span><span class="n">elastic</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span><span class="n">elasticsearch</span><span class="o">/</span><span class="n">elasticsearch</span><span class="o">-</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span> <span class="o">-</span><span class="n">q</span>
+<span class="err">!</span> <span class="n">tar</span> <span class="o">-</span><span class="n">xzf</span> <span class="n">elasticsearch</span><span class="o">-</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">x86_64</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">gz</span>
+<span class="err">!</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">daemon</span><span class="p">:</span><span class="n">daemon</span> <span class="n">elasticsearch</span><span class="o">-</span><span class="mf">7.6</span><span class="o">.</span><span class="mi">2</span>
+ 
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">subprocess</span> <span class="kn">import</span> <span class="n">Popen</span><span class="p">,</span> <span class="n">PIPE</span><span class="p">,</span> <span class="n">STDOUT</span>
+<span class="n">es_server</span> <span class="o">=</span> <span class="n">Popen</span><span class="p">([</span><span class="s1">&#39;elasticsearch-7.6.2/bin/elasticsearch&#39;</span><span class="p">],</span>
+                   <span class="n">stdout</span><span class="o">=</span><span class="n">PIPE</span><span class="p">,</span> <span class="n">stderr</span><span class="o">=</span><span class="n">STDOUT</span><span class="p">,</span>
+                   <span class="n">preexec_fn</span><span class="o">=</span><span class="k">lambda</span><span class="p">:</span> <span class="n">os</span><span class="o">.</span><span class="n">setuid</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># as daemon</span>
+                  <span class="p">)</span>
+<span class="c1"># wait until ES has started</span>
+<span class="err">!</span> <span class="n">sleep</span> <span class="mi">30</span>
+
+<span class="c1"># initiating ElasticSearch</span>
+<span class="kn">from</span> <span class="nn">haystack.database.elasticsearch</span> <span class="kn">import</span> <span class="n">ElasticsearchDocumentStore</span>
+<span class="n">document_store</span> <span class="o">=</span> <span class="n">ElasticsearchDocumentStore</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s2">&#34;localhost&#34;</span><span class="p">,</span> <span class="n">username</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="s2">&#34;document&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Once <code>ElasticsearchDocumentStore</code> is setup, we will write our documents/texts to the <code>DocumentStore</code>.</p>
+<ul>
+<li>
+<p>Writing documents to <code>ElasticsearchDocumentStore</code> requires a format - List of dictionaries The default format here is: <code>[{&quot;name&quot;: &quot;&lt;some-document-name&gt;, &quot;text&quot;: &quot;&lt;the-actual-text&gt;&quot;}, {&quot;name&quot;: &quot;&lt;some-document-name&gt;, &quot;text&quot;: &quot;&lt;the-actual-text&gt;&quot;} {&quot;name&quot;: &quot;&lt;some-document-name&gt;, &quot;text&quot;: &quot;&lt;the-actual-text&gt;&quot;}]</code>
+(Optionally: you can also add more key-value-pairs here, that will be indexed as fields in Elasticsearch and can be accessed later for filtering or shown in the responses of the Finder)</p>
+</li>
+<li>
+<p>We will use <strong>title</strong> column to pass as name and <strong>abstract</strong> column to pass as the text</p>
+</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Now, let&#39;s write the dicts containing documents to our DB.</span>
+<span class="n">document_store</span><span class="o">.</span><span class="n">write_documents</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;abstract&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;abstract&#39;</span><span class="p">:</span><span class="s1">&#39;text&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Let&rsquo;s prepare <strong>Retriever</strong>, <strong>Reader</strong>, &amp; <strong>Finder</strong>
+Retrievers help narrowing down the scope for the Reader to smaller units of text where a given question could be answered. They use some simple but fast algorithm.</p>
+<p>Here: We use Elasticsearch&rsquo;s default BM25 algorithm</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">haystack.retriever.sparse</span> <span class="kn">import</span> <span class="n">ElasticsearchRetriever</span>
+<span class="n">retriever</span> <span class="o">=</span> <span class="n">ElasticsearchRetriever</span><span class="p">(</span><span class="n">document_store</span><span class="o">=</span><span class="n">document_store</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>A Reader scans the texts returned by retrievers in detail and extracts the k best answers. They are based on powerful, but slower deep learning models.</p>
+<p>Haystack currently supports Readers based on the frameworks FARM and Transformers. With both you can either load a local model or one from Hugging Face&rsquo;s model hub (<a href="https://huggingface.co/models)">https://huggingface.co/models)</a>.</p>
+<p>Here: a medium sized RoBERTa QA model using a Reader based on FARM (<a href="https://huggingface.co/deepset/roberta-base-squad2">https://huggingface.co/deepset/roberta-base-squad2</a>)</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">reader</span> <span class="o">=</span> <span class="n">FARMReader</span><span class="p">(</span><span class="n">model_name_or_path</span><span class="o">=</span><span class="s2">&#34;deepset/roberta-base-squad2&#34;</span><span class="p">,</span> <span class="n">use_gpu</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">context_window_size</span><span class="o">=</span><span class="mi">500</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>And finally: The Finder sticks together reader and retriever in a pipeline to answer our actual questions.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">finder</span> <span class="o">=</span> <span class="n">Finder</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="n">retriever</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>And we&rsquo;re done !
+Below is the list of questions that I was asking the model and the results were pleasing.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">prediction</span> <span class="o">=</span> <span class="n">finder</span><span class="o">.</span><span class="n">get_answers</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="s2">&#34;What do we know about symbiotic stars&#34;</span><span class="p">,</span> <span class="n">top_k_retriever</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">top_k_reader</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">print_answers</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="s2">&#34;minimal&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.17 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.83 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.71 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.75 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.78 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.83 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:01&lt;00:00,  1.08s/ Batches]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:01&lt;00:00,  1.09s/ Batches]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.83 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.57 Batches/s]</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[   {   &#39;answer&#39;: &#39;Their observed population in the\n&#39;
+                  &#39;Galaxy is however poorly known, and is one to three orders &#39;
+                  &#39;of magnitudes\n&#39;
+                  &#39;smaller than the predicted population size&#39;,
+        &#39;context&#39;: &#39;  The study of symbiotic stars is essential to understand &#39;
+                   &#39;important aspects of\n&#39;
+                   &#39;stellar evolution in interacting binaries. Their observed &#39;
+                   &#39;population in the\n&#39;
+                   &#39;Galaxy is however poorly known, and is one to three orders &#39;
+                   &#39;of magnitudes\n&#39;
+                   &#39;smaller than the predicted population size. IPHAS, the INT &#39;
+                   &#39;Photometric Halpha\n&#39;
+                   &#39;survey of the Northern Galactic plane, gives us the &#39;
+                   &#39;opportunity to make a\n&#39;
+                   &#39;systematic, complete search for symbiotic stars in a &#39;
+                   &#39;magnitude-limited volume,\n&#39;
+                   &#39;and discover a significant number of new &#39;},
+    {   &#39;answer&#39;: &#39;Their observed population in the\n&#39;
+                  &#39;Galaxy is however poorly known, and is one to three orders &#39;
+                  &#39;of magnitudes\n&#39;
+                  &#39;smaller than the predicted population size&#39;,
+        &#39;context&#39;: &#39;  The study of symbiotic stars is essential to understand &#39;
+                   &#39;important aspects of\n&#39;
+                   &#39;stellar evolution in interacting binaries. Their observed &#39;
+                   &#39;population in the\n&#39;
+                   &#39;Galaxy is however poorly known, and is one to three orders &#39;
+                   &#39;of magnitudes\n&#39;
+                   &#39;smaller than the predicted population size. IPHAS, the INT &#39;
+                   &#39;Photometric Halpha\n&#39;
+                   &#39;survey of the Northern Galactic plane, gives us the &#39;
+                   &#39;opportunity to make a\n&#39;
+                   &#39;systematic, complete search for symbiotic stars in a &#39;
+                   &#39;magnitude-limited volume,\n&#39;
+                   &#39;and discover a significant number of new &#39;}]
+
+</code></pre></td></tr></table>
+</div>
+</div><p>Let&rsquo;s try few more examples -</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">prediction</span> <span class="o">=</span> <span class="n">finder</span><span class="o">.</span><span class="n">get_answers</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="s2">&#34;How is structure of event horizon linked with Morse theory?&#34;</span><span class="p">,</span> <span class="n">top_k_retriever</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">top_k_reader</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">print_answers</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="s2">&#34;minimal&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.17 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.83 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.71 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.75 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.78 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.83 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:01&lt;00:00,  1.08s/ Batches]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:01&lt;00:00,  1.09s/ Batches]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.83 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.57 Batches/s]</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[   {   &#39;answer&#39;: &#39;in terms\nof the Morse theory&#39;,
+        &#39;context&#39;: &#39;  The topological structure of the event horizon has been &#39;
+                   &#39;investigated in terms\n&#39;
+                   &#39;of the Morse theory. The elementary process of topological &#39;
+                   &#39;evolution can be\n&#39;
+                   &#39;understood as a handle attachment. It has been found that &#39;
+                   &#39;there are certain\n&#39;
+                   &#39;constraints on the nature of black hole topological &#39;
+                   &#39;evolution: (i) There are n\n&#39;
+                   &#39;kinds of handle attachments in (n+1)-dimensional black &#39;
+                   &#39;hole space-times. (ii)\n&#39;
+                   &#39;Handles are further classified as either of black or white &#39;
+                   &#39;type, and only black\n&#39;
+                   &#39;handles appear in real black ho&#39;},
+    {   &#39;answer&#39;: &#39;in terms\nof the Morse theory&#39;,
+        &#39;context&#39;: &#39;  The topological structure of the event horizon has been &#39;
+                   &#39;investigated in terms\n&#39;
+                   &#39;of the Morse theory. The elementary process of topological &#39;
+                   &#39;evolution can be\n&#39;
+                   &#39;understood as a handle attachment. It has been found that &#39;
+                   &#39;there are certain\n&#39;
+                   &#39;constraints on the nature of black hole topological &#39;
+                   &#39;evolution: (i) There are n\n&#39;
+                   &#39;kinds of handle attachments in (n+1)-dimensional black &#39;
+                   &#39;hole space-times. (ii)\n&#39;
+                   &#39;Handles are further classified as either of black or white &#39;
+                   &#39;type, and only black\n&#39;
+                   &#39;handles appear in real black ho&#39;}]
+</code></pre></td></tr></table>
+</div>
+</div><p>One more -</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">prediction</span> <span class="o">=</span> <span class="n">finder</span><span class="o">.</span><span class="n">get_answers</span><span class="p">(</span><span class="n">question</span><span class="o">=</span><span class="s2">&#34;What do we know about Bourin and Uchiyama?&#34;</span><span class="p">,</span> <span class="n">top_k_retriever</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">top_k_reader</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">print_answers</span><span class="p">(</span><span class="n">prediction</span><span class="p">,</span> <span class="n">details</span><span class="o">=</span><span class="s2">&#34;minimal&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.17 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.83 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.71 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.75 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.78 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.83 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:01&lt;00:00,  1.08s/ Batches]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:01&lt;00:00,  1.09s/ Batches]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.83 Batches/s]</code>
+<code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.57 Batches/s]</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-fallback" data-lang="fallback">[   {   &#39;answer&#39;: &#39;generalised to non-negative concave\nfunctions&#39;,
+        &#39;context&#39;: &#39; ||| f(A+B) |||$ and $||| g(A)+g(B) ||| \\le\n&#39;
+                   &#39;||| g(A+B) |||$, for any unitarily invariant norm, and for &#39;
+                   &#39;any non-negative\n&#39;
+                   &#39;operator monotone $f$ on $[0,\\infty)$ with inverse &#39;
+                   &#39;function $g$. These\n&#39;
+                   &#39;inequalities have very recently been generalised to &#39;
+                   &#39;non-negative concave\n&#39;
+                   &#39;functions $f$ and non-negative convex functions $g$, by &#39;
+                   &#39;Bourin and Uchiyama,\n&#39;
+                   &#39;and Kosem, respectively.\n&#39;
+                   &#39;  In this paper we consider the related question whether &#39;
+                   &#39;the inequalities $|||\n&#39;
+                   &#39;f(A)-f(B) ||| \\le ||| f(|A-B|) |||$, and $||| g(A)-g(B)&#39;},
+    {   &#39;answer&#39;: &#39;generalised to non-negative concave\nfunctions&#39;,
+        &#39;context&#39;: &#39; ||| f(A+B) |||$ and $||| g(A)+g(B) ||| \\le\n&#39;
+                   &#39;||| g(A+B) |||$, for any unitarily invariant norm, and for &#39;
+                   &#39;any non-negative\n&#39;
+                   &#39;operator monotone $f$ on $[0,\\infty)$ with inverse &#39;
+                   &#39;function $g$. These\n&#39;
+                   &#39;inequalities have very recently been generalised to &#39;
+                   &#39;non-negative concave\n&#39;
+                   &#39;functions $f$ and non-negative convex functions $g$, by &#39;
+                   &#39;Bourin and Uchiyama,\n&#39;
+                   &#39;and Kosem, respectively.\n&#39;
+                   &#39;  In this paper we consider the related question whether &#39;
+                   &#39;the inequalities $|||\n&#39;
+                   &#39;f(A)-f(B) ||| \\le ||| f(|A-B|) |||$, and $||| g(A)-g(B)&#39;}]
+</code></pre></td></tr></table>
+</div>
+</div><p>The results are pleasing. We can get relevant answers and retrieve documents out of 50,000 documents based on our questions.</p>
+<p>Please see the published <a href="https://www.kaggle.com/officialshivanandroy/question-answering-with-arxiv-papers-at-scale" target="_blank" rel="noopener noreffer">Kaggle Kernel</a> here.</p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-08-19</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/transformers-building-question-answers-model-at-scale/" data-title="🤗Transformers: Building Question &amp; Answering Model at Scale" data-via="snrspeaks" data-hashtags="Deep Learning,Transformers,Question & Answering"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/transformers-building-question-answers-model-at-scale/" data-hashtag="Deep Learning"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://example.org/transformers-building-question-answers-model-at-scale/" data-title="🤗Transformers: Building Question &amp; Answering Model at Scale" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/transformers-building-question-answers-model-at-scale/" data-title="🤗Transformers: Building Question &amp; Answering Model at Scale"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/transformers-building-question-answers-model-at-scale/" data-title="🤗Transformers: Building Question &amp; Answering Model at Scale"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://example.org/transformers-building-question-answers-model-at-scale/" data-title="🤗Transformers: Building Question &amp; Answering Model at Scale" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://example.org/transformers-building-question-answers-model-at-scale/" data-title="🤗Transformers: Building Question &amp; Answering Model at Scale" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://example.org/transformers-building-question-answers-model-at-scale/" data-title="🤗Transformers: Building Question &amp; Answering Model at Scale"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/deep-learning/">Deep Learning</a>,&nbsp;<a href="/tags/transformers/">Transformers</a>,&nbsp;<a href="/tags/question-answering/">Question &amp; Answering</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/transformers-generating-arxiv-papers-title-from-abstracts/" class="prev" rel="prev" title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts"><i class="fas fa-angle-left fa-fw"></i>🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts</a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Shivanand Roy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>

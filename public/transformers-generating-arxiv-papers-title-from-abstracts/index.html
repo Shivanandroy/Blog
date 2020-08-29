@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts - Shivanand Roy | Deep Learning</title><meta name="Description" content="This is My New Hugo Site"><meta property="og:title" content="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts" />
+<meta property="og:description" content="In this article, we will see how to use a T5 model to generate research paper&rsquo;s title based on paper&rsquo;s abstracts. T5 model is seq-to-seq model i.e. A Sequence to Sequence model fully capable to perform any text to text tasks. What does it mean - It means that T5 model can take any input text and convert it into any output text. Such text-to-text conversion is useful in NLP tasks like language translation, summarization etc." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" />
+<meta property="og:image" content="http://example.org/logo.png"/>
+<meta property="article:published_time" content="2020-08-19T00:42:27+05:30" />
+<meta property="article:modified_time" content="2020-08-19T00:42:27+05:30" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://example.org/logo.png"/>
+
+<meta name="twitter:title" content="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts"/>
+<meta name="twitter:description" content="In this article, we will see how to use a T5 model to generate research paper&rsquo;s title based on paper&rsquo;s abstracts. T5 model is seq-to-seq model i.e. A Sequence to Sequence model fully capable to perform any text to text tasks. What does it mean - It means that T5 model can take any input text and convert it into any output text. Such text-to-text conversion is useful in NLP tasks like language translation, summarization etc."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" /><link rel="next" href="http://example.org/transformers-building-question-answers-model-at-scale/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper's Titles from Abstracts",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/example.org\/transformers-generating-arxiv-papers-title-from-abstracts\/"
+        },"genre": "posts","keywords": "Deep Learning, Transformers, T5 Model, Summarization","wordcount":  1441 ,
+        "url": "http:\/\/example.org\/transformers-generating-arxiv-papers-title-from-abstracts\/","datePublished": "2020-08-19T00:42:27+05:30","dateModified": "2020-08-19T00:42:27+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Shivanand Roy"
+            },"description": ""
+    }
+    </script></head>
+    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Shivanand Roy | Deep Learning">Shivanand Roy</a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Shivanand Roy | Deep Learning">Shivanand Roy</a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Shivanand Roy</a></span>&nbsp;<span class="post-category">included in <a href="/categories/deep-learning/"><i class="far fa-folder fa-fw"></i>Deep Learning</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-19">2020-08-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1441 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="content" id="content"><p>In this article, we will see how to use a <code>T5 model</code> to generate research paper&rsquo;s title based on paper&rsquo;s abstracts. <code>T5 model</code> is seq-to-seq model i.e. A Sequence to Sequence model fully capable to perform any text to text tasks. What does it mean - It means that <code>T5 model</code> can take any input text and convert it into any output text. Such text-to-text conversion is useful in NLP tasks like language translation, summarization etc.</p>
+<figure>
+    <img src="/images/t5-model-3.png"/> 
+</figure>
+
+<p>We will take paper&rsquo;s abstracts as our input text and paper&rsquo;s title as output text and feed it to <code>T5 model</code>. Once the model is trained, it will be able to generate the paper&rsquo;s title based on the abstract.
+So, let&rsquo;s dive in.</p>
+<h3 id="dataset">Dataset</h3>
+<p>ArXiv has recently open-sourced a monstrous dataset of 1.7M research papers on <a href="https://www.kaggle.com/Cornell-University/arxiv" target="_blank" rel="noopener noreffer">Kaggle</a>. We will use its <code>abstract</code> and <code>title</code> columns to train our model.</p>
+<ul>
+<li><code>title</code>: This column represents the title of the research paper</li>
+<li><code>abstract</code>: This column represents brief summary of the research paper.</li>
+</ul>
+<p>This will be a supervised training where <code>abstract</code> is our independent variable <code>(X)</code> while <code>title</code> is our dependent variable <code>(y)</code>.</p>
+<h3 id="code">Code</h3>
+<p>We will install dependencies and work with latest stable pytorch 1.6</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="err">!</span> <span class="n">pip</span> <span class="n">uninstall</span> <span class="n">torch</span> <span class="n">torchvision</span> <span class="o">-</span><span class="n">y</span>
+<span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span><span class="o">==</span><span class="mf">1.6</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="n">cu101</span> <span class="n">torchvision</span><span class="o">==</span><span class="mf">0.7</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="n">cu101</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">whl</span><span class="o">/</span><span class="n">torch_stable</span><span class="o">.</span><span class="n">html</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">transformers</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">simpletransformers</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>let&rsquo;s load the data</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">json</span>
+
+<span class="n">data_file</span> <span class="o">=</span> <span class="s1">&#39;../input/arxiv/arxiv-metadata-oai-snapshot.json&#39;</span>
+
+<span class="k">def</span> <span class="nf">get_metadata</span><span class="p">():</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+            <span class="k">yield</span> <span class="n">line</span>
+</code></pre></td></tr></table>
+</div>
+</div><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">metadata</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">paper</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">:</span>
+    <span class="n">paper_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">paper</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Title: {}</span><span class="se">\n\n</span><span class="s1">Abstract: {}</span><span class="se">\n</span><span class="s1">Ref: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">paper_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">),</span> <span class="n">paper_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;abstract&#39;</span><span class="p">),</span> <span class="n">paper_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;journal-ref&#39;</span><span class="p">)))</span>
+<span class="c1">#     print(paper)</span>
+    <span class="k">break</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>Title: Calculation of prompt diphoton production cross sections at Tevatron and LHC energies</code></p>
+<p><code>Abstract:   A fully differential calculation in perturbative quantum chromodynamics is presented for the production of massive photon pairs at hadron colliders. All next-to-leading order perturbative contributions from quark-antiquark, gluon-(anti)quark, and gluon-gluon subprocesses are included, as well as all-orders resummation of initial-state gluon radiation valid at next-to-next-to-leading logarithmic accuracy. The region of phase space is specified in which the calculation is most reliable. Good agreement is demonstrated with data from the Fermilab Tevatron, and predictions are made for more detailed tests with CDF and DO data. Predictions are shown for distributions of diphoton pairs produced at the energy of the Large Hadron Collider (LHC). Distributions of the diphoton pairs from the decay of a Higgs boson are contrasted with those produced from QCD processes at the LHC, showing that enhanced sensitivity to the signal can be obtained with judicious selection of events.</code></p>
+<p><code>Ref: Phys.Rev.D76:013009,2007</code></p>
+<p><strong>We will take last 5 years ArXiv papers (2016-2021) due to Kaggle&rsquo;c compute limits</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">titles</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">abstracts</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">years</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">paper</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">:</span>
+    <span class="n">paper_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">paper</span><span class="p">)</span>
+    <span class="n">ref</span> <span class="o">=</span> <span class="n">paper_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;journal-ref&#39;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">year</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">ref</span><span class="p">[</span><span class="o">-</span><span class="mi">4</span><span class="p">:])</span> 
+        <span class="k">if</span> <span class="mi">2016</span> <span class="o">&lt;</span> <span class="n">year</span> <span class="o">&lt;</span> <span class="mi">2021</span><span class="p">:</span>
+            <span class="n">years</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">year</span><span class="p">)</span>
+            <span class="n">titles</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">paper_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">))</span>
+            <span class="n">abstracts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">paper_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;abstract&#39;</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">pass</span> 
+
+<span class="nb">len</span><span class="p">(</span><span class="n">titles</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">abstracts</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">years</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>(25625, 25625, 25625)</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">papers</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s1">&#39;title&#39;</span><span class="p">:</span> <span class="n">titles</span><span class="p">,</span>
+    <span class="s1">&#39;abstract&#39;</span><span class="p">:</span> <span class="n">abstracts</span><span class="p">,</span>
+    <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="n">years</span>
+<span class="p">})</span>
+<span class="n">papers</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><figure>
+    <img src="/images/t5-model-dataframe-1.png"/> 
+</figure>
+
+<p>We will use <code>simpletransformers</code> library to train a <code>T5 model</code></p>
+<p><code>Simpletransformers</code> implementation of <code>T5 model</code> expects a data to be a dataframe with 3 columns: <code>&lt;prefix&gt;</code>, <code>&lt;input_text&gt;</code>, <code>&lt;target_text&gt;</code></p>
+<ul>
+<li><code>&lt;prefix&gt;</code>: A string indicating the task to perform. (E.g. &ldquo;question&rdquo;, &ldquo;stsb&rdquo;)</li>
+<li><code>&lt;input_text&gt;</code>: The input text sequence (we will use Paper&rsquo;s abstract as input_text )</li>
+<li><code>&lt;target_text&gt;</code>: The target sequence (we will use Paper&rsquo;s title as output_text )</li>
+</ul>
+<p>You can read about the data format: <a href="https://github.com/ThilinaRajapakse/simpletransformers#t5-transformer">https://github.com/ThilinaRajapakse/simpletransformers#t5-transformer</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">papers</span> <span class="o">=</span> <span class="n">papers</span><span class="p">[[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;abstract&#39;</span><span class="p">]]</span>
+<span class="n">papers</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;target_text&#39;</span><span class="p">,</span> <span class="s1">&#39;input_text&#39;</span><span class="p">]</span>
+<span class="n">papers</span> <span class="o">=</span> <span class="n">papers</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># splitting the data into training and test dataset</span>
+<span class="n">eval_df</span> <span class="o">=</span> <span class="n">papers</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">papers</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">eval_df</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+
+<span class="n">train_df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">eval_df</span><span class="o">.</span><span class="n">shape</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>((20500, 2), (5125, 2))</code></p>
+<p>We will training our <code>T5 model</code> with very bare minimum <code>num_train_epochs=4</code>, <code>train_batch_size=16</code> to fit into Kaggle&rsquo;s compute limits</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">logging</span>
+
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">from</span> <span class="nn">simpletransformers.t5</span> <span class="kn">import</span> <span class="n">T5Model</span>
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">transformers_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&#34;transformers&#34;</span><span class="p">)</span>
+<span class="n">transformers_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+<span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;prefix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;summarize&#34;</span>
+<span class="n">eval_df</span><span class="p">[</span><span class="s1">&#39;prefix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;summarize&#34;</span>
+
+
+<span class="n">model_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&#34;reprocess_input_data&#34;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s2">&#34;overwrite_output_dir&#34;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s2">&#34;max_seq_length&#34;</span><span class="p">:</span> <span class="mi">512</span><span class="p">,</span>
+    <span class="s2">&#34;train_batch_size&#34;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span>
+    <span class="s2">&#34;num_train_epochs&#34;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="c1"># Create T5 Model</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">T5Model</span><span class="p">(</span><span class="s2">&#34;t5-small&#34;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">model_args</span><span class="p">,</span> <span class="n">use_cuda</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># Train T5 Model on new task</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train_model</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+
+<span class="c1"># Evaluate T5 Model on new task</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval_model</span><span class="p">(</span><span class="n">eval_df</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>{'eval_loss': 2.103029722170599}</code></p>
+<p>And We&rsquo;re Done !
+Let&rsquo;s see how our model performs in generating paper&rsquo;s titles</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">random_num</span> <span class="o">=</span> <span class="mi">350</span>
+<span class="n">actual_title</span> <span class="o">=</span> <span class="n">eval_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">random_num</span><span class="p">][</span><span class="s1">&#39;target_text&#39;</span><span class="p">]</span>
+<span class="n">actual_abstract</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;summarize: &#34;</span><span class="o">+</span><span class="n">eval_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">random_num</span><span class="p">][</span><span class="s1">&#39;input_text&#39;</span><span class="p">]]</span>
+<span class="n">predicted_title</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">actual_abstract</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Actual Title: {actual_title}&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Predicted Title: {predicted_title}&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Actual Abstract: {actual_abstract}&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>Actual Title: Cooperative Passive Coherent Location: A Promising 5G Service to Support Road Safety</code></p>
+<p><code>Predicted Title: ['CPCL: a distributed MIMO radar service for public users']</code></p>
+<p><code>Actual Abstract: ['summarize:   5G promises many new vertical service areas beyond simple communication and\ndata transfer. We propose CPCL (cooperative passive coherent location), a\ndistributed MIMO radar service, which can be offered by mobile radio network\noperators as a service for public user groups. CPCL comes as an inherent part\nof the radio network and takes advantage of the most important key features\nproposed for 5G. It extends the well-known idea of passive radar (also known as\npassive coherent location, PCL) by introducing cooperative principles. These\nrange from cooperative, synchronous radio signaling, and MAC up to radar data\nfusion on sensor and scenario levels. By using software-defined radio and\nnetwork paradigms, as well as real-time mobile edge computing facilities\nintended for 5G, CPCL promises to become a ubiquitous radar service which may\nbe adaptive, reconfigurable, and perhaps cognitive. As CPCL makes double use of\nradio resources (both in terms of frequency bands and hardware), it can be\nconsidered a green technology. Although we introduce the CPCL idea from the\nviewpoint of vehicle-to-vehicle/infrastructure (V2X) communication, it can\ndefinitely also be applied to many other applications in industry, transport,\nlogistics, and for safety and security applications.\n']</code></p>
+<p>Couple of more examples -</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">random_num</span> <span class="o">=</span> <span class="mi">478</span>
+<span class="n">actual_title</span> <span class="o">=</span> <span class="n">eval_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">random_num</span><span class="p">][</span><span class="s1">&#39;target_text&#39;</span><span class="p">]</span>
+<span class="n">actual_abstract</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;summarize: &#34;</span><span class="o">+</span><span class="n">eval_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">random_num</span><span class="p">][</span><span class="s1">&#39;input_text&#39;</span><span class="p">]]</span>
+<span class="n">predicted_title</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">actual_abstract</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Actual Title: {actual_title}&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Predicted Title: {predicted_title}&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Actual Abstract: {actual_abstract}&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>Actual Title: Test Model Coverage Analysis under Uncertainty</code></p>
+<p><code>Predicted Title: ['Probabilistic aggregate coverage analysis for model-based testing']</code></p>
+<p><code>Actual Abstract: ['summarize:   In model-based testing (MBT) we may have to deal with a non-deterministic\nmodel, e.g. because abstraction was applied, or because the software under test\nitself is non-deterministic. The same test case may then trigger multiple\npossible execution paths, depending on some internal decisions made by the\nsoftware. Consequently, performing precise test analyses, e.g. to calculate the\ntest coverage, are not possible. This can be mitigated if developers can\nannotate the model with estimated probabilities for taking each transition. A\nprobabilistic model checking algorithm can subsequently be used to do simple\nprobabilistic coverage analysis. However, in practice developers often want to\nknow what the achieved aggregate coverage, which unfortunately cannot be\nre-expressed as a standard model checking problem. This paper presents an\nextension to allow efficient calculation of probabilistic aggregate coverage,\nand moreover also in combination with k-wise coverage.\n']</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">random_num</span> <span class="o">=</span> <span class="mi">999</span>
+<span class="n">actual_title</span> <span class="o">=</span> <span class="n">eval_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">random_num</span><span class="p">][</span><span class="s1">&#39;target_text&#39;</span><span class="p">]</span>
+<span class="n">actual_abstract</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&#34;summarize: &#34;</span><span class="o">+</span><span class="n">eval_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">random_num</span><span class="p">][</span><span class="s1">&#39;input_text&#39;</span><span class="p">]]</span>
+<span class="n">predicted_title</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">actual_abstract</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Actual Title: {actual_title}&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Predicted Title: {predicted_title}&#39;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s1">&#39;Actual Abstract: {actual_abstract}&#39;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>Actual Title: Computational intelligence for qualitative coaching diagnostics: Automated assessment of tennis swings to improve performance and safety</code></p>
+<p><code>Predicted Title: ['Personalized qualitative feedback for tennis swing technique using 3D video']</code></p>
+<p><code>Actual Abstract: ['summarize:   Coaching technology, wearables and exergames can provide quantitative\nfeedback based on measured activity, but there is little evidence of\nqualitative feedback to aid technique improvement. To achieve personalised\nqualitative feedback, we demonstrated a proof-of-concept prototype combining\nkinesiology and computational intelligence that could help improving tennis\nswing technique utilising three-dimensional tennis motion data acquired from\nmulti-camera video. Expert data labelling relied on virtual 3D stick figure\nreplay. Diverse assessment criteria for novice to intermediate skill levels and\nconfigurable coaching scenarios matched with a variety of tennis swings (22\nbackhands and 21 forehands), included good technique and common errors. A set\nof selected coaching rules was transferred to adaptive assessment modules able\nto learn from data, evolve their internal structures and produce autonomous\npersonalised feedback including verbal cues over virtual camera 3D replay and\nan end-of-session progress report. The prototype demonstrated autonomous\nassessment on future data based on learning from prior examples, aligned with\nskill level, flexible coaching scenarios and coaching rules. The generated\nintuitive diagnostic feedback consisted of elements of safety and performance\nfor tennis swing technique, where each swing sample was compared with the\nexpert. For safety aspects of the relative swing width, the prototype showed\nimproved assessment ...\n']</code></p>
+<p>The results are absolutely stunning. That&rsquo;s the power of <code>T5 Model</code>.</p>
+<p>Here&rsquo;s the link to my <a href="https://www.kaggle.com/officialshivanandroy/transformers-generating-titles-from-abstracts" target="_blank" rel="noopener noreffer">published Kaggle Kernel</a></p>
+</div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 2020-08-19</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts" data-via="snrspeaks" data-hashtags="Deep Learning,Transformers,T5 Model,Summarization"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-hashtag="Deep Learning"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/deep-learning/">Deep Learning</a>,&nbsp;<a href="/tags/transformers/">Transformers</a>,&nbsp;<a href="/tags/t5-model/">T5 Model</a>,&nbsp;<a href="/tags/summarization/">Summarization</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav">
+            <a href="/transformers-building-question-answers-model-at-scale/" class="next" rel="next" title="🤗Transformers: Building Question &amp; Answering Model at Scale">🤗Transformers: Building Question &amp; Answering Model at Scale<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Shivanand Roy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script></body>
+</html>
