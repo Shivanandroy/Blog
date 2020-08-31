@@ -1,4 +1,4 @@
-baseURL = "http://example.org/"
+baseURL = "http://shivanandroy.com/"
 # [en, zh-cn, fr, ...] determines default content language
 defaultContentLanguage = "en"
 # language code
@@ -12,7 +12,7 @@ theme = "LoveIt"
   # LoveIt CHANGED | 0.2.0 LoveIt theme version
   version = "0.2.X"
   # site description
-  description = "This is My New Hugo Site"
+  description = ""
   # site keywords
   keywords = ["Theme", "Hugo"]
   # site default theme ("light", "dark", "auto")
@@ -23,7 +23,7 @@ theme = "LoveIt"
   # ("sha256", "sha384", "sha512", "md5")
   fingerprint = ""
   # LoveIt NEW | 0.2.0 date format
-  dateFormat = "2006-01-02"
+  dateFormat = "02/01/2006"
   # website images for Open Graph and Twitter Cards
   images = ["/logo.png"]
 
@@ -86,7 +86,7 @@ theme = "LoveIt"
     # special amount of posts in each section page
     paginate = 20
     # date format (month and day)
-    dateFormat = "01-02"
+    dateFormat = "01/02"
     # amount of RSS pages
     rss = 10
 
@@ -95,7 +95,7 @@ theme = "LoveIt"
     # special amount of posts in each list page
     paginate = 20
     # date format (month and day)
-    dateFormat = "01-02"
+    dateFormat = "01/02"
     # amount of RSS pages
     rss = 10
 
@@ -113,7 +113,7 @@ theme = "LoveIt"
       # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
       title = ""
       # subtitle shown in home page
-      subtitle = "Hi, I'm Shivanand Roy. Trying to make Machines and Humans agree on something."
+      subtitle = "Hi, I'm Shivanand Roy. I try to make Machines and Humans agree on something."
       # whether to use typeit animation for subtitle
       typeit = true
       # whether to show social links
