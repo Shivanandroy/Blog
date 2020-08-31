@@ -1,13 +1,37 @@
-# 🤗Transformers: Building Question & Answering Model at Scale
+# Building Question Answering Model at Scale using 🤗Transformers
+
+
+{{< admonition type=abstract title="Abstract" open=True >}}
+In this article, you will learn how to fetch contextual answers in a huge corpus of documents using **Transformers🤗**
+{{< /admonition >}}
+
+{{< figure src="/images/huggingface.png" >}}
+
 
 ### Introduction
-This article details neural question and answering using transformers models (ALBERT) at SCALE. The below approach is capable to perform Q & A across millions of documents in few seconds.
+We will build a neural question and answering system using `transformers` models (`RoBERTa`). This approach is capable to perform Q&A across millions of documents in few seconds.
 
-For this tutorial - I will use ArXiV's research papers abstracts to do Q&A. The data is uploaded on Kaggle [here.](https://www.kaggle.com/Cornell-University/arxiv).
 
-Now let's dive in...
+### Data
+For this tutorial, I will use ArXiV's research papers abstracts to do Q&A. The data is on Kaggle. [Go to dataset](https://www.kaggle.com/Cornell-University/arxiv). The dataset has many columns like 
+- `id`
+- `author`
+- `title`
+- `categories` 
 
-Reading the entire json metadata and then limiting my analysis to just 50,000 documents because of the compute limit on Kaggle.
+but the columns we will be interested in are **`title`** and **`abstract`**.
+
+`abstract` contains a long summary of the research paper. We will use this column to build our Question & Answer model.
+
+Let's dive into the code.
+
+### Code
+{{< admonition type=note title="Note" open=True >}}
+We will use Kaggle notebook to write our code so that we can leverage free GPU.
+{{< /admonition >}}
+
+The format of the data is a nested `json`. We will limit our analysis to just 50,000 documents because of the compute limit on Kaggle to avoid `out of memory error`.
+
 ```python
 import json
 data  = []
@@ -15,6 +39,7 @@ with open("/kaggle/input/arxiv/arxiv-metadata-oai-snapshot.json", 'r') as f:
     for line in f: 
         data.append(json.loads(line))
 
+# Limiting our analysis to 50K documents to avoid memory error
 data = pd.DataFrame(data[:50000])
 
 # Let's look at the data
@@ -24,11 +49,11 @@ data.head()
 
 We will use `abstract` column to train our QA model.
 
-
-Now, Welcome `Haystack`!
+### Haystack
+Now, Welcome `Haystack`! The secret sauce behind scaling up to thousands of documents is `Haystack`.
 {{< figure src="/images/haystack1.png" >}}
 
-The secret sauce behind scaling up is `Haystack`. It lets you scale QA models to large collections of documents! You can read more about this amazing library here https://github.com/deepset-ai/haystack
+`Haystack` helps you scale QA models to large collections of documents! You can read more about this amazing library here https://github.com/deepset-ai/haystack
 
 For installation: `! pip install git+https://github.com/deepset-ai/haystack.git`
 
@@ -40,6 +65,14 @@ But just to give a background, there are 3 major components to Haystack.
 
 And then there is Finder which glues together a Reader and a Retriever as a pipeline to provide an easy-to-use question answering interface.
 
+Now, we can setup `Haystack` in 3 steps:
+ 1. Install `haystack` and import its required modules
+ 2. Setup `DocumentStore`
+ 3. Setup `Retriever`, `Reader` and `Finder` 
+
+**1. Install `haystack`**
+
+Let's install `haystack` and import all the required modules
 ```python
 # installing haystack
 ! pip install git+https://github.com/deepset-ai/haystack.git
@@ -52,7 +85,8 @@ from haystack.reader.farm import FARMReader
 from haystack.reader.transformers import TransformersReader
 from haystack.utils import print_answers
 ```
-**Setting up DocumentStore**
+**2. Setting up `DocumentStore`**
+
 Haystack finds answers to queries within the documents stored in a `DocumentStore`. The current implementations of `DocumentStore` include `ElasticsearchDocumentStore`, `SQLDocumentStore`, and `InMemoryDocumentStore`.
 
 But they recommend `ElasticsearchDocumentStore` because as it comes preloaded with features like full-text queries, BM25 retrieval, and vector storage for text embeddings.
@@ -79,20 +113,29 @@ document_store = ElasticsearchDocumentStore(host="localhost", username="", passw
 ```
 
 Once `ElasticsearchDocumentStore` is setup, we will write our documents/texts to the `DocumentStore`.
-- Writing documents to `ElasticsearchDocumentStore` requires a format - List of dictionaries The default format here is: `[{"name": "<some-document-name>, "text": "<the-actual-text>"},
-{"name": "<some-document-name>, "text": "<the-actual-text>"}
-{"name": "<some-document-name>, "text": "<the-actual-text>"}]`
+
+
+- Writing documents to `ElasticsearchDocumentStore` requires a format - List of dictionaries as shown below: 
+```
+[
+    {"name": "<some-document-name>, "text": "<the-actual-text>"},
+    {"name": "<some-document-name>, "text": "<the-actual-text>"}
+    {"name": "<some-document-name>, "text": "<the-actual-text>"}
+]
+```
+
 (Optionally: you can also add more key-value-pairs here, that will be indexed as fields in Elasticsearch and can be accessed later for filtering or shown in the responses of the Finder)
 
 
-- We will use **title** column to pass as name and **abstract** column to pass as the text
+- We will use `title` column to pass as name and `abstract` column to pass as the text
 
 ```python
 # Now, let's write the dicts containing documents to our DB.
 document_store.write_documents(data[['title', 'abstract']].rename(columns={'title':'name','abstract':'text'}).to_dict(orient='records'))
 ```
 
-Let's prepare **Retriever**, **Reader**, & **Finder**
+**3. Setup `Retriever`, `Reader` and `Finder`**
+
 Retrievers help narrowing down the scope for the Reader to smaller units of text where a given question could be answered. They use some simple but fast algorithm.
 
 Here: We use Elasticsearch's default BM25 algorithm
@@ -113,8 +156,10 @@ And finally: The Finder sticks together reader and retriever in a pipeline to an
 ```python
 finder = Finder(reader, retriever)
 ```
-And we're done !
-Below is the list of questions that I was asking the model and the results were pleasing.
+### We're done !
+Once we have our `Finder` ready, we are all set to see our model fetching answers for us based on the question.
+
+Below is the list of questions that I was asking the model
 ```python
 prediction = finder.get_answers(question="What do we know about symbiotic stars", top_k_retriever=10, top_k_reader=2)
 result = print_answers(prediction, details="minimal")
@@ -257,6 +302,9 @@ result = print_answers(prediction, details="minimal")
                    'the inequalities $|||\n'
                    'f(A)-f(B) ||| \\le ||| f(|A-B|) |||$, and $||| g(A)-g(B)'}]
 ```
-The results are pleasing. We can get relevant answers and retrieve documents out of 50,000 documents based on our questions.
+The results are promising. Please note that we have used a pretrained model `deepset/roberta-base-squad2` for this tutorial. We might expect a significant improvement if we use a QA model trained specific to our dataset and then scale it up to millions of documents using `Haystack`
 
-Please see the published [Kaggle Kernel](https://www.kaggle.com/officialshivanandroy/question-answering-with-arxiv-papers-at-scale) here.
+{{< admonition type=success title="Attachments" open=True >}}
+- [Go to Dataset](https://www.kaggle.com/Cornell-University/arxiv)
+- [Go to Published Kaggle Kernel](https://www.kaggle.com/officialshivanandroy/question-answering-with-arxiv-papers-at-scale)
+{{< /admonition >}}

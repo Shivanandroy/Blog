@@ -2,15 +2,15 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://example.org/categories/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/tags/deep-learning/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/categories/deep-learning/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/posts/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/tags/question-answering/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/tags/summarization/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/tags/t5-model/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/tags/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/tags/transformers/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/transformers-building-question-answers-model-at-scale/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url></urlset>
+            <loc>http://shivanandroy.com/categories/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/tags/deep-learning/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/categories/deep-learning-nlp/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/posts/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/tags/summarization/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/tags/t5-model/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/tags/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/tags/transformers/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/transformers-building-question-answers-model-at-scale/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/tags/question-answering/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url></urlset>

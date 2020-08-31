@@ -1,10 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Deep Learning - Tag - Shivanand Roy | Deep Learning</title>
-        <link>http://shivanandroy.com/tags/deep-learning/</link>
-        <description>Deep Learning - Tag - Shivanand Roy | Deep Learning</description>
+        <title>Deep Learning - NLP - Category - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/categories/deep-learning-nlp/</link>
+        <description>Deep Learning - NLP - Category - Shivanand Roy | Deep Learning</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>Shivanandroy.official@gmail.com (Shivanand Roy)</managingEditor>
-            <webMaster>Shivanandroy.official@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Tue, 01 Sep 2020 00:40:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/deep-learning/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>Shivanandroy.official@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Tue, 01 Sep 2020 00:40:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/categories/deep-learning-nlp/" rel="self" type="application/rss+xml" /><item>
     <title>Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers</title>
     <link>http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/</link>
     <pubDate>Tue, 01 Sep 2020 00:40:27 &#43;0530</pubDate>

@@ -5,32 +5,32 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts - Shivanand Roy | Deep Learning</title><meta name="Description" content="This is My New Hugo Site"><meta property="og:title" content="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts" />
-<meta property="og:description" content="In this article, we will see how to use a T5 model to generate research paper&rsquo;s title based on paper&rsquo;s abstracts. T5 model is seq-to-seq model i.e. A Sequence to Sequence model fully capable to perform any text to text tasks. What does it mean - It means that T5 model can take any input text and convert it into any output text. Such text-to-text conversion is useful in NLP tasks like language translation, summarization etc." />
+        <title>Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers - Shivanand Roy | Deep Learning</title><meta name="Description" content=""><meta property="og:title" content="Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers" />
+<meta property="og:description" content="Abstract  In this article, you will learn how to train a T5 model for text generation - to generate title given a research paper&rsquo;s abstract or summary using Transformers🤗   Introduction T5 model is a Sequence-to-Sequence model. A Sequence-to-Sequence model is fully capable to perform any text to text conversion task. What does it mean? - It means that a T5 model can take any input text and convert it into any output text." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" />
-<meta property="og:image" content="http://example.org/logo.png"/>
-<meta property="article:published_time" content="2020-08-19T00:42:27+05:30" />
-<meta property="article:modified_time" content="2020-08-19T00:42:27+05:30" />
+<meta property="og:url" content="http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/" />
+<meta property="og:image" content="http://shivanandroy.com/logo.png"/>
+<meta property="article:published_time" content="2020-09-01T00:40:27+05:30" />
+<meta property="article:modified_time" content="2020-09-01T00:40:27+05:30" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://example.org/logo.png"/>
+<meta name="twitter:image" content="http://shivanandroy.com/logo.png"/>
 
-<meta name="twitter:title" content="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts"/>
-<meta name="twitter:description" content="In this article, we will see how to use a T5 model to generate research paper&rsquo;s title based on paper&rsquo;s abstracts. T5 model is seq-to-seq model i.e. A Sequence to Sequence model fully capable to perform any text to text tasks. What does it mean - It means that T5 model can take any input text and convert it into any output text. Such text-to-text conversion is useful in NLP tasks like language translation, summarization etc."/>
+<meta name="twitter:title" content="Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers"/>
+<meta name="twitter:description" content="Abstract  In this article, you will learn how to train a T5 model for text generation - to generate title given a research paper&rsquo;s abstract or summary using Transformers🤗   Introduction T5 model is a Sequence-to-Sequence model. A Sequence-to-Sequence model is fully capable to perform any text to text conversion task. What does it mean? - It means that a T5 model can take any input text and convert it into any output text."/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" /><link rel="next" href="http://example.org/transformers-building-question-answers-model-at-scale/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/" /><link rel="prev" href="http://shivanandroy.com/transformers-building-question-answers-model-at-scale/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
-        "headline": "🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper's Titles from Abstracts",
+        "headline": "Training a T5 Transformer Model - Generating Titles from ArXiv Paper's Abstracts using 🤗Transformers",
         "inLanguage": "en",
         "mainEntityOfPage": {
             "@type": "WebPage",
-            "@id": "http:\/\/example.org\/transformers-generating-arxiv-papers-title-from-abstracts\/"
-        },"genre": "posts","keywords": "Deep Learning, Transformers, T5 Model, Summarization","wordcount":  1441 ,
-        "url": "http:\/\/example.org\/transformers-generating-arxiv-papers-title-from-abstracts\/","datePublished": "2020-08-19T00:42:27+05:30","dateModified": "2020-08-19T00:42:27+05:30","publisher": {
+            "@id": "http:\/\/shivanandroy.com\/transformers-generating-arxiv-papers-title-from-abstracts\/"
+        },"genre": "posts","keywords": "Deep Learning, Transformers, T5 Model, Summarization","wordcount":  1700 ,
+        "url": "http:\/\/shivanandroy.com\/transformers-generating-arxiv-papers-title-from-abstracts\/","datePublished": "2020-09-01T00:40:27+05:30","dateModified": "2020-09-01T00:40:27+05:30","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
@@ -101,26 +101,44 @@
     <div id="search-dropdown-mobile"></div>
 </div>
 <main class="main">
-                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Shivanand Roy</a></span>&nbsp;<span class="post-category">included in <a href="/categories/deep-learning/"><i class="far fa-folder fa-fw"></i>Deep Learning</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="2020-08-19">2020-08-19</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1441 words&nbsp;
-                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
-        </div><div class="content" id="content"><p>In this article, we will see how to use a <code>T5 model</code> to generate research paper&rsquo;s title based on paper&rsquo;s abstracts. <code>T5 model</code> is seq-to-seq model i.e. A Sequence to Sequence model fully capable to perform any text to text tasks. What does it mean - It means that <code>T5 model</code> can take any input text and convert it into any output text. Such text-to-text conversion is useful in NLP tasks like language translation, summarization etc.</p>
+                <div class="container"><article class="page single"><h1 class="single-title animated flipInX">Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Shivanand Roy</a></span>&nbsp;<span class="post-category">included in <a href="/categories/deep-learning-nlp/"><i class="far fa-folder fa-fw"></i>Deep Learning - NLP</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="01/09/2020">01/09/2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1700 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;8 minutes&nbsp;</div>
+        </div><div class="content" id="content"><div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw"></i>Abstract<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">In this article, you will learn how to train a <code>T5 model</code> for text generation - to generate title given a research paper&rsquo;s abstract or summary using <strong>Transformers🤗</strong></div>
+        </div>
+    </div>
+<h3 id="introduction">Introduction</h3>
+<p><code>T5 model</code> is a Sequence-to-Sequence model. A Sequence-to-Sequence model is fully capable to perform any text to text conversion task. <strong>What does it mean?</strong> - It means that a <code>T5 model</code> can take any input text and convert it into any output text. Such text-to-text conversion is useful in NLP tasks like language translation, summarization, text generation etc.</p>
 <figure>
     <img src="/images/t5-model-3.png"/> 
 </figure>
 
-<p>We will take paper&rsquo;s abstracts as our input text and paper&rsquo;s title as output text and feed it to <code>T5 model</code>. Once the model is trained, it will be able to generate the paper&rsquo;s title based on the abstract.
-So, let&rsquo;s dive in.</p>
+<p>For this tutorial, We will take research paper&rsquo;s abstract or brief summary as our input text and its corrosponding paper&rsquo;s title as output text and feed it to a <code>T5 model</code> to train. Once the model is trained, it will be able to generate the paper&rsquo;s title based on the abstract.</p>
+<p>So, let&rsquo;s dive in.</p>
 <h3 id="dataset">Dataset</h3>
-<p>ArXiv has recently open-sourced a monstrous dataset of 1.7M research papers on <a href="https://www.kaggle.com/Cornell-University/arxiv" target="_blank" rel="noopener noreffer">Kaggle</a>. We will use its <code>abstract</code> and <code>title</code> columns to train our model.</p>
+<p>ArXiv has recently open-sourced a monstrous dataset of 1.7M research papers on Kaggle. <a href="https://www.kaggle.com/Cornell-University/arxiv" target="_blank" rel="noopener noreffer">Go to Dataset</a>.</p>
+<p>We will use its <code>abstract</code> and <code>title</code> columns to train our model.</p>
 <ul>
 <li><code>title</code>: This column represents the title of the research paper</li>
 <li><code>abstract</code>: This column represents brief summary of the research paper.</li>
 </ul>
-<p>This will be a supervised training where <code>abstract</code> is our independent variable <code>(X)</code> while <code>title</code> is our dependent variable <code>(y)</code>.</p>
+<p>This will be a supervised training where <code>abstract</code> is our independent variable <code>X</code> while <code>title</code> is our dependent variable <code>y</code>.</p>
 <h3 id="code">Code</h3>
-<p>We will install dependencies and work with latest stable pytorch 1.6</p>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">We will use Kaggle notebook to write our code so that we can leverage free GPU.</div>
+        </div>
+    </div>
+<p>First, lets install all the dependencies - We will work with latest stable <code>pytorch 1.6</code>.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -136,6 +154,7 @@ So, let&rsquo;s dive in.</p>
 </code></pre></td></tr></table>
 </div>
 </div><p><strong>let&rsquo;s load the data</strong></p>
+<p>The format of the data is a nested <code>json</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -146,12 +165,14 @@ So, let&rsquo;s dive in.</p>
 </span><span class="lnt">6
 </span><span class="lnt">7
 </span><span class="lnt">8
+</span><span class="lnt">9
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">json</span>
 
 <span class="n">data_file</span> <span class="o">=</span> <span class="s1">&#39;../input/arxiv/arxiv-metadata-oai-snapshot.json&#39;</span>
 
+<span class="c1"># Helper function to load the dataset</span>
 <span class="k">def</span> <span class="nf">get_metadata</span><span class="p">():</span>
     <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">data_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
@@ -166,9 +187,11 @@ So, let&rsquo;s dive in.</p>
 </span><span class="lnt">4
 </span><span class="lnt">5
 </span><span class="lnt">6
+</span><span class="lnt">7
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">metadata</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">()</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># let&#39;s see the first row of the data</span>
+<span class="n">metadata</span> <span class="o">=</span> <span class="n">get_metadata</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">paper</span> <span class="ow">in</span> <span class="n">metadata</span><span class="p">:</span>
     <span class="n">paper_dict</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">paper</span><span class="p">)</span>
     <span class="k">print</span><span class="p">(</span><span class="s1">&#39;Title: {}</span><span class="se">\n\n</span><span class="s1">Abstract: {}</span><span class="se">\n</span><span class="s1">Ref: {}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">paper_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">),</span> <span class="n">paper_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;abstract&#39;</span><span class="p">),</span> <span class="n">paper_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;journal-ref&#39;</span><span class="p">)))</span>
@@ -179,7 +202,10 @@ So, let&rsquo;s dive in.</p>
 </div><p><code>Title: Calculation of prompt diphoton production cross sections at Tevatron and LHC energies</code></p>
 <p><code>Abstract:   A fully differential calculation in perturbative quantum chromodynamics is presented for the production of massive photon pairs at hadron colliders. All next-to-leading order perturbative contributions from quark-antiquark, gluon-(anti)quark, and gluon-gluon subprocesses are included, as well as all-orders resummation of initial-state gluon radiation valid at next-to-next-to-leading logarithmic accuracy. The region of phase space is specified in which the calculation is most reliable. Good agreement is demonstrated with data from the Fermilab Tevatron, and predictions are made for more detailed tests with CDF and DO data. Predictions are shown for distributions of diphoton pairs produced at the energy of the Large Hadron Collider (LHC). Distributions of the diphoton pairs from the decay of a Higgs boson are contrasted with those produced from QCD processes at the LHC, showing that enhanced sensitivity to the signal can be obtained with judicious selection of events.</code></p>
 <p><code>Ref: Phys.Rev.D76:013009,2007</code></p>
-<p><strong>We will take last 5 years ArXiv papers (2016-2021) due to Kaggle&rsquo;c compute limits</strong></p>
+<hr>
+<p>We have taken 3 attributes of the dataset: <code>Title</code>, <code>Abstract</code> and <code>Ref</code>.
+<code>Ref</code> is important because the 4 characters of its value give us the year in which the paper was published.</p>
+<p><strong>We will take last 5 years ArXiv papers (2016-2020) due to Kaggle&rsquo;c compute limits</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -221,6 +247,8 @@ So, let&rsquo;s dive in.</p>
 </code></pre></td></tr></table>
 </div>
 </div><p><code>(25625, 25625, 25625)</code></p>
+<hr>
+<p>So, we have around 25K research papers published from 2016 to 2020. Next, we will convert this data into <code>pandas</code> dataframe and then we will use this data to train our <code>T5 model</code></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -243,30 +271,40 @@ So, let&rsquo;s dive in.</p>
     <img src="/images/t5-model-dataframe-1.png"/> 
 </figure>
 
-<p>We will use <code>simpletransformers</code> library to train a <code>T5 model</code></p>
+<hr>
+<h3 id="training">Training</h3>
+<p>We will use <code>simpletransformers</code> library to train <code>T5 model</code>.</p>
+<p>This library is based on the <code>Transformers</code> library by HuggingFace. <code>SimpleTransformers</code> lets you quickly train and evaluate Transformer models. Only 3 lines of code are needed to initialize a model, train the model, and evaluate a model. You can read more about it here: <a href="https://github.com/ThilinaRajapakse/simpletransformers">https://github.com/ThilinaRajapakse/simpletransformers</a></p>
+<p><strong>Input Data</strong></p>
 <p><code>Simpletransformers</code> implementation of <code>T5 model</code> expects a data to be a dataframe with 3 columns: <code>&lt;prefix&gt;</code>, <code>&lt;input_text&gt;</code>, <code>&lt;target_text&gt;</code></p>
 <ul>
-<li><code>&lt;prefix&gt;</code>: A string indicating the task to perform. (E.g. &ldquo;question&rdquo;, &ldquo;stsb&rdquo;)</li>
+<li><code>&lt;prefix&gt;</code>: A string indicating the task to perform. (E.g. &ldquo;question&rdquo;, &ldquo;stsb&rdquo;, &ldquo;summarization&rdquo;)</li>
 <li><code>&lt;input_text&gt;</code>: The input text sequence (we will use Paper&rsquo;s abstract as input_text )</li>
 <li><code>&lt;target_text&gt;</code>: The target sequence (we will use Paper&rsquo;s title as output_text )</li>
 </ul>
 <p>You can read about the data format: <a href="https://github.com/ThilinaRajapakse/simpletransformers#t5-transformer">https://github.com/ThilinaRajapakse/simpletransformers#t5-transformer</a></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
-<pre class="chroma"><code><span class="lnt">1
-</span><span class="lnt">2
-</span><span class="lnt">3
-</span><span class="lnt">4
-</span><span class="lnt">5
-</span><span class="lnt">6
-</span><span class="lnt">7
-</span><span class="lnt">8
-</span><span class="lnt">9
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
 </span></code></pre></td>
 <td class="lntd">
-<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">papers</span> <span class="o">=</span> <span class="n">papers</span><span class="p">[[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;abstract&#39;</span><span class="p">]]</span>
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Adding &lt;input_text&gt; and &lt;target_text&gt; columns</span>
+<span class="n">papers</span> <span class="o">=</span> <span class="n">papers</span><span class="p">[[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span><span class="s1">&#39;abstract&#39;</span><span class="p">]]</span>
 <span class="n">papers</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;target_text&#39;</span><span class="p">,</span> <span class="s1">&#39;input_text&#39;</span><span class="p">]</span>
-<span class="n">papers</span> <span class="o">=</span> <span class="n">papers</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+
+<span class="c1"># Adding &lt;prefix&gt; columns</span>
+<span class="n">papers</span><span class="p">[</span><span class="s1">&#39;prefix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;summarize&#34;</span>
 
 <span class="c1"># splitting the data into training and test dataset</span>
 <span class="n">eval_df</span> <span class="o">=</span> <span class="n">papers</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">101</span><span class="p">)</span>
@@ -276,7 +314,10 @@ So, let&rsquo;s dive in.</p>
 </code></pre></td></tr></table>
 </div>
 </div><p><code>((20500, 2), (5125, 2))</code></p>
-<p>We will training our <code>T5 model</code> with very bare minimum <code>num_train_epochs=4</code>, <code>train_batch_size=16</code> to fit into Kaggle&rsquo;s compute limits</p>
+<hr>
+<p>We have around 20K research papers for training and 5K papers for evaluation.</p>
+<p><strong>Setting Training Parameters and Start Training</strong></p>
+<p>We will train our <code>T5 model</code> with very bare minimum <code>num_train_epochs=4</code>, <code>train_batch_size=16</code> to fit into Kaggle&rsquo;s compute limits. Feel free to play around these training parameters.</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -307,9 +348,6 @@ So, let&rsquo;s dive in.</p>
 </span><span class="lnt">26
 </span><span class="lnt">27
 </span><span class="lnt">28
-</span><span class="lnt">29
-</span><span class="lnt">30
-</span><span class="lnt">31
 </span></code></pre></td>
 <td class="lntd">
 <pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">logging</span>
@@ -321,10 +359,7 @@ So, let&rsquo;s dive in.</p>
 <span class="n">transformers_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&#34;transformers&#34;</span><span class="p">)</span>
 <span class="n">transformers_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
 
-<span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;prefix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;summarize&#34;</span>
-<span class="n">eval_df</span><span class="p">[</span><span class="s1">&#39;prefix&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&#34;summarize&#34;</span>
-
-
+<span class="c1"># T5 Training parameters</span>
 <span class="n">model_args</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s2">&#34;reprocess_input_data&#34;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
     <span class="s2">&#34;overwrite_output_dir&#34;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
@@ -346,8 +381,11 @@ So, let&rsquo;s dive in.</p>
 </code></pre></td></tr></table>
 </div>
 </div><p><code>{'eval_loss': 2.103029722170599}</code></p>
-<p>And We&rsquo;re Done !
-Let&rsquo;s see how our model performs in generating paper&rsquo;s titles</p>
+<hr>
+<p>It took around 4 hours to train for <code>4 epochs</code> and with <code>batch_size</code> of <code>16</code>. And we get a loss of <code>2.103</code> on our test data.</p>
+<h3 id="were-done-">We&rsquo;re Done !</h3>
+<p>Let&rsquo;s see how our model performs in generating paper&rsquo;s titles</p>
+<p><strong>Example 1</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -373,7 +411,8 @@ Let&rsquo;s see how our model performs in generating paper&rsquo;s titles</p>
 </div><p><code>Actual Title: Cooperative Passive Coherent Location: A Promising 5G Service to Support Road Safety</code></p>
 <p><code>Predicted Title: ['CPCL: a distributed MIMO radar service for public users']</code></p>
 <p><code>Actual Abstract: ['summarize:   5G promises many new vertical service areas beyond simple communication and\ndata transfer. We propose CPCL (cooperative passive coherent location), a\ndistributed MIMO radar service, which can be offered by mobile radio network\noperators as a service for public user groups. CPCL comes as an inherent part\nof the radio network and takes advantage of the most important key features\nproposed for 5G. It extends the well-known idea of passive radar (also known as\npassive coherent location, PCL) by introducing cooperative principles. These\nrange from cooperative, synchronous radio signaling, and MAC up to radar data\nfusion on sensor and scenario levels. By using software-defined radio and\nnetwork paradigms, as well as real-time mobile edge computing facilities\nintended for 5G, CPCL promises to become a ubiquitous radar service which may\nbe adaptive, reconfigurable, and perhaps cognitive. As CPCL makes double use of\nradio resources (both in terms of frequency bands and hardware), it can be\nconsidered a green technology. Although we introduce the CPCL idea from the\nviewpoint of vehicle-to-vehicle/infrastructure (V2X) communication, it can\ndefinitely also be applied to many other applications in industry, transport,\nlogistics, and for safety and security applications.\n']</code></p>
-<p>Couple of more examples -</p>
+<hr>
+<p><strong>Example 2</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -399,6 +438,8 @@ Let&rsquo;s see how our model performs in generating paper&rsquo;s titles</p>
 </div><p><code>Actual Title: Test Model Coverage Analysis under Uncertainty</code></p>
 <p><code>Predicted Title: ['Probabilistic aggregate coverage analysis for model-based testing']</code></p>
 <p><code>Actual Abstract: ['summarize:   In model-based testing (MBT) we may have to deal with a non-deterministic\nmodel, e.g. because abstraction was applied, or because the software under test\nitself is non-deterministic. The same test case may then trigger multiple\npossible execution paths, depending on some internal decisions made by the\nsoftware. Consequently, performing precise test analyses, e.g. to calculate the\ntest coverage, are not possible. This can be mitigated if developers can\nannotate the model with estimated probabilities for taking each transition. A\nprobabilistic model checking algorithm can subsequently be used to do simple\nprobabilistic coverage analysis. However, in practice developers often want to\nknow what the achieved aggregate coverage, which unfortunately cannot be\nre-expressed as a standard model checking problem. This paper presents an\nextension to allow efficient calculation of probabilistic aggregate coverage,\nand moreover also in combination with k-wise coverage.\n']</code></p>
+<hr>
+<p><strong>Example 3</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt">1
@@ -424,20 +465,32 @@ Let&rsquo;s see how our model performs in generating paper&rsquo;s titles</p>
 </div><p><code>Actual Title: Computational intelligence for qualitative coaching diagnostics: Automated assessment of tennis swings to improve performance and safety</code></p>
 <p><code>Predicted Title: ['Personalized qualitative feedback for tennis swing technique using 3D video']</code></p>
 <p><code>Actual Abstract: ['summarize:   Coaching technology, wearables and exergames can provide quantitative\nfeedback based on measured activity, but there is little evidence of\nqualitative feedback to aid technique improvement. To achieve personalised\nqualitative feedback, we demonstrated a proof-of-concept prototype combining\nkinesiology and computational intelligence that could help improving tennis\nswing technique utilising three-dimensional tennis motion data acquired from\nmulti-camera video. Expert data labelling relied on virtual 3D stick figure\nreplay. Diverse assessment criteria for novice to intermediate skill levels and\nconfigurable coaching scenarios matched with a variety of tennis swings (22\nbackhands and 21 forehands), included good technique and common errors. A set\nof selected coaching rules was transferred to adaptive assessment modules able\nto learn from data, evolve their internal structures and produce autonomous\npersonalised feedback including verbal cues over virtual camera 3D replay and\nan end-of-session progress report. The prototype demonstrated autonomous\nassessment on future data based on learning from prior examples, aligned with\nskill level, flexible coaching scenarios and coaching rules. The generated\nintuitive diagnostic feedback consisted of elements of safety and performance\nfor tennis swing technique, where each swing sample was compared with the\nexpert. For safety aspects of the relative swing width, the prototype showed\nimproved assessment ...\n']</code></p>
-<p>The results are absolutely stunning. That&rsquo;s the power of <code>T5 Model</code>.</p>
-<p>Here&rsquo;s the link to my <a href="https://www.kaggle.com/officialshivanandroy/transformers-generating-titles-from-abstracts" target="_blank" rel="noopener noreffer">published Kaggle Kernel</a></p>
+<hr>
+<p>The results are absolutely stunning. The generated reserach papers title are exactly human like. That&rsquo;s the power of <code>T5 Model</code>!</p>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>Attachments<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li><a href="https://www.kaggle.com/Cornell-University/arxiv" target="_blank" rel="noopener noreffer">Go to Dataset</a></li>
+<li><a href="https://www.kaggle.com/officialshivanandroy/transformers-generating-titles-from-abstracts" target="_blank" rel="noopener noreffer">Go to Published Kaggle Kernel</a></li>
+</ul>
+</div>
+        </div>
+    </div>
 </div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 2020-08-19</span>
+                <span>Updated on 01/09/2020</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts" data-via="snrspeaks" data-hashtags="Deep Learning,Transformers,T5 Model,Summarization"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-hashtag="Deep Learning"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://example.org/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="🤗Transformers: Training a T5 Transformer Model - Generating ArXiv Paper&#39;s Titles from Abstracts"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers" data-via="snrspeaks" data-hashtags="Deep Learning,Transformers,T5 Model,Summarization"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/" data-hashtag="Deep Learning"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/" data-title="Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
@@ -449,8 +502,7 @@ Let&rsquo;s see how our model performs in generating paper&rsquo;s titles</p>
         </section>
     </div>
 
-    <div class="post-nav">
-            <a href="/transformers-building-question-answers-model-at-scale/" class="next" rel="next" title="🤗Transformers: Building Question &amp; Answering Model at Scale">🤗Transformers: Building Question &amp; Answering Model at Scale<i class="fas fa-angle-right fa-fw"></i></a></div>
+    <div class="post-nav"><a href="/transformers-building-question-answers-model-at-scale/" class="prev" rel="prev" title="Building Question Answering Model at Scale using 🤗Transformers"><i class="fas fa-angle-left fa-fw"></i>Building Question Answering Model at Scale using 🤗Transformers</a></div>
 </div>
 <div id="comments"></div></article></div>
             </main><footer class="footer">

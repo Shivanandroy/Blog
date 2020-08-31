@@ -1,18 +1,16 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
         <title>Question &amp; Answering - Tag - Shivanand Roy | Deep Learning</title>
-        <link>http://example.org/tags/question-answering/</link>
+        <link>http://shivanandroy.com/tags/question-answering/</link>
         <description>Question &amp; Answering - Tag - Shivanand Roy | Deep Learning</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>Shivanandroy.official@gmail.com (Shivanand Roy)</managingEditor>
-            <webMaster>Shivanandroy.official@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Wed, 19 Aug 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://example.org/tags/question-answering/" rel="self" type="application/rss+xml" /><item>
-    <title>🤗Transformers: Building Question &amp; Answering Model at Scale</title>
-    <link>http://example.org/transformers-building-question-answers-model-at-scale/</link>
+            <webMaster>Shivanandroy.official@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Wed, 19 Aug 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/question-answering/" rel="self" type="application/rss+xml" /><item>
+    <title>Building Question Answering Model at Scale using 🤗Transformers</title>
+    <link>http://shivanandroy.com/transformers-building-question-answers-model-at-scale/</link>
     <pubDate>Wed, 19 Aug 2020 00:42:27 &#43;0530</pubDate>
     <author>Author</author>
-    <guid>http://example.org/transformers-building-question-answers-model-at-scale/</guid>
-    <description><![CDATA[Introduction This article details neural question and answering using transformers models (ALBERT) at SCALE. The below approach is capable to perform Q &amp; A across millions of documents in few seconds.
-For this tutorial - I will use ArXiV&rsquo;s research papers abstracts to do Q&amp;A. The data is uploaded on Kaggle here..
-Now let&rsquo;s dive in&hellip;
-Reading the entire json metadata and then limiting my analysis to just 50,000 documents because of the compute limit on Kaggle.]]></description>
+    <guid>http://shivanandroy.com/transformers-building-question-answers-model-at-scale/</guid>
+    <description><![CDATA[Abstract  In this article, you will learn how to fetch contextual answers in a huge corpus of documents using Transformers🤗     Introduction We will build a neural question and answering system using transformers models (RoBERTa). This approach is capable to perform Q&amp;A across millions of documents in few seconds.
+Data For this tutorial, I will use ArXiV&rsquo;s research papers abstracts to do Q&amp;A. The data is on Kaggle.]]></description>
 </item></channel>
 </rss>
