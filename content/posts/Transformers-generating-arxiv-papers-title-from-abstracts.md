@@ -7,7 +7,7 @@ featuredImagePreview: "/images/t5-model-3.png"
 #coverImage: "huggingface.png"
 #images: ["huggingface.png"]
 tags: ["Deep Learning", "Transformers", "T5 Model", "Summarization"]
-categories: ["Deep Learning - NLP"]
+categories: ["Text Summarization"]
 ---
 
 {{< admonition type=abstract title="Abstract" open=True >}}

@@ -7,7 +7,7 @@ featuredImagePreview: "/images/huggingface.png"
 #coverImage: "huggingface.png"
 #images: ["huggingface.png"]
 tags: ["Deep Learning", "Transformers", "Question & Answering"]
-categories: ["Deep Learning - NLP"]
+categories: ["Question Answering"]
 ---
 
 {{< admonition type=abstract title="Abstract" open=True >}}
