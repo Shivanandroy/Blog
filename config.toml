@@ -398,10 +398,10 @@ theme = "LoveIt"
 
   # LoveIt NEW | 0.2.0 Analytics config
   [params.analytics]
-    enable = false
+    enable = true
     # Google Analytics
     [params.analytics.google]
-      id = ""
+      id = "UA-177212842-1"
       # whether to anonymize IP
       anonymizeIP = true
     # Fathom Analytics
