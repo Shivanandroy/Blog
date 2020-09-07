@@ -344,7 +344,7 @@ theme = "LoveIt"
       [params.page.comment.utterances]
         enable = true
         # owner/repo
-        repo = ""Shivanandroy/Blog""
+        repo = "Shivanandroy/Blog"
         issueTerm = "title"
         label = ""
         lightTheme = "github-light"
