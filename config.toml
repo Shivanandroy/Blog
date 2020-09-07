@@ -342,10 +342,10 @@ theme = "LoveIt"
         enable = false
       # LoveIt NEW | 0.2.5 Utterances comment config
       [params.page.comment.utterances]
-        enable = false
+        enable = true
         # owner/repo
-        repo = ""
-        issueTerm = "pathname"
+        repo = ""Shivanandroy/Blog""
+        issueTerm = "title"
         label = ""
         lightTheme = "github-light"
         darkTheme = "github-dark"
