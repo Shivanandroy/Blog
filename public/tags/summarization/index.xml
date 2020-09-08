@@ -10,6 +10,8 @@
     <pubDate>Tue, 01 Sep 2020 00:40:27 &#43;0530</pubDate>
     <author>Author</author>
     <guid>http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/</guid>
-    <description><![CDATA[Abstract  In this article, you will learn how to train a T5 model for text generation - to generate title given a research paper&rsquo;s abstract or summary using Transformers🤗   Introduction T5 model is a Sequence-to-Sequence model. A Sequence-to-Sequence model is fully capable to perform any text to text conversion task. What does it mean? - It means that a T5 model can take any input text and convert it into any output text.]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/t5-model-3.png" referrerpolicy="no-referrer">
+            </div>AbstractIn this article, you will learn how to train a T5 model for text generation - to generate title given a research paper&rsquo;s abstract or summary using Transformers🤗 Introduction T5 model is a Sequence-to-Sequence model. A Sequence-to-Sequence model is fully capable to perform any text to text conversion task. What does it mean? - It means that a T5 model can take any input text and convert it into any output text.]]></description>
 </item></channel>
 </rss>

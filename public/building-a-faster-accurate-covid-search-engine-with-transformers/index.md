@@ -1,14 +1,5 @@
----
-title: "Building A Faster & Accurate COVID Search Engine with Transformers🤗"
-date: 2020-09-06T00:42:27+05:30
-draft: false
-featuredImage: "/images/covid-19.png"
-#featuredImagePreview: "/images/covid-19.png"
-#coverImage: "huggingface.png"
-images: ["/images/covid-19.png"]
-tags: ["Deep Learning", "Transformers", "Search Engine"]
-categories: ["Search Engine"]
----
+# Building A Faster & Accurate COVID Search Engine with Transformers🤗
+
 
 {{< admonition type=abstract title="Abstract" open=True >}}
 This article will let you build a faster and accurate COVID Search Engine using `Transformers🤗`

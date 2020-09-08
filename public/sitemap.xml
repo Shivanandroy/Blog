@@ -2,15 +2,19 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://shivanandroy.com/categories/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/tags/deep-learning/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/categories/deep-learning-nlp/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/posts/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/tags/summarization/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/tags/t5-model/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/tags/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/tags/transformers/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/transformers-building-question-answers-model-at-scale/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
-            <loc>http://shivanandroy.com/tags/question-answering/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url></urlset>
+            <loc>http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/</loc><lastmod>2020-09-06T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/categories/</loc><lastmod>2020-09-06T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/tags/deep-learning/</loc><lastmod>2020-09-06T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/posts/</loc><lastmod>2020-09-06T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/tags/search-engine/</loc><lastmod>2020-09-06T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/categories/search-engine/</loc><lastmod>2020-09-06T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/</loc><lastmod>2020-09-06T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/tags/</loc><lastmod>2020-09-06T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/tags/transformers/</loc><lastmod>2020-09-06T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/tags/summarization/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/tags/t5-model/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/categories/text-summarization/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/</loc><lastmod>2020-09-01T00:40:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/transformers-building-question-answers-model-at-scale/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://shivanandroy.com/tags/question-answering/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url><url>
+            <loc>http://shivanandroy.com/categories/question-answering/</loc><lastmod>2020-08-19T00:42:27&#43;05:30</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url></urlset>

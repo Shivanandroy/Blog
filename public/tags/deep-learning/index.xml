@@ -4,20 +4,35 @@
         <link>http://shivanandroy.com/tags/deep-learning/</link>
         <description>Deep Learning - Tag - Shivanand Roy | Deep Learning</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>Shivanandroy.official@gmail.com (Shivanand Roy)</managingEditor>
-            <webMaster>Shivanandroy.official@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Tue, 01 Sep 2020 00:40:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/deep-learning/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>Shivanandroy.official@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Sun, 06 Sep 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/deep-learning/" rel="self" type="application/rss+xml" /><item>
+    <title>Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗</title>
+    <link>http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/</link>
+    <pubDate>Sun, 06 Sep 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/covid-19.png" referrerpolicy="no-referrer">
+            </div>AbstractThis article will let you build a faster and accurate COVID Search Engine using Transformers🤗 Introduction In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response.
+To achieve this, we will need:
+ a structured dataset with reserach papers and its full text.]]></description>
+</item><item>
     <title>Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers</title>
     <link>http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/</link>
     <pubDate>Tue, 01 Sep 2020 00:40:27 &#43;0530</pubDate>
     <author>Author</author>
     <guid>http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/</guid>
-    <description><![CDATA[Abstract  In this article, you will learn how to train a T5 model for text generation - to generate title given a research paper&rsquo;s abstract or summary using Transformers🤗   Introduction T5 model is a Sequence-to-Sequence model. A Sequence-to-Sequence model is fully capable to perform any text to text conversion task. What does it mean? - It means that a T5 model can take any input text and convert it into any output text.]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/t5-model-3.png" referrerpolicy="no-referrer">
+            </div>AbstractIn this article, you will learn how to train a T5 model for text generation - to generate title given a research paper&rsquo;s abstract or summary using Transformers🤗 Introduction T5 model is a Sequence-to-Sequence model. A Sequence-to-Sequence model is fully capable to perform any text to text conversion task. What does it mean? - It means that a T5 model can take any input text and convert it into any output text.]]></description>
 </item><item>
     <title>Building Question Answering Model at Scale using 🤗Transformers</title>
     <link>http://shivanandroy.com/transformers-building-question-answers-model-at-scale/</link>
     <pubDate>Wed, 19 Aug 2020 00:42:27 &#43;0530</pubDate>
     <author>Author</author>
     <guid>http://shivanandroy.com/transformers-building-question-answers-model-at-scale/</guid>
-    <description><![CDATA[Abstract  In this article, you will learn how to fetch contextual answers in a huge corpus of documents using Transformers🤗     Introduction We will build a neural question and answering system using transformers models (RoBERTa). This approach is capable to perform Q&amp;A across millions of documents in few seconds.
-Data For this tutorial, I will use ArXiV&rsquo;s research papers abstracts to do Q&amp;A. The data is on Kaggle.]]></description>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/huggingface.png" referrerpolicy="no-referrer">
+            </div>AbstractIn this article, you will learn how to fetch contextual answers in a huge corpus of documents using Transformers🤗 Introduction We will build a neural question and answering system using transformers models (RoBERTa). This approach is capable to perform Q&amp;A across millions of documents in few seconds.
+Data For this tutorial, I will use ArXiV&rsquo;s research papers abstracts to do Q&amp;A. The data is on Kaggle. Go to dataset.]]></description>
 </item></channel>
 </rss>

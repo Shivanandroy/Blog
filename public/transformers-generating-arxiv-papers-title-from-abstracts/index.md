@@ -8,7 +8,7 @@ In this article, you will learn how to train a `T5 model` for text generation - 
 ### Introduction
 `T5 model` is a Sequence-to-Sequence model. A Sequence-to-Sequence model is fully capable to perform any text to text conversion task. **What does it mean?** - It means that a `T5 model` can take any input text and convert it into any output text. Such text-to-text conversion is useful in NLP tasks like language translation, summarization, text generation etc.
 
-{{< figure src="/images/t5-model-3.png" >}}
+
 
 For this tutorial, We will take research paper's abstract or brief summary as our input text and its corrosponding paper's title as output text and feed it to a `T5 model` to train. Once the model is trained, it will be able to generate the paper's title based on the abstract.
 

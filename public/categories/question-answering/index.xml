@@ -1,10 +1,10 @@
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
     <channel>
-        <title>Question &amp; Answering - Tag - Shivanand Roy | Deep Learning</title>
-        <link>http://shivanandroy.com/tags/question-answering/</link>
-        <description>Question &amp; Answering - Tag - Shivanand Roy | Deep Learning</description>
+        <title>Question Answering - Category - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/categories/question-answering/</link>
+        <description>Question Answering - Category - Shivanand Roy | Deep Learning</description>
         <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>Shivanandroy.official@gmail.com (Shivanand Roy)</managingEditor>
-            <webMaster>Shivanandroy.official@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Wed, 19 Aug 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/question-answering/" rel="self" type="application/rss+xml" /><item>
+            <webMaster>Shivanandroy.official@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Wed, 19 Aug 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/categories/question-answering/" rel="self" type="application/rss+xml" /><item>
     <title>Building Question Answering Model at Scale using 🤗Transformers</title>
     <link>http://shivanandroy.com/transformers-building-question-answers-model-at-scale/</link>
     <pubDate>Wed, 19 Aug 2020 00:42:27 &#43;0530</pubDate>

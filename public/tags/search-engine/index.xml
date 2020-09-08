@@ -1,0 +1,19 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Search Engine - Tag - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/tags/search-engine/</link>
+        <description>Search Engine - Tag - Shivanand Roy | Deep Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>Shivanandroy.official@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>Shivanandroy.official@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Sun, 06 Sep 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/search-engine/" rel="self" type="application/rss+xml" /><item>
+    <title>Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗</title>
+    <link>http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/</link>
+    <pubDate>Sun, 06 Sep 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/</guid>
+    <description><![CDATA[<div class="featured-image">
+                <img src="/images/covid-19.png" referrerpolicy="no-referrer">
+            </div>AbstractThis article will let you build a faster and accurate COVID Search Engine using Transformers🤗 Introduction In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response.
+To achieve this, we will need:
+ a structured dataset with reserach papers and its full text.]]></description>
+</item></channel>
+</rss>
