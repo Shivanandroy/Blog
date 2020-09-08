@@ -10,9 +10,7 @@
     <pubDate>Wed, 19 Aug 2020 00:42:27 &#43;0530</pubDate>
     <author>Author</author>
     <guid>http://shivanandroy.com/transformers-building-question-answers-model-at-scale/</guid>
-    <description><![CDATA[<div class="featured-image">
-                <img src="/images/huggingface.png" referrerpolicy="no-referrer">
-            </div>AbstractIn this article, you will learn how to fetch contextual answers in a huge corpus of documents using Transformers🤗 Introduction We will build a neural question and answering system using transformers models (RoBERTa). This approach is capable to perform Q&amp;A across millions of documents in few seconds.
-Data For this tutorial, I will use ArXiV&rsquo;s research papers abstracts to do Q&amp;A. The data is on Kaggle. Go to dataset.]]></description>
+    <description><![CDATA[AbstractIn this article, you will learn how to fetch contextual answers in a huge corpus of documents using Transformers🤗   Introduction We will build a neural question and answering system using transformers models (RoBERTa). This approach is capable to perform Q&amp;A across millions of documents in few seconds.
+Data For this tutorial, I will use ArXiV&rsquo;s research papers abstracts to do Q&amp;A. The data is on Kaggle.]]></description>
 </item></channel>
 </rss>

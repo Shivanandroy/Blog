@@ -2,8 +2,8 @@
 title: "Building A Faster & Accurate COVID Search Engine with Transformers🤗"
 date: 2020-09-06T00:42:27+05:30
 draft: false
-featuredImage: "/images/covid-19.png"
-#featuredImagePreview: "/images/covid-19.png"
+#featuredImage: "huggingface.png"
+featuredImagePreview: "/images/covid-19.png"
 #coverImage: "huggingface.png"
 images: ["/images/covid-19.png"]
 tags: ["Deep Learning", "Transformers", "Search Engine"]
@@ -14,6 +14,7 @@ categories: ["Search Engine"]
 This article will let you build a faster and accurate COVID Search Engine using `Transformers🤗`
 {{< /admonition >}}
 
+{{< figure src="/images/covid-19.png" >}}
 
 
 ### Introduction
@@ -248,7 +249,7 @@ finder = Finder(reader, retriever)
 ***
 
 ### 🥳 Voila! We're Done.
-Let's see, how well our search engine works! - For  simplicity, we will keep the number of documents to be retrieved to 2 using `top_k_reader` parameter. But we can extend to any number in production.
+Let's see, how well our search engine works! - For simplicity, we will keep the number of documents to be retrieved to 2 using `top_k_reader` parameter. But we can extend to any number in production.
 
 Now, whenever we search or query our `DocumentStore`, we get 3 responses-
 - we get the **answer**

@@ -3,9 +3,9 @@ title: "Building Question Answering Model at Scale using 🤗Transformers"
 date: 2020-08-19T00:42:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
-featuredImage: "/images/huggingface.png"
+featuredImagePreview: "/images/huggingface.png"
 #coverImage: "huggingface.png"
-images: ["/images/huggingface.png"]
+#images: ["huggingface.png"]
 tags: ["Deep Learning", "Transformers", "Question & Answering"]
 categories: ["Question Answering"]
 ---
@@ -14,7 +14,7 @@ categories: ["Question Answering"]
 In this article, you will learn how to fetch contextual answers in a huge corpus of documents using **Transformers🤗**
 {{< /admonition >}}
 
-
+{{< figure src="/images/huggingface.png" >}}
 
 
 ### Introduction

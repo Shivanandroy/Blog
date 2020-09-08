@@ -5,7 +5,7 @@
 In this article, you will learn how to fetch contextual answers in a huge corpus of documents using **Transformers🤗**
 {{< /admonition >}}
 
-
+{{< figure src="/images/huggingface.png" >}}
 
 
 ### Introduction
