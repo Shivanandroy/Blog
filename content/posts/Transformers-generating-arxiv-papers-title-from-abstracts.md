@@ -5,7 +5,7 @@ draft: false
 #featuredImage: "huggingface.png"
 featuredImagePreview: "/images/t5-model-3.png"
 #coverImage: "huggingface.png"
-#images: ["huggingface.png"]
+images: ["/images/t5-model-3.png"]
 tags: ["Deep Learning", "Transformers", "T5 Model", "Summarization"]
 categories: ["Text Summarization"]
 ---

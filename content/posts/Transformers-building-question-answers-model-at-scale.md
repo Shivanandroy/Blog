@@ -5,7 +5,7 @@ draft: false
 #featuredImage: "huggingface.png"
 featuredImagePreview: "/images/huggingface.png"
 #coverImage: "huggingface.png"
-#images: ["huggingface.png"]
+images: ["/images/huggingface.png"]
 tags: ["Deep Learning", "Transformers", "Question & Answering"]
 categories: ["Question Answering"]
 ---
