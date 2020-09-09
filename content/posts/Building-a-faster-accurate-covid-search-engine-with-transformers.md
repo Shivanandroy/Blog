@@ -6,8 +6,8 @@ draft: false
 featuredImagePreview: "/images/covid-19.png"
 #coverImage: "huggingface.png"
 images: ["/images/covid-19.png"]
-tags: ["Deep Learning", "Transformers", "Search Engine"]
-categories: ["Search Engine"]
+tags: ["Deep Learning", "Transformers", "Search Engine","Question & Answering"]
+categories: ["Natural Language Understanding"]
 ---
 
 {{< admonition type=abstract title="Abstract" open=True >}}
@@ -17,7 +17,7 @@ This article will let you build a faster and accurate COVID Search Engine using 
 {{< figure src="/images/covid-19.png" >}}
 
 
-### Introduction
+## Introduction
 
 In this article, we will build a search engine, which will not only **retrieve** and **rank** the articles based on the query but also give us the **response**, along with a 1000 words **context** around the response.
 
@@ -26,7 +26,7 @@ To achieve this, we will need:
  - `Transformers` library to build QA model
  - and Finally, `Haystack` library to scale QA model to thousands of documents and build a search engine.
 
-### Data
+## Data
 For this tutorial, we will use [COVID-19 Open Research Dataset Challenge (CORD-19)](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge). 
 
 >CORD-19 is a resource of over 200,000 scholarly articles, including over 100,000 with full text, about COVID-19, SARS-CoV-2, and related coronaviruses. This freely available dataset is provided to the global research community to apply recent advances in natural language processing and other AI techniques to generate new insights in support of the ongoing fight against this infectious disease. 
@@ -45,12 +45,12 @@ We will take 25,000 articles from `pmc_json` directory and 25000 articles from `
 We will extract `paper_id`, `title`, `abstract`, `full_text` and put it in an easy to use `pandas.DataFrame`.
 
 
-### Code
+## Let's Code
 {{< admonition type=note title="Note" open=True >}}
 We will use Kaggle notebook to write our code to leverage GPU.
 {{< /admonition >}}
 
-**Load the data**
+### Load the data
 
 ```python
 import numpy as np
@@ -138,7 +138,7 @@ Now, we can setup `Haystack` in 3 steps:
  2. Setup `DocumentStore`
  3. Setup `Retriever`, `Reader` and `Finder` 
 
-**1. Install `haystack`**
+### 1. Install `haystack`
 
 Let's install `haystack` and import all the required modules
 ```python
@@ -153,7 +153,7 @@ from haystack.reader.farm import FARMReader
 from haystack.reader.transformers import TransformersReader
 from haystack.utils import print_answers
 ```
-**2. Setting up `DocumentStore`**
+### 2. Setting up `DocumentStore`
 
 Haystack finds answers to queries within the documents stored in a `DocumentStore`. The current implementations of `DocumentStore` include `ElasticsearchDocumentStore`, `SQLDocumentStore`, and `InMemoryDocumentStore`.
 
@@ -202,7 +202,7 @@ Once `ElasticsearchDocumentStore` is setup, we will write our documents/texts to
 document_store.write_documents(data[['title', 'abstract']].rename(columns={'title':'name','full_text':'text'}).to_dict(orient='records'))
 ```
 
-**3. Setup `Retriever`, `Reader` and `Finder`**
+### 3. Setup `Retriever`, `Reader` and `Finder`
 
 Retrievers help narrowing down the scope for the Reader to smaller units of text where a given question could be answered. They use some simple but fast algorithm.
 
@@ -422,6 +422,7 @@ Special considerations in the assessment of catastrophic brain injury and determ
 
 The results are meaningful😄. Please note that we have used a pretrained model `deepset/roberta-base-squad2` for this tutorial. We might expect a significant improvement if we use a QA model trained specific to this dataset.
 
+## Notebooks
 {{< admonition type=success title="Attachments" open=True >}}
 - [Go to Dataset](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge)
 - [Go to Published Kaggle Kernel](https://www.kaggle.com/officialshivanandroy/building-faster-accurate-cord-search-engine)

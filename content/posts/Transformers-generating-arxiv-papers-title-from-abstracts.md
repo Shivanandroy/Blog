@@ -7,14 +7,14 @@ featuredImagePreview: "/images/t5-model-3.png"
 #coverImage: "huggingface.png"
 images: ["/images/t5-model-3.png"]
 tags: ["Deep Learning", "Transformers", "T5 Model", "Summarization"]
-categories: ["Text Summarization"]
+categories: ["Natural Language Understanding"]
 ---
 
 {{< admonition type=abstract title="Abstract" open=True >}}
 In this article, you will learn how to train a `T5 model` for text generation - to generate title given a research paper's abstract or summary using **Transformers🤗**
 {{< /admonition >}}
 
-### Introduction
+## Introduction
 `T5 model` is a Sequence-to-Sequence model. A Sequence-to-Sequence model is fully capable to perform any text to text conversion task. **What does it mean?** - It means that a `T5 model` can take any input text and convert it into any output text. Such text-to-text conversion is useful in NLP tasks like language translation, summarization, text generation etc.
 
 {{< figure src="/images/t5-model-3.png" >}}
@@ -23,7 +23,7 @@ For this tutorial, We will take research paper's abstract or brief summary as ou
 
 So, let's dive in.
 
-### Dataset
+## Data
 ArXiv has recently open-sourced a monstrous dataset of 1.7M research papers on Kaggle. [Go to Dataset](https://www.kaggle.com/Cornell-University/arxiv). 
 
 We will use its `abstract` and `title` columns to train our model. 
@@ -32,7 +32,7 @@ We will use its `abstract` and `title` columns to train our model.
 
 This will be a supervised training where `abstract` is our independent variable `X` while `title` is our dependent variable `y`.
 
-### Code
+## Let's Code
 {{< admonition type=note title="Note" open=True >}}
 We will use Kaggle notebook to write our code so that we can leverage free GPU.
 {{< /admonition >}}
@@ -46,7 +46,7 @@ First, lets install all the dependencies - We will work with latest stable `pyto
 !pip install -U simpletransformers  
 ```
 
-**let's load the data**
+### Load the Data
 
 The format of the data is a nested `json`
 ```python
@@ -127,7 +127,7 @@ papers.head()
 {{< figure src="/images/t5-model-dataframe-1.png" >}}
 
 ***
-### Training
+### T5 Model Training
 We will use `simpletransformers` library to train `T5 model`.
 
 This library is based on the `Transformers` library by HuggingFace. `SimpleTransformers` lets you quickly train and evaluate Transformer models. Only 3 lines of code are needed to initialize a model, train the model, and evaluate a model. You can read more about it here: https://github.com/ThilinaRajapakse/simpletransformers
@@ -196,7 +196,7 @@ print(results)
 `{'eval_loss': 2.103029722170599}`
 ***
 It took around 4 hours to train for `4 epochs` and with `batch_size` of `16`. And we get a loss of `2.103` on our test data.
-### We're Done !
+## 🥳 Voila! We're Done
 Let's see how our model performs in generating paper's titles
 
 **Example 1**
@@ -259,6 +259,8 @@ print(f'Actual Abstract: {actual_abstract}')
 ***
 
 The results are absolutely stunning. The generated reserach papers title are exactly human like. That's the power of `T5 Model`!
+
+## Notebooks
 
 {{< admonition type=success title="Attachments" open=True >}}
 - [Go to Dataset](https://www.kaggle.com/Cornell-University/arxiv)

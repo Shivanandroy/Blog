@@ -7,7 +7,7 @@ featuredImagePreview: "/images/huggingface.png"
 #coverImage: "huggingface.png"
 images: ["/images/huggingface.png"]
 tags: ["Deep Learning", "Transformers", "Question & Answering"]
-categories: ["Question Answering"]
+categories: ["Natural Language Understanding"]
 ---
 
 {{< admonition type=abstract title="Abstract" open=True >}}
@@ -17,11 +17,11 @@ In this article, you will learn how to fetch contextual answers in a huge corpus
 {{< figure src="/images/huggingface.png" >}}
 
 
-### Introduction
+## Introduction
 We will build a neural question and answering system using `transformers` models (`RoBERTa`). This approach is capable to perform Q&A across millions of documents in few seconds.
 
 
-### Data
+## Data
 For this tutorial, I will use ArXiV's research papers abstracts to do Q&A. The data is on Kaggle. [Go to dataset](https://www.kaggle.com/Cornell-University/arxiv). The dataset has many columns like 
 - `id`
 - `author`
@@ -34,7 +34,7 @@ but the columns we will be interested in are **`title`** and **`abstract`**.
 
 Let's dive into the code.
 
-### Code
+## Let's Code
 {{< admonition type=note title="Note" open=True >}}
 We will use Kaggle notebook to write our code so that we can leverage free GPU.
 {{< /admonition >}}
@@ -79,7 +79,7 @@ Now, we can setup `Haystack` in 3 steps:
  2. Setup `DocumentStore`
  3. Setup `Retriever`, `Reader` and `Finder` 
 
-**1. Install `haystack`**
+### 1. Install `haystack`
 
 Let's install `haystack` and import all the required modules
 ```python
@@ -94,7 +94,7 @@ from haystack.reader.farm import FARMReader
 from haystack.reader.transformers import TransformersReader
 from haystack.utils import print_answers
 ```
-**2. Setting up `DocumentStore`**
+### 2. Setting up `DocumentStore`
 
 Haystack finds answers to queries within the documents stored in a `DocumentStore`. The current implementations of `DocumentStore` include `ElasticsearchDocumentStore`, `SQLDocumentStore`, and `InMemoryDocumentStore`.
 
@@ -143,7 +143,7 @@ Once `ElasticsearchDocumentStore` is setup, we will write our documents/texts to
 document_store.write_documents(data[['title', 'abstract']].rename(columns={'title':'name','abstract':'text'}).to_dict(orient='records'))
 ```
 
-**3. Setup `Retriever`, `Reader` and `Finder`**
+### 3. Setup `Retriever`, `Reader` and `Finder`
 
 Retrievers help narrowing down the scope for the Reader to smaller units of text where a given question could be answered. They use some simple but fast algorithm.
 
@@ -165,7 +165,7 @@ And finally: The Finder sticks together reader and retriever in a pipeline to an
 ```python
 finder = Finder(reader, retriever)
 ```
-### We're done !
+## 🥳 Voila! We're Done.
 Once we have our `Finder` ready, we are all set to see our model fetching answers for us based on the question.
 
 Below is the list of questions that I was asking the model
@@ -313,6 +313,7 @@ result = print_answers(prediction, details="minimal")
 ```
 The results are promising. Please note that we have used a pretrained model `deepset/roberta-base-squad2` for this tutorial. We might expect a significant improvement if we use a QA model trained specific to our dataset and then scale it up to millions of documents using `Haystack`
 
+## Notebooks
 {{< admonition type=success title="Attachments" open=True >}}
 - [Go to Dataset](https://www.kaggle.com/Cornell-University/arxiv)
 - [Go to Published Kaggle Kernel](https://www.kaggle.com/officialshivanandroy/question-answering-with-arxiv-papers-at-scale)
