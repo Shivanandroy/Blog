@@ -8,13 +8,16 @@ title = "Shivanand Roy | Deep Learning"
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
 
+enableRobotsTXT = true
+canonifyURLs = true
+
 [params]
   # LoveIt CHANGED | 0.2.0 LoveIt theme version
   version = "0.2.X"
   # site description
-  description = ""
+  description = "This blog presents articles on machine learning and deep learning. The articles covers natural language processing, natural language generation, classification, regression, text analytics, nlp, pretrained nlp models, transformers based models."
   # site keywords
-  keywords = ["Theme", "Hugo"]
+  keywords = ["Machine Learning", "Deep Learning", "Data Science", "Text Classification","Natural Language Processing","NLP","Summarization","Text Analytics","Analytics", "Regression","Classification"]
   # site default theme ("light", "dark", "auto")
   defaultTheme = "auto"
   # public git repo url only then enableGitInfo is true

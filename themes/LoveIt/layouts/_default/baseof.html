@@ -15,8 +15,8 @@
         {{- partial "head/link.html" . -}}
         {{- partial "head/seo.html" . -}}
         {{- if not .Site.IsServer }}
-		{{ partial "adsense-auto.html" . }}
-	{{- end }}
+		    {{ partial "adsense-auto.html" . }}
+	    {{- end }}
     </head>
     <body header-desktop="{{ .Site.Params.header.desktopMode }}" header-mobile="{{ .Site.Params.header.mobileMode }}">
         {{- /* Check theme isDark before body rendering */ -}}
