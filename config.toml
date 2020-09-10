@@ -8,8 +8,6 @@ title = "Shivanand Roy | Deep Learning"
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
 
-enableRobotsTXT = true
-canonifyURLs = true
 
 [params]
   # LoveIt CHANGED | 0.2.0 LoveIt theme version
