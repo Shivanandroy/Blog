@@ -8,7 +8,9 @@ featuredImagePreview: "/images/t5-model-3.png"
 images: ["/images/t5-model-3.png"]
 tags: ["Deep Learning", "Transformers", "T5 Model", "Summarization"]
 categories: ["Natural Language Understanding"]
+description: "In this article, you will learn how to train a `T5 model` for text generation - to generate title given a research paper's abstract or summary using Transformers🤗. For this tutorial, We will take research paper's abstract or brief summary as our input text and its corrosponding paper's title as output text and feed it to a `T5 model` to train. Once the model is trained, it will be able to generate the paper's title based on the abstract. "
 ---
+<!--more-->
 
 {{< admonition type=abstract title="Abstract" open=True >}}
 In this article, you will learn how to train a `T5 model` for text generation - to generate title given a research paper's abstract or summary using **Transformers🤗**
@@ -268,3 +270,9 @@ The results are absolutely stunning. The generated reserach papers title are exa
 {{< /admonition >}}
 
 
+***
+
+## Subscribe
+Thank you for reading my blog! 🤗
+
+If you like what you read, 🚀[Subscribe to get notified of new blog posts.](https://tinyletter.com/shivanandroy) 

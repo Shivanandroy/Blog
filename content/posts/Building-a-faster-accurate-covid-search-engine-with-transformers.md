@@ -8,8 +8,14 @@ featuredImagePreview: "/images/covid-19.png"
 images: ["/images/covid-19.png"]
 tags: ["Deep Learning", "Transformers", "Search Engine","Question & Answering"]
 categories: ["Natural Language Understanding"]
----
+description: "This article will let you build a faster and accurate COVID Search Engine using Transformers🤗. In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response.
+To achieve this, we will need:
+ - a structured dataset with reserach papers and its full text.
+ - `Transformers` library to build QA model.
+ - and Finally, `Haystack` library to scale QA model to thousands of documents and build a search engine."
 
+---
+<!--more-->
 {{< admonition type=abstract title="Abstract" open=True >}}
 This article will let you build a faster and accurate COVID Search Engine using `Transformers🤗`
 {{< /admonition >}}
@@ -427,3 +433,10 @@ The results are meaningful😄. Please note that we have used a pretrained model
 - [Go to Dataset](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge)
 - [Go to Published Kaggle Kernel](https://www.kaggle.com/officialshivanandroy/building-faster-accurate-cord-search-engine)
 {{< /admonition >}}
+
+***
+
+## Subscribe
+Thank you for reading my blog! 🤗
+
+If you like what you read, 🚀[Subscribe to get notified of new blog posts.](https://tinyletter.com/shivanandroy) 

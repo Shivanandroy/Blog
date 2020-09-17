@@ -16,6 +16,7 @@ XLNET is generalized because it captures bi-directional context by means of a me
 
 It integrates the idea of auto-regressive models and bi-directional context modeling, yet overcoming the disadvantages of BERT and thus outperforming BERT on 20 tasks, often by a large margin in tasks such as question answering, natural language inference, sentiment analysis, and document ranking.
 
+
 In this article, we will take a pretrained `XLNet` model and fine tune it on our dataset."
 ---
 <!--more-->
@@ -341,6 +342,11 @@ Now, we have a decent baseline to improve our model upon.
 - [Go to Dataset](https://www.kaggle.com/c/nlp-getting-started/overview). 
 - [Go to Google Colab Notebook](https://colab.research.google.com/drive/1KUJoHQU_19iav6Lxu0_Ay2qWUrOLiltN?usp=sharing)
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1KUJoHQU_19iav6Lxu0_Ay2qWUrOLiltN?usp=sharing)
+{{< /admonition >}}
 
+***
 
+## Subscribe
+Thank you for reading my blog! 🤗
 
+If you like what you read, 🚀[Subscribe to get notified of new blog posts.](https://tinyletter.com/shivanandroy) 
