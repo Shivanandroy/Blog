@@ -8,6 +8,15 @@ featuredImagePreview: "/images/FineTuningXLnet.jpg"
 images: ["/images/FineTuningXLnet.jpg"]
 tags: ["Deep Learning", "Transformers", "XLNet", "Text Classification"]
 categories: ["Natural Language Understanding"]
+description: "In this article, we will see how to fine tune a XLNet model on custom data, for text classification using Transformers🤗. XLNet is powerful! It beats BERT and its other variants in 20 different tasks. In simple words - XLNet is a generalized autoregressive model.
+
+An Autoregressive model is a model which uses the context word to predict the next word. So, the next token is dependent on all previous tokens.
+
+XLNET is generalized because it captures bi-directional context by means of a mechanism called permutation language modeling. 
+
+It integrates the idea of auto-regressive models and bi-directional context modeling, yet overcoming the disadvantages of BERT and thus outperforming BERT on 20 tasks, often by a large margin in tasks such as question answering, natural language inference, sentiment analysis, and document ranking.
+
+In this article, we will take a pretrained `XLNet` model and fine tune it on our dataset."
 ---
 
 {{< admonition type=abstract title="Abstract" open=True >}}
