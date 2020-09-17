@@ -18,6 +18,7 @@ It integrates the idea of auto-regressive models and bi-directional context mode
 
 In this article, we will take a pretrained `XLNet` model and fine tune it on our dataset."
 ---
+<!--more-->
 
 {{< admonition type=abstract title="Abstract" open=True >}}
 In this article, we will see how to fine tune a XLNet model on custom data, for text classification using **Transformers🤗**
