@@ -1,12 +1,12 @@
 ---
 title: "Building Question Answering Model at Scale using 🤗Transformers"
-date: 2020-08-19T00:42:27+05:30
+date: 2020-10-12T00:42:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
-featuredImagePreview: "/images/huggingface.png"
+featuredImagePreview: "/posts/dl/images/huggingface.png"
 #coverImage: "huggingface.png"
 images: ["/images/huggingface.png"]
-tags: ["Deep Learning", "Transformers", "Question & Answering"]
+tags: ["Deep Learning", "Transformers", "Semantic Search", "QA Model", "BERT"]
 categories: ["Natural Language Understanding"]
 description: "In this article, you will learn how to fetch contextual answers in a huge corpus of documents using Transformers🤗. We will build a neural question and answering system using transformers models (`RoBERTa`). This approach is capable to perform Q&A across millions of documents in few seconds."
 ---
@@ -16,7 +16,7 @@ description: "In this article, you will learn how to fetch contextual answers in
 In this article, you will learn how to fetch contextual answers in a huge corpus of documents using **Transformers🤗**
 {{< /admonition >}}
 
-{{< figure src="/images/huggingface.png" >}}
+{{< figure src="/posts/dl/images/huggingface.png" >}}
 
 
 ## Introduction
@@ -323,7 +323,3 @@ The results are promising. Please note that we have used a pretrained model `dee
 
 ***
 
-## Subscribe
-Thank you for reading my blog! 🤗
-
-If you like what you read, 🚀[Subscribe to get notified of new blog posts.](https://tinyletter.com/shivanandroy) 

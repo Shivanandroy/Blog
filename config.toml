@@ -19,14 +19,14 @@ theme = "LoveIt"
   # site default theme ("light", "dark", "auto")
   defaultTheme = "auto"
   # public git repo url only then enableGitInfo is true
-  gitRepo = ""
+  gitRepo = "https://github.com/Shivanandroy"
   # LoveIt NEW | 0.1.1 which hash function used for SRI, when empty, no SRI is used
   # ("sha256", "sha384", "sha512", "md5")
   fingerprint = ""
   # LoveIt NEW | 0.2.0 date format
   dateFormat = "02/01/2006"
   # website images for Open Graph and Twitter Cards
-  images = ["/logo.png"]
+  images = ["/ava.png"]
 
   # LoveIt NEW | 0.2.0 App icon config
   [params.app]
@@ -54,9 +54,9 @@ theme = "LoveIt"
     # LoveIt NEW | 0.2.0 Header title config
     [params.header.title]
       # URL of the LOGO
-      logo = ""
+      logo = "/images/title.png"
       # title name
-      name = "Shivanand Roy"
+      name = ""
       # you can add extra information before the name (HTML format is supported), such as icons
       pre = ""
       # you can add extra information after the name (HTML format is supported), such as icons
@@ -110,7 +110,7 @@ theme = "LoveIt"
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = "/images/avatar1.png"
+      avatarURL = "/ava.png"
       # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
       title = ""
       # subtitle shown in home page
@@ -125,7 +125,7 @@ theme = "LoveIt"
     [params.home.posts]
       enable = true
       # special amount of posts in each home posts page
-      paginate = 6
+      paginate = 10
       # LoveIt DELETED | 0.2.0 replaced with hiddenFromHomePage in params.page
       # default behavior when you don't set "hiddenFromHomePage" in front matter
       defaultHiddenFromHomePage = false
@@ -136,24 +136,13 @@ theme = "LoveIt"
 
 [menu]
   [[menu.main]]
-    identifier = "posts"
-    # you can add extra information before the name (HTML format is supported), such as icons
-    pre = ""
-    # you can add extra information after the name (HTML format is supported), such as icons
-    post = ""
-    name = "Posts"
-    url = "/posts/"
-    # title will be shown when you hover on this menu link
-    title = ""
-    weight = 1
-  [[menu.main]]
     identifier = "tags"
     pre = ""
     post = ""
     name = "Tags"
     url = "/tags/"
     title = ""
-    weight = 2
+    weight = 6
   [[menu.main]]
     identifier = "categories"
     pre = ""
@@ -161,8 +150,47 @@ theme = "LoveIt"
     name = "Categories"
     url = "/categories/"
     title = ""
+    weight = 5
+  [[menu.main]]
+    identifier = "subscribe"
+    pre = ""
+    post = ""
+    name = "🚀Subscribe"
+    url = "/subscribe/"
+    title = "Newsletter"
+    weight = 7
+  [[menu.main]]
+    identifier = "dl"
+    pre = ""
+    post = ""
+    name = "Deep Learning"
+    url = "/posts/dl/"
+    title = "Deep Learning"
+    weight = 1
+  [[menu.main]]
+    identifier = "qa"
+    pre = ""
+    post = ""
+    name = "Question & Answers"
+    url = "/posts/qa/"
+    title = "Question & Answers"
     weight = 3
-
+  [[menu.main]]
+    identifier = "ml"
+    pre = ""
+    post = ""
+    name = "Machine Learning"
+    url = "/posts/ml/"
+    title = "Machine Learning"
+    weight = 2
+  [[menu.main]]
+    identifier = "codebase"
+    pre = ""
+    post = ""
+    name = "Code Base"
+    url = "/posts/codebase/"
+    title = "Code Base"
+    weight = 4
 
 
 # LoveIt NEW | 0.2.0 Search config
@@ -197,7 +225,7 @@ theme = "LoveIt"
     # LoveIt NEW | 0.2.0 whether to hide a page from search results
     hiddenFromSearch = false
     # LoveIt NEW | 0.2.0 whether to enable twemoji
-    twemoji = false
+    twemoji = true
     # whether to enable lightgallery
     lightgallery = true
     # LoveIt NEW | 0.2.0 whether to enable the ruby extended syntax
@@ -441,7 +469,7 @@ theme = "LoveIt"
   # Syntax Highlighting
   [markup.highlight]
     codeFences = true
-    guessSyntax = true
+    guessSyntax = false
     lineNos = true
     lineNumbersInTable = true
     # false is a necessary configuration
@@ -468,8 +496,8 @@ theme = "LoveIt"
 # Author config
 [author]
   name = "Shivanand Roy"
-  email = "Shivanandroy.official@gmail.com"
-  link = ""
+  email = "iamshivanandroy@gmail.com"
+  link = "https://shivanandroy.com"
 
 # Sitemap config
 [sitemap]
@@ -525,4 +553,4 @@ theme = "LoveIt"
     Instagram = "snrspeaks"
     Facebook = "snrspeaks"
     Medium = "@snrspeaks"
-    Email = "shivanandroy.official@gmail.com"
+    Email = "iamshivanandroy@gmail.com"

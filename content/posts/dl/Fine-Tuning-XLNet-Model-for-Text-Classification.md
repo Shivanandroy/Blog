@@ -1,13 +1,13 @@
 ---
 title: "Fine Tuning XLNet Model for Text Classification"
-date: 2020-09-09T00:40:27+05:30
+date: 2020-10-13T00:40:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
-featuredImagePreview: "/images/FineTuningXLnet.jpg"
+featuredImagePreview: "/posts/dl/images/FineTuningXLnet.jpg"
 #coverImage: "huggingface.png"
 images: ["/images/FineTuningXLnet.jpg"]
 tags: ["Deep Learning", "Transformers", "XLNet", "Text Classification"]
-categories: ["Natural Language Understanding"]
+categories: ["Text Classification"]
 description: "In this article, we will see how to fine tune a XLNet model on custom data, for text classification using Transformers🤗. XLNet is powerful! It beats BERT and its other variants in 20 different tasks. In simple words - XLNet is a generalized autoregressive model.
 
 An Autoregressive model is a model which uses the context word to predict the next word. So, the next token is dependent on all previous tokens.
@@ -28,7 +28,9 @@ In this article, we will see how to fine tune a XLNet model on custom data, for 
 
 {{< /admonition >}}
 
-{{< figure src="/images/FineTuningXLnet.jpg" >}}
+{{< figure src="/posts/dl/images/FineTuningXLnet.jpg" >}}
+
+<br>
 
 ## Introduction
 **XLNet** is powerful! It beats BERT and its other variants in 20 different tasks.
@@ -87,7 +89,7 @@ df_test = pd.read_csv("test.csv")
 df_train.head()
 
 ```
-{{< figure src="/images/XLNet-dataframe.png" >}}
+{{< figure src="/posts/dl/images/XLNet-dataframe.png" >}}
 
 ***
 We have 5 columns in our data:
@@ -331,7 +333,7 @@ sample_sub.to_csv("submission_09092020_xlnet_base.csv", index=False)
 
 
 
-{{< figure src="/images/xlnet-kaggle.png" >}}
+{{< figure src="/posts/dl/images/xlnet-kaggle.png" >}}
 We're in top 18%. It's a good start considering `XLNet` out of the box performance - with no feature engineering at all.
 
 Now, we have a decent baseline to improve our model upon.
@@ -346,7 +348,3 @@ Now, we have a decent baseline to improve our model upon.
 
 ***
 
-## Subscribe
-Thank you for reading my blog! 🤗
-
-If you like what you read, 🚀[Subscribe to get notified of new blog posts.](https://tinyletter.com/shivanandroy) 

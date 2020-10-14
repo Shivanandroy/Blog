@@ -1,18 +1,14 @@
 ---
 title: "Building A Faster & Accurate COVID Search Engine with Transformers🤗"
-date: 2020-09-06T00:42:27+05:30
+date: 2020-10-14T00:42:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
-featuredImagePreview: "/images/covid-19.png"
+featuredImagePreview: "/posts/dl/images/covid19.jpg"
 #coverImage: "huggingface.png"
-images: ["/images/covid-19.png"]
-tags: ["Deep Learning", "Transformers", "Search Engine","Question & Answering"]
+#images: ["/images/covid-19.png"]
+tags: ["Deep Learning", "Transformers", "Semantic Search", "QA Model"]
 categories: ["Natural Language Understanding"]
-description: "This article will let you build a faster and accurate COVID Search Engine using Transformers🤗. In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response.
-To achieve this, we will need:
- - a structured dataset with reserach papers and its full text.
- - `Transformers` library to build QA model.
- - and Finally, `Haystack` library to scale QA model to thousands of documents and build a search engine."
+description: "This article is a step by step guide to build a faster and accurate COVID Semantic Search Engine using HuggingFace Transformers🤗. In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response"
 
 ---
 <!--more-->
@@ -20,8 +16,11 @@ To achieve this, we will need:
 This article will let you build a faster and accurate COVID Search Engine using `Transformers🤗`
 {{< /admonition >}}
 
-{{< figure src="/images/covid-19.png" >}}
+{{< figure src="/posts/dl/images/covid19.jpg" >}}
 
+Image by <a href="https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4999179">Gerd Altmann</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4999179">Pixabay</a>
+
+<br>
 
 ## Introduction
 
@@ -436,7 +435,3 @@ The results are meaningful😄. Please note that we have used a pretrained model
 
 ***
 
-## Subscribe
-Thank you for reading my blog! 🤗
-
-If you like what you read, 🚀[Subscribe to get notified of new blog posts.](https://tinyletter.com/shivanandroy) 
