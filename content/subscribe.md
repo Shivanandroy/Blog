@@ -5,7 +5,7 @@ date: 2019-10-27 17:30:49
 
 <br>
 
-### 👋 Hey There! We will let you know when our next article is up 🚀
+## 👋 Hey There! We will let you know when our next article is up 🚀
 
 
 <!-- Begin Mailchimp Signup Form -->
