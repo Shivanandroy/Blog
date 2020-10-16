@@ -134,30 +134,14 @@ theme = "LoveIt"
 
 
 
-[menu]
+
   [[menu.main]]
-    identifier = "tags"
+    identifier = "About Me"
     pre = ""
     post = ""
-    name = "Tags"
-    url = "/tags/"
-    title = ""
-    weight = 6
-  [[menu.main]]
-    identifier = "categories"
-    pre = ""
-    post = ""
-    name = "Categories"
-    url = "/categories/"
-    title = ""
-    weight = 5
-  [[menu.main]]
-    identifier = "subscribe"
-    pre = ""
-    post = ""
-    name = "🚀Subscribe"
+    name = "About Me"
     url = "/subscribe/"
-    title = "Newsletter"
+    title = "About Me"
     weight = 7
   [[menu.main]]
     identifier = "dl"
@@ -191,6 +175,22 @@ theme = "LoveIt"
     url = "/posts/codebase/"
     title = "Code Base"
     weight = 4
+  [[menu.main]]
+    identifier = "policy"
+    pre = ""
+    post = ""
+    name = "Privacy & Policy"
+    url = "/policy/"
+    title = "Privacy & Policy"
+    weight = 9
+  [[menu.main]]
+    identifier = "newsletter"
+    pre = ""
+    post = ""
+    name = "Subscribe🚀"
+    url = "/newsletter/"
+    title = "Subscribe🚀"
+    weight = 8
 
 
 # LoveIt NEW | 0.2.0 Search config
