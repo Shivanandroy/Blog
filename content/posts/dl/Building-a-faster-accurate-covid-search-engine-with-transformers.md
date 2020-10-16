@@ -4,8 +4,8 @@ date: 2020-10-14T00:42:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
 featuredImagePreview: "/posts/dl/images/covid19.jpg"
-#coverImage: "huggingface.png"
-#images: ["/images/covid-19.png"]
+coverImage: "/posts/dl/images/covid19.jpg"
+images: ["/posts/dl/images/covid19.jpg"]
 tags: ["Deep Learning", "Transformers", "Semantic Search", "QA Model"]
 categories: ["Natural Language Understanding"]
 description: "This article is a step by step guide to build a faster and accurate COVID Semantic Search Engine using HuggingFace Transformers🤗. In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response"

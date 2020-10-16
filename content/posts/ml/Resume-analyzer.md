@@ -2,10 +2,10 @@
 title: "🚀 ResumeAnalyzer | An Easy Solution to Rank Resumes using Spacy"
 date: 2020-10-10T00:42:27+05:30
 draft: false
-#featuredImage: "huggingface.png"
+#featuredImage: "/posts/ml/images/resumeanalyzer.png"
 featuredImagePreview: "/posts/ml/images/resumeanalyzer.png"
-#coverImage: "huggingface.png"
-#images: ["/images/huggingface.png"]
+coverImage: "/posts/ml/images/resumeanalyzer.png"
+images: ["/posts/ml/images/resumeanalyzer.png"]
 tags: ["Resume Analyzer", "Machine Learning", "Spacy"]
 categories: ["Python Packages"]
 description: "ResumeAnalyzer is an easy, lightweight python package to rank resumes based on your requirement in just one line of code."

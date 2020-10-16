@@ -4,8 +4,8 @@ date: 2020-10-13T00:40:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
 featuredImagePreview: "/posts/dl/images/FineTuningXLnet.jpg"
-#coverImage: "huggingface.png"
-images: ["/images/FineTuningXLnet.jpg"]
+coverImage: "/posts/dl/images/FineTuningXLnet.jpg"
+images: ["posts/dl/images/FineTuningXLnet.jpg"]
 tags: ["Deep Learning", "Transformers", "XLNet", "Text Classification"]
 categories: ["Text Classification"]
 description: "In this article, we will see how to fine tune a XLNet model on custom data, for text classification using Transformers🤗. XLNet is powerful! It beats BERT and its other variants in 20 different tasks. In simple words - XLNet is a generalized autoregressive model.

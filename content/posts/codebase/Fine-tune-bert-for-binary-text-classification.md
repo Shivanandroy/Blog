@@ -4,8 +4,8 @@ date: 2020-10-08T00:42:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
 featuredImagePreview: "/posts/codebase/images/bert-binary-text-classification.png"
-#coverImage: "huggingface.png"
-images: ["/images/huggingface.png"]
+coverImage: "/posts/codebase/images/bert-binary-text-classification.png"
+images: ["/posts/codebase/images/bert-binary-text-classification.png"]
 tags: ["Deep Learning", "Transformers", "Text Classification","BERT"]
 categories: ["Text Classification"]
 description: "This is the code for downloading and fine tuning pre-trained BERT model on custom dataset for binary text classification"

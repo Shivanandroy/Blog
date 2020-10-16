@@ -4,8 +4,8 @@ date: 2020-10-12T00:42:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
 featuredImagePreview: "/posts/dl/images/huggingface.png"
-#coverImage: "huggingface.png"
-images: ["/images/huggingface.png"]
+coverImage: "/posts/dl/images/huggingface.png"
+images: ["/posts/dl/images/huggingface.png"]
 tags: ["Deep Learning", "Transformers", "Semantic Search", "QA Model", "BERT"]
 categories: ["Natural Language Understanding"]
 description: "In this article, you will learn how to fetch contextual answers in a huge corpus of documents using Transformers🤗. We will build a neural question and answering system using transformers models (`RoBERTa`). This approach is capable to perform Q&A across millions of documents in few seconds."
