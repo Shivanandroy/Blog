@@ -4,8 +4,8 @@ date: 2020-10-14T00:42:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
 featuredImagePreview: "/posts/dl/images/covid19.jpg"
-coverImage: "/posts/dl/images/covid19.jpg"
-images: ["/posts/dl/images/covid19.jpg"]
+#coverImage: "/posts/dl/images/covid19.jpg"
+#images: ["/posts/dl/images/covid19.jpg"]
 tags: ["Deep Learning", "Transformers", "Semantic Search", "QA Model"]
 categories: ["Natural Language Understanding"]
 description: "This article is a step by step guide to build a faster and accurate COVID Semantic Search Engine using HuggingFace Transformers🤗. In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response"
@@ -114,7 +114,7 @@ df.head()
 ***
 `(50000, 4)`
 
-{{< figure src="/images/covid-search-engine-data.png" >}}
+{{< figure src="/posts/dl/images/covid-search-engine-data.png" >}}
 
 ***
 
@@ -124,7 +124,8 @@ We will be interested in `title` and `full_text` columns as these columns will b
 
 ### Haystack
 Now, Welcome `Haystack`! The secret sauce behind setting up a search engine and ability to scale any QA model to thousands of documents.
-{{< figure src="/images/haystack1.png" >}}
+
+{{< figure src="/posts/dl/images/haystack1.png" >}}
 
 `Haystack` helps you scale QA models to large collections of documents! You can read more about this amazing library here https://github.com/deepset-ai/haystack
 

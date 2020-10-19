@@ -56,13 +56,14 @@ data = pd.DataFrame(data[:50000])
 # Let's look at the data
 data.head()
 ```
-{{< figure src="/images/dataframe1.png" >}}
+{{< figure src="/posts/dl/images/dataframe1.png" >}}
 
 We will use `abstract` column to train our QA model.
 
 ### Haystack
 Now, Welcome `Haystack`! The secret sauce behind scaling up to thousands of documents is `Haystack`.
-{{< figure src="/images/haystack1.png" >}}
+
+{{< figure src="/posts/dl/images/haystack1.png" >}}
 
 `Haystack` helps you scale QA models to large collections of documents! You can read more about this amazing library here https://github.com/deepset-ai/haystack
 

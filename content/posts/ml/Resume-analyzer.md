@@ -6,7 +6,7 @@ draft: false
 featuredImagePreview: "/posts/ml/images/resumeanalyzer.png"
 coverImage: "/posts/ml/images/resumeanalyzer.png"
 images: ["/posts/ml/images/resumeanalyzer.png"]
-tags: ["Resume Analyzer", "Machine Learning", "Spacy"]
+tags: ["Resume Analyzer", "Machine Learning", "Spacy", "Python Packages"]
 categories: ["Python Packages"]
 description: "ResumeAnalyzer is an easy, lightweight python package to rank resumes based on your requirement in just one line of code."
 ---

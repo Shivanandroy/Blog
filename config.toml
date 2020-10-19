@@ -26,7 +26,7 @@ theme = "LoveIt"
   # LoveIt NEW | 0.2.0 date format
   dateFormat = "02/01/2006"
   # website images for Open Graph and Twitter Cards
-  images = ["/ava.png"]
+  images = ["/emoticon.png"]
 
   # LoveIt NEW | 0.2.0 App icon config
   [params.app]
@@ -54,7 +54,7 @@ theme = "LoveIt"
     # LoveIt NEW | 0.2.0 Header title config
     [params.header.title]
       # URL of the LOGO
-      logo = "/images/title.png"
+      logo = "/logo.png"
       # title name
       name = ""
       # you can add extra information before the name (HTML format is supported), such as icons
@@ -68,7 +68,7 @@ theme = "LoveIt"
   [params.footer]
     enable = true
     # LoveIt NEW | 0.2.0 Custom content (HTML format is supported)
-    custom = ''
+    custom = '<a href="/policy/">Privacy & Policies</a>&nbsp&nbsp|&nbsp&nbsp<a href="/contact/">Contact Us</a>'
     # LoveIt NEW | 0.2.0 whether to show Hugo and theme info
     hugo = false
     # LoveIt NEW | 0.2.0 whether to show copyright info
@@ -85,7 +85,7 @@ theme = "LoveIt"
   # LoveIt NEW | 0.2.0 Section (all posts) page config
   [params.section]
     # special amount of posts in each section page
-    paginate = 20
+    paginate = 10
     # date format (month and day)
     dateFormat = "01/02"
     # amount of RSS pages
@@ -94,7 +94,7 @@ theme = "LoveIt"
   # LoveIt NEW | 0.2.0 List (category or tag) page config
   [params.list]
     # special amount of posts in each list page
-    paginate = 20
+    paginate = 10
     # date format (month and day)
     dateFormat = "01/02"
     # amount of RSS pages
@@ -110,7 +110,7 @@ theme = "LoveIt"
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = "/ava.png"
+      avatarURL = "/emoticon.png"
       # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
       title = ""
       # subtitle shown in home page
@@ -125,7 +125,7 @@ theme = "LoveIt"
     [params.home.posts]
       enable = true
       # special amount of posts in each home posts page
-      paginate = 10
+      paginate = 6
       # LoveIt DELETED | 0.2.0 replaced with hiddenFromHomePage in params.page
       # default behavior when you don't set "hiddenFromHomePage" in front matter
       defaultHiddenFromHomePage = false
@@ -136,12 +136,12 @@ theme = "LoveIt"
 
 
   [[menu.main]]
-    identifier = "About Me"
+    identifier = "Categories"
     pre = ""
     post = ""
-    name = "About Me"
-    url = "/subscribe/"
-    title = "About Me"
+    name = "Categories"
+    url = "/Categories/"
+    title = "Categories"
     weight = 7
   [[menu.main]]
     identifier = "dl"
@@ -151,14 +151,6 @@ theme = "LoveIt"
     url = "/posts/dl/"
     title = "Deep Learning"
     weight = 1
-  [[menu.main]]
-    identifier = "qa"
-    pre = ""
-    post = ""
-    name = "Question & Answers"
-    url = "/posts/qa/"
-    title = "Question & Answers"
-    weight = 3
   [[menu.main]]
     identifier = "ml"
     pre = ""
@@ -176,21 +168,21 @@ theme = "LoveIt"
     title = "Code Base"
     weight = 4
   [[menu.main]]
-    identifier = "policy"
+    identifier = "Tags"
     pre = ""
     post = ""
-    name = "Privacy & Policy"
-    url = "/policy/"
-    title = "Privacy & Policy"
-    weight = 9
+    name = "Tags"
+    url = "/tags/"
+    title = "Tags"
+    weight = 8
   [[menu.main]]
-    identifier = "newsletter"
+    identifier = "subscribe"
     pre = ""
     post = ""
     name = "Subscribe🚀"
-    url = "/newsletter/"
+    url = "/subscribe/"
     title = "Subscribe🚀"
-    weight = 8
+    weight = 9
 
 
 # LoveIt NEW | 0.2.0 Search config

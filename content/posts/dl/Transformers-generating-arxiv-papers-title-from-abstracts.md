@@ -126,7 +126,7 @@ papers = pd.DataFrame({
 })
 papers.head()
 ```
-{{< figure src="/images/t5-model-dataframe-1.png" >}}
+{{< figure src="/posts/dl/images/t5-model-dataframe-1.png" >}}
 
 ***
 ### T5 Model Training

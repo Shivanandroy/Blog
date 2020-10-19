@@ -3,17 +3,17 @@ title: "Why Do We Need Activation Functions?"
 date: 2020-09-09T00:42:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
-featuredImagePreview: "/posts/qa/images/activation.png"
-coverImage: "/posts/qa/images/activation.png"
-images: ["/posts/qa/images/activation.png"]
-tags: ["Deep Learning", "Activation Functions","Question & Answers"]
+featuredImagePreview: "/posts/dl/images/activation.png"
+coverImage: "/posts/dl/images/activation.png"
+images: ["/posts/dl/images/activation.png"]
+tags: ["Deep Learning", "Activation Functions"]
 #categories: ["Deep Learning"]
 description: "By now, we all are familiar with neural networks and its architecture (input layer, hidden layer, output layer) but one thing that I’m continuously asked is - ‘why do we need activation functions?’ or ‘what will happen if we pass the output to the next layer without an activation function’ or ‘Is nonlinearities really needed by the neural networks?’"
 
 ---
 <!--more-->
 
-{{< figure src="/posts/qa/images/activation.png" >}}
+{{< figure src="/posts/dl/images/activation.png" >}}
 
 By now, we are familiar with neural networks and its architecture (input layer, hidden layer, output layer) but one thing that I’m continuously asked is - *"why do we need activation functions?"* or *"what will happen if we pass the output to the next layer without an activation function"* or *"Is nonlinearities really needed by the neural networks?"*
 
