@@ -123,17 +123,7 @@ We have 50,000 articles and columns like `paper_id`, `title`, `abstract` and `fu
 We will be interested in `title` and `full_text` columns as these columns will be used to build the engine. Let's setup a Search Engine on top `full_text` - which contains the full content of the research papers.
 
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- ArticleAds#1 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1337012385171026"
-     data-ad-slot="4880405981"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+
 
 
 ### Haystack
@@ -269,17 +259,7 @@ finder = Finder(reader, retriever)
 ```
 ***
 
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<!-- ArticleAds#1 -->
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-client="ca-pub-1337012385171026"
-     data-ad-slot="4880405981"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+
 
 
 ### 🥳 Voila! We're Done.
