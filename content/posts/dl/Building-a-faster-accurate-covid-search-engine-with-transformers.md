@@ -123,11 +123,24 @@ We have 50,000 articles and columns like `paper_id`, `title`, `abstract` and `fu
 We will be interested in `title` and `full_text` columns as these columns will be used to build the engine. Let's setup a Search Engine on top `full_text` - which contains the full content of the research papers.
 
 
-{{ partial "ArticleAds.html" . }}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ArticleAds#1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1337012385171026"
+     data-ad-slot="4880405981"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
 
 
 ### Haystack
 Now, Welcome `Haystack`! The secret sauce behind setting up a search engine and ability to scale any QA model to thousands of documents.
+
 
 {{< figure src="/posts/dl/images/haystack1.png" >}}
 
@@ -258,7 +271,18 @@ finder = Finder(reader, retriever)
 ```
 ***
 
-{{ partial "ArticleAds.html" . }}
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ArticleAds#1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1337012385171026"
+     data-ad-slot="4880405981"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
 
 ### 🥳 Voila! We're Done.
 Let's see, how well our search engine works! - For simplicity, we will keep the number of documents to be retrieved to 2 using `top_k_reader` parameter. But we can extend to any number in production.
