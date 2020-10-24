@@ -60,6 +60,23 @@ data.head()
 
 We will use `abstract` column to train our QA model.
 
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ArticleAds#1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1337012385171026"
+     data-ad-slot="4880405981"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
 ### Haystack
 Now, Welcome `Haystack`! The secret sauce behind scaling up to thousands of documents is `Haystack`.
 
@@ -168,6 +185,25 @@ And finally: The Finder sticks together reader and retriever in a pipeline to an
 ```python
 finder = Finder(reader, retriever)
 ```
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ArticleAds#1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1337012385171026"
+     data-ad-slot="4880405981"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
+
 ## 🥳 Voila! We're Done.
 Once we have our `Finder` ready, we are all set to see our model fetching answers for us based on the question.
 

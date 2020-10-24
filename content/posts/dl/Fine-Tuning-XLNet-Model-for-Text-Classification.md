@@ -214,6 +214,22 @@ We have 6090 tweets for training and 1523 tweets for evaluation.
 
 Now, we are all set for training `XLNet`.
 
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ArticleAds#1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1337012385171026"
+     data-ad-slot="4880405981"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
 ### XLNet Training
 
 For training `XLNet`, we will use `simpletransformers` which is super easy to use library built on top of our beloved `transformers`.
@@ -337,6 +353,22 @@ sample_sub.to_csv("submission_09092020_xlnet_base.csv", index=False)
 We're in top 18%. It's a good start considering `XLNet` out of the box performance - with no feature engineering at all.
 
 Now, we have a decent baseline to improve our model upon.
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ArticleAds#1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1337012385171026"
+     data-ad-slot="4880405981"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
 
 
 ## Notebooks

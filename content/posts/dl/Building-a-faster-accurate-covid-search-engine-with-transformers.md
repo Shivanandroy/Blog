@@ -136,8 +136,6 @@ We will be interested in `title` and `full_text` columns as these columns will b
 </script>
 
 
-
-
 ### Haystack
 Now, Welcome `Haystack`! The secret sauce behind setting up a search engine and ability to scale any QA model to thousands of documents.
 

@@ -129,6 +129,24 @@ papers.head()
 {{< figure src="/posts/dl/images/t5-model-dataframe-1.png" >}}
 
 ***
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ArticleAds#1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1337012385171026"
+     data-ad-slot="4880405981"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
+
 ### T5 Model Training
 We will use `simpletransformers` library to train `T5 model`.
 
@@ -220,6 +238,23 @@ print(f'Actual Abstract: {actual_abstract}')
 `Actual Abstract: ['summarize:   5G promises many new vertical service areas beyond simple communication and\ndata transfer. We propose CPCL (cooperative passive coherent location), a\ndistributed MIMO radar service, which can be offered by mobile radio network\noperators as a service for public user groups. CPCL comes as an inherent part\nof the radio network and takes advantage of the most important key features\nproposed for 5G. It extends the well-known idea of passive radar (also known as\npassive coherent location, PCL) by introducing cooperative principles. These\nrange from cooperative, synchronous radio signaling, and MAC up to radar data\nfusion on sensor and scenario levels. By using software-defined radio and\nnetwork paradigms, as well as real-time mobile edge computing facilities\nintended for 5G, CPCL promises to become a ubiquitous radar service which may\nbe adaptive, reconfigurable, and perhaps cognitive. As CPCL makes double use of\nradio resources (both in terms of frequency bands and hardware), it can be\nconsidered a green technology. Although we introduce the CPCL idea from the\nviewpoint of vehicle-to-vehicle/infrastructure (V2X) communication, it can\ndefinitely also be applied to many other applications in industry, transport,\nlogistics, and for safety and security applications.\n']`
 
 ***
+
+
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- ArticleAds#1 -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1337012385171026"
+     data-ad-slot="4880405981"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+
+
 
 **Example 2**
 ```python
