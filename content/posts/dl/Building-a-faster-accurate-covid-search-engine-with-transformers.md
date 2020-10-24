@@ -122,6 +122,10 @@ We have 50,000 articles and columns like `paper_id`, `title`, `abstract` and `fu
 
 We will be interested in `title` and `full_text` columns as these columns will be used to build the engine. Let's setup a Search Engine on top `full_text` - which contains the full content of the research papers.
 
+
+{{ partial "ArticleAds.html" . }}
+
+
 ### Haystack
 Now, Welcome `Haystack`! The secret sauce behind setting up a search engine and ability to scale any QA model to thousands of documents.
 
@@ -253,6 +257,8 @@ And finally: The Finder sticks together reader and retriever in a pipeline to fe
 finder = Finder(reader, retriever)
 ```
 ***
+
+{{ partial "ArticleAds.html" . }}
 
 ### 🥳 Voila! We're Done.
 Let's see, how well our search engine works! - For simplicity, we will keep the number of documents to be retrieved to 2 using `top_k_reader` parameter. But we can extend to any number in production.
