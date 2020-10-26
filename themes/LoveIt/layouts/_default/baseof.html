@@ -11,8 +11,10 @@
             {{- block "title" . }}{{ .Site.Title }}{{ end -}}
         </title>
 
+        {{ if .Site.RSSLink }}<link rel="alternate" href="{{ .Site.RSSLink }}" type="application/rss+xml" title="{{ .Site.Title }}"/>{{ end }}
+
         {{- partial "head/meta.html" . -}}
-        {{- partial "head/link.html" . -}}
+        
         {{- partial "head/seo.html" . -}}
         {{- if not .Site.IsServer }}
 		    {{ partial "adsense-auto.html" . }}
@@ -21,7 +23,7 @@
     <body header-desktop="{{ .Site.Params.header.desktopMode }}" header-mobile="{{ .Site.Params.header.mobileMode }}">
         {{- /* Check theme isDark before body rendering */ -}}
         {{- $theme := .Site.Params.defaulttheme -}}
-        <script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('{{ $theme }}' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '{{ $theme }}' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+        <script defer type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('{{ $theme }}' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : '{{ $theme }}' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div>
 
@@ -48,7 +50,11 @@
             </a>
         </div>
 
+        
+
         {{- /* Load JavaScript scripts and CSS */ -}}
         {{- partial "assets.html" . -}}
+        {{- partial "head/link.html" . -}}
+        
     </body>
 </html>
