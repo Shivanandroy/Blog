@@ -1,5 +1,5 @@
 ---
-title: "🚀 ResumeAnalyzer | An Easy Solution to Rank Resumes using Spacy"
+title: "ResumeAnalyzer | An Easy Solution to Rank Resumes using Spacy"
 date: 2020-10-10T00:42:27+05:30
 draft: false
 #featuredImage: "/posts/ml/images/resumeanalyzer.png"

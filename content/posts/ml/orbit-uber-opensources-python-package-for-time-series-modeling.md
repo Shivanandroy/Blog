@@ -1,5 +1,5 @@
 ---
-title: "Orbit - Uber's New Open Source Python Library for Time Series Modeling"
+title: "Orbit | Uber's New Open Source Python Library for Time Series Modeling"
 date: 2020-10-30T00:42:27+05:30
 draft: false
 #featuredImage: "/posts/ml/images/resumeanalyzer.png"
