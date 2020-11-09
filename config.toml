@@ -463,7 +463,7 @@ theme = "LoveIt"
     codeFences = true
     guessSyntax = true
     lineNos = true
-    lineNumbersInTable = false
+    lineNumbersInTable = true
     # false is a necessary configuration
     # (https://github.com/dillonzq/LoveIt/issues/158)
     noClasses = false
