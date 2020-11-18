@@ -4,8 +4,8 @@ date: 2020-11-13T00:42:27+05:30
 draft: false
 #featuredImage: "huggingface.png"
 featuredImagePreview: "/posts/dl/images/GOT.png"
-#coverImage: "/posts/dl/images/covid19.jpg"
-#images: ["/posts/dl/images/covid19.jpg"]
+coverImage: "/posts/dl/images/GOT.png"
+images: ["/posts/dl/images/GOT.png"]
 tags: ["Deep Learning", "Game of Thrones", "BERT"]
 categories: ["Natural Language Understanding"]
 description: "In this article, we will visualize Game of Thrones books with BERT in 3D space."
