@@ -56,8 +56,6 @@ description: "NLP360 is curated list of resources related to Natural Language Pr
 
 <hr>
 
-<br>
-
 ## NLP Python Packages
 
 - [Haystack](https://github.com/deepset-ai/haystack) - Open-source framework for building end-to-end question answering systems for large document collections. 

@@ -23,8 +23,6 @@ To answer the above questions, let us take a step back and understand what happe
 Inside a neuron, each input gets multiplied with the weights  $$(x * w) $$ Then, they are summed up $$∑(x * w)$$ Then, a bias is added $$∑(x * w) + b$$ And then, This output is passed to an activation function. Mathematically, $$y = σ (∑(x * w) + b)$$ where $σ$ is any activation function.
 
 
-<br><br>
-
 > An activation function simply defines when a neuron fires. Consider it a sort of tipping point: Input of a certain value won’t cause the neuron to fire because it’s not enough, but just a little more input can cause the neuron to fire. 
 
 In the real-world data, as we model
@@ -41,10 +39,6 @@ patterns that actually exist in the real world, and draw decision boundaries tha
 be possible, were we to only use linear functions. 
 
 
-
-
-
-
 These types of functions, used to model
 non-linear relationships in our data, are known as activation functions.
 
@@ -52,6 +46,7 @@ If the neurons don't have activation functions,
 their output would be the weighted sum of the inputs, which is a linear function.
 Then the entire neural network, that is, a composition of neurons, becomes a composition of
 linear functions, which is also a linear function. 
+
 
 This means that even if we add hidden
 layers, the network will still be equivalent to a simple linear regression model, with all its

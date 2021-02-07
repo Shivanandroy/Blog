@@ -38,7 +38,7 @@ They give you the ease of using state of the art models in one just single line 
 
 Let's dive in.
 
-<br>
+
 
 
 
@@ -69,7 +69,7 @@ msno.heatmap(dataframe)
 msno.dendrogram(dataframe)
 ```
 
-<br><br>
+
 
 
 ### 2. `MLExtend`
@@ -122,7 +122,7 @@ for clf, label in zip([clf1, clf2, clf3, sclf],
     print("Accuracy: %0.2f (+/- %0.2f) [%s]" 
           % (scores.mean(), scores.std(), label))
 ```
-<br><br>
+
 
 
 
@@ -183,7 +183,7 @@ for token in sentence:
 
 ```
 
-<br><br>
+
 
 
 ### 4. `AdaptNLP`
@@ -239,7 +239,7 @@ for s in summaries:
     print(s, "\n")
 ```
 
-<br><br>
+
 
 ### 5. `SimpleTransformers`
 [`SimpleTransformers`](https://github.com/ThilinaRajapakse/simpletransformers) is awesome and my go to library for any NLP deep learning models. It packs all the powerful features of Huggingface's `transformers` in just 3 lines of code for end to end NLP tasks.
@@ -247,7 +247,7 @@ for s in summaries:
 - **Installation**: `pip install simpletransformers`
 - **Github**: [`SimpleTransformers`](https://github.com/ThilinaRajapakse/simpletransformers)
 
-<br>
+
 
 Sample code for **Text Classification**
 
@@ -277,7 +277,7 @@ model.train_model(train_df)
 # Evaluate the model
 result, model_outputs, wrong_predictions = model.eval_model(eval_df)
 ```
-<br>
+
 
 Sample code for **Language Model Training**
 ```python
@@ -301,7 +301,7 @@ model.train_model("wikitext-2/wiki.train.tokens", eval_file="wikitext-2/wiki.tes
 model.eval_model("wikitext-2/wiki.test.tokens")
 ```
 
-<br><br>
+
 
 ### 6. `Sentence-Transformers`
 [`Sentence-Transformers`](https://github.com/UKPLab/sentence-transformers) is a python package to compute the dense vector representations of sentences or paragraphs. 
@@ -313,7 +313,7 @@ This library not only allows to generate embeddings from [state of the art pretr
 
 These embeddings are useful for various downstream tasks like semantic search or clustering
 
-<br>
+
 
 Sample code for computing **Embeddings**
 
@@ -332,7 +332,7 @@ for sentence, embedding in zip(sentences, sentence_embeddings):
     print("")
 
 ```
-<br>
+
 
 Sample code for **Semantic Search**
 ```python
@@ -376,7 +376,7 @@ for query in queries:
         print(corpus[idx], "(Score: %.4f)" % (score))
 ```
 
-<br><br>
+
 
 
 
@@ -406,7 +406,7 @@ But not any more!
 
 Currently supports cleaning, tokenizing and parsing URLs, Hashtags,  Mentions, Reserved words (RT, FAV), Emojis, SmileysNumbers and you have full control over what you want to clean from the text.
 
-<br><br>
+
 
 
 ### 8. `Gradio`
@@ -441,7 +441,7 @@ pps.score(df, "x", "y")
 pps.predictors(df, "y")
 ```
 
-<br><br>
+
 
 ### 10. `Pytorch-Forecasting`
 [`Pytorch-Forecasting`](https://github.com/jdb78/pytorch-forecasting) is python toolkit built on top of `pytorch-lightening` which aims to solve time series forecasting with neural networks with ease.
@@ -451,7 +451,7 @@ pps.predictors(df, "y")
 
 This library provides abstraction over handling missing values, variable transformation, Tensorboard support, prediction & dependency plots, Range optimizer for faster training and Optuna for hyperparamter tuning.
 
-<br>
+
 
 Usage script: [Pytorch-Forecasting](https://github.com/jdb78/pytorch-forecasting)
 

@@ -20,7 +20,6 @@ This article will let you build a faster and accurate COVID Search Engine using 
 
 Image by <a href="https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4999179">Gerd Altmann</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4999179">Pixabay</a>
 
-<br>
 
 ## Introduction
 
@@ -40,8 +39,8 @@ This dataset is ideal for building document retrieval system as it has full rese
  - `paper_id`: Unique identifier of research paper
  - `title`: title of research paper
  -  `abstract`: Bried summary of the research paper
- - `full_text`: Full text/content of the research paper
-
+ - `full_text`: Full text/content of the research paper;
+ 
  are of our interest.
 
 In **Kaggle Folder Structure** - There are 2 directories - `pmc_json` and `pdf_json` - which contains the data in the `json` format.
@@ -351,7 +350,7 @@ for i in range(number_of_answers_to_fetch):
 `Inferencing Samples: 100%|██████████| 1/1 [00:00<00:00,  1.83 Batches/s]`
 `Inferencing Samples: 100%|██████████| 1/1 [00:00<00:00,  1.57 Batches/s]`
 
-***
+
 `Question: What is the impact of coronavirus on pregnant women?`
 
 
@@ -364,8 +363,6 @@ COVID 19 in babies: Knowledge for neonatal care`
 
 `Context: na. The disease manifests with a spectrum of symptoms ranging from mild upper respiratory tract infection to severe pneumonitis, acute respiratory distress syndrome (ARDS) and death.Relatively few cases have occurred in children and neonates who seem to have a more favourable clinical course than other age groups (De Rose et al. 2020) . While not initially identified as a population at risk, pregnant woman may be more vulnerable to severe infection (Favre et al. 2020 ) and evidence from previous viral outbreaks suggests a higher risk of unfavourable maternal and neonatal outcomes in this population (Alfaraj et al. 2019) .Moreover, the associated policies developed as a result of the pandemic relating to social distancing and prevention of cross infection have led to important considerations specific to the field of maternal and neonatal health, and a necessity to consider unintended consequences for both the mother and baby (Buekens et al. 2020) .Countries are faced with a rapidly deve`
 
-***
-***
 
 `#2`
 `Answer: 
@@ -377,7 +374,6 @@ COVID 19 in babies: Knowledge for neonatal care`
 `Context:
 tified in Wuhan, Hubei, China. The disease manifests with a spectrum of symptoms ranging from mild upper respiratory tract infection to severe pneumonitis, acute respiratory distress syndrome (ARDS) and death. Relatively few cases have occurred in children and neonates who seem to have a more favourable clinical course than other age groups (De Rose et al., 2020). While not initially identified as a population at risk, pregnant woman may be more vulnerable to severe infection (Favre et al., 2020) and evidence from previous viral outbreaks suggests a higher risk of unfavourable maternal and neonatal outcomes in this population (Alfaraj et al., 2019). Moreover, the associated policies developed as a result of the pandemic relating to social distancing and prevention of cross infection have led to important considerations specific to the field of maternal and neonatal health, and a necessity to consider unintended consequences for both the mother and baby (Buekens et al., 2020).Countries`
 
-***
 
 **Example 3: Which organ does coronavirus impact?**
 
@@ -406,7 +402,6 @@ for i in range(number_of_answers_to_fetch):
 `Inferencing Samples: 100%|██████████| 1/1 [00:00<00:00,  1.83 Batches/s]`
 `Inferencing Samples: 100%|██████████| 1/1 [00:00<00:00,  1.57 Batches/s]`
 
-***
 
 `Question: which organ does coronavirus impact?`
 
@@ -421,8 +416,6 @@ Special considerations in the assessment of catastrophic brain injury and determ
 
 `Context: ix patients with Covid-19 who developed catastrophic brain injuries. While only 3 of these patients were ultimately declared dead based on neurologic criteria, the other 3 had catastrophic irreversible brain damage prompting us to carefully consider whether they could be declared dead using neurologic criteria.A prerequisite to the determination of brain death is the identification of the proximate cause and irreversibility of injury. The exact mechanism by which Covid-19 affects the central nervous system remains largely unknown, but direct and indirect pathways of injury have been proposed. SARS-CoV-2 enters cells using ACE2 receptors, which are expressed in the brain and may facilitate direct damage to the cardiorespiratory center in the brainstem through trans-synaptic migration of the virus from the respiratory system [6,7]. Indirect damage to the central nervous system may occur from induction of pro-inflammatory cytokines in the glial cells of the brain and spinal cord, disrupti`
 
-***
-***
 
 `#2`
 `Answer: central nervous system`
@@ -432,7 +425,6 @@ Special considerations in the assessment of catastrophic brain injury and determ
 `Context: ix patients with Covid-19 who developed catastrophic brain injuries. While only 3 of these patients were ultimately declared dead based on neurologic criteria, the other 3 had catastrophic irreversible brain damage prompting us to carefully consider whether they could be declared dead using neurologic criteria.A prerequisite to the determination of brain death is the identification of the proximate cause and irreversibility of injury. The exact mechanism by which Covid-19 affects the central nervous system remains largely unknown, but direct and indirect pathways of injury have been proposed. SARS-CoV-2 enters cells using ACE2 receptors, which are expressed in the brain and may facilitate direct damage to the cardiorespiratory center in the brainstem through trans-synaptic migration of the virus from the respiratory system [6, 7] . Indirect damage to the central nervous system may occur from induction of proinflammatory cytokines in the glial cells of the brain and spinal cord, disrupt`
 
 
-***
 
 The results are meaningful😄. Please note that we have used a pretrained model `deepset/roberta-base-squad2` for this tutorial. We might expect a significant improvement if we use a QA model trained specific to this dataset.
 
@@ -441,6 +433,4 @@ The results are meaningful😄. Please note that we have used a pretrained model
 - [Go to Dataset](https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge)
 - [Go to Published Kaggle Kernel](https://www.kaggle.com/officialshivanandroy/building-faster-accurate-cord-search-engine)
 {{< /admonition >}}
-
-***
 

@@ -19,18 +19,18 @@ description: "Uber just open-sourced its time series modeling packagae - Orbit b
 
 **Orbit** provides a familiar and intuitive initialize-fit-predict interface for working with time series tasks, while utilizing probabilistic modeling under the hood.
 
-<br>
+
 
 As per Orbit's documentation, initial release supports concrete implementation for the following models:
 
 - Local Global Trend (LGT)
 - Damped Local Trend (DLT)
 
-<br>
+
 
 Both models, which are variants of exponential smoothing, support seasonality and exogenous (time-independent) features.
 
-<br>
+
 
 The initial release also supports the following sampling methods for model estimation:
 
@@ -38,7 +38,7 @@ The initial release also supports the following sampling methods for model estim
 - **Maximum a Posteriori (MAP)** as a point estimate method
 - **Variational Inference (VI)** as a hybrid-sampling method on approximate distribution
 
-<br>
+
 
 ## Quick Start
 

@@ -91,7 +91,8 @@ that enhanced sensitivity to the signal can be obtained with judicious
 selection of events.`
 
 `Ref: Phys.Rev.D76:013009,2007`
-***
+
+
 We have taken 3 attributes of the dataset: `Title`, `Abstract` and `Ref`.
 `Ref` is important because the 4 characters of its value give us the year in which the paper was published. 
 
@@ -116,7 +117,8 @@ for paper in metadata:
 len(titles), len(abstracts), len(years)
 ```
 `(25625, 25625, 25625)`
-***
+
+
 So, we have around 25K research papers published from 2016 to 2020. Next, we will convert this data into `pandas` dataframe and then we will use this data to train our `T5 model`
 ```python
 papers = pd.DataFrame({
@@ -128,7 +130,6 @@ papers.head()
 ```
 {{< figure src="/posts/dl/images/t5-model-dataframe-1.png" >}}
 
-***
 
 
 
@@ -166,7 +167,8 @@ train_df = papers.drop(eval_df.index)
 train_df.shape, eval_df.shape
 ```
 `((20500, 2), (5125, 2))`
-***
+
+
 We have around 20K research papers for training and 5K papers for evaluation.
 
 **Setting Training Parameters and Start Training**
@@ -203,7 +205,8 @@ results = model.eval_model(eval_df)
 print(results)
 ```
 `{'eval_loss': 2.103029722170599}`
-***
+
+
 It took around 4 hours to train for `4 epochs` and with `batch_size` of `16`. And we get a loss of `2.103` on our test data.
 ## 🥳 Voila! We're Done
 Let's see how our model performs in generating paper's titles
@@ -226,11 +229,6 @@ print(f'Actual Abstract: {actual_abstract}')
 
 `Actual Abstract: ['summarize:   5G promises many new vertical service areas beyond simple communication and\ndata transfer. We propose CPCL (cooperative passive coherent location), a\ndistributed MIMO radar service, which can be offered by mobile radio network\noperators as a service for public user groups. CPCL comes as an inherent part\nof the radio network and takes advantage of the most important key features\nproposed for 5G. It extends the well-known idea of passive radar (also known as\npassive coherent location, PCL) by introducing cooperative principles. These\nrange from cooperative, synchronous radio signaling, and MAC up to radar data\nfusion on sensor and scenario levels. By using software-defined radio and\nnetwork paradigms, as well as real-time mobile edge computing facilities\nintended for 5G, CPCL promises to become a ubiquitous radar service which may\nbe adaptive, reconfigurable, and perhaps cognitive. As CPCL makes double use of\nradio resources (both in terms of frequency bands and hardware), it can be\nconsidered a green technology. Although we introduce the CPCL idea from the\nviewpoint of vehicle-to-vehicle/infrastructure (V2X) communication, it can\ndefinitely also be applied to many other applications in industry, transport,\nlogistics, and for safety and security applications.\n']`
 
-***
-
-
-
-
 
 **Example 2**
 ```python
@@ -249,7 +247,7 @@ print(f'Actual Abstract: {actual_abstract}')
 
 `Actual Abstract: ['summarize:   In model-based testing (MBT) we may have to deal with a non-deterministic\nmodel, e.g. because abstraction was applied, or because the software under test\nitself is non-deterministic. The same test case may then trigger multiple\npossible execution paths, depending on some internal decisions made by the\nsoftware. Consequently, performing precise test analyses, e.g. to calculate the\ntest coverage, are not possible. This can be mitigated if developers can\nannotate the model with estimated probabilities for taking each transition. A\nprobabilistic model checking algorithm can subsequently be used to do simple\nprobabilistic coverage analysis. However, in practice developers often want to\nknow what the achieved aggregate coverage, which unfortunately cannot be\nre-expressed as a standard model checking problem. This paper presents an\nextension to allow efficient calculation of probabilistic aggregate coverage,\nand moreover also in combination with k-wise coverage.\n']`
 
-***
+
 
 **Example 3**
 ```python
@@ -269,7 +267,6 @@ print(f'Actual Abstract: {actual_abstract}')
 
 `Actual Abstract: ['summarize:   Coaching technology, wearables and exergames can provide quantitative\nfeedback based on measured activity, but there is little evidence of\nqualitative feedback to aid technique improvement. To achieve personalised\nqualitative feedback, we demonstrated a proof-of-concept prototype combining\nkinesiology and computational intelligence that could help improving tennis\nswing technique utilising three-dimensional tennis motion data acquired from\nmulti-camera video. Expert data labelling relied on virtual 3D stick figure\nreplay. Diverse assessment criteria for novice to intermediate skill levels and\nconfigurable coaching scenarios matched with a variety of tennis swings (22\nbackhands and 21 forehands), included good technique and common errors. A set\nof selected coaching rules was transferred to adaptive assessment modules able\nto learn from data, evolve their internal structures and produce autonomous\npersonalised feedback including verbal cues over virtual camera 3D replay and\nan end-of-session progress report. The prototype demonstrated autonomous\nassessment on future data based on learning from prior examples, aligned with\nskill level, flexible coaching scenarios and coaching rules. The generated\nintuitive diagnostic feedback consisted of elements of safety and performance\nfor tennis swing technique, where each swing sample was compared with the\nexpert. For safety aspects of the relative swing width, the prototype showed\nimproved assessment ...\n']`
 
-***
 
 The results are absolutely stunning. The generated reserach papers title are exactly human like. That's the power of `T5 Model`!
 
@@ -280,6 +277,4 @@ The results are absolutely stunning. The generated reserach papers title are exa
 - [Go to Published Kaggle Kernel](https://www.kaggle.com/officialshivanandroy/transformers-generating-titles-from-abstracts)
 {{< /admonition >}}
 
-
-***
 

@@ -19,7 +19,7 @@ In this article, we will visualize **Game of Thrones** books with **BERT** in 3D
 {{< figure src="/posts/dl/images/GOT.png" >}}
 
 
-<br>
+
 
 ## Introduction
 
@@ -34,13 +34,13 @@ How can we achieve this —
 - Then — reduce the dimension of BERT embeddings to visualize it in 3D
 - And finally — create a web application to visualize it on the browser
 
-<br>
+
 
  {{< figure src="/posts/dl/images/got.gif" >}}
 
-<br>
+
 So, Let's get started
-<br>
+
 
 ## 1. Extracting BERT Embeddings for Game of Thrones Books
 
@@ -64,7 +64,7 @@ bert_embedding = BertEmbedding()
 # passing sentences to bert_embedding model
 result = bert_embedding(sentences)
 ```
-<br>
+
 
 Let’s use this package for our data —
 We will extract 5 Game of Thrones books using `requests` —
@@ -92,7 +92,7 @@ book3_content = [sent for sent in b3.text.splitlines() if sent != '']
 book4_content = [sent for sent in b4.text.splitlines() if sent != '']
 book5_content = [sent for sent in b5.text.splitlines() if sent != '']
 ```
-<br>
+
 Next — We will clean the content of the books. And we will store the content as a list of sentences
 
 ```python
@@ -127,7 +127,7 @@ for raw_sentence in book5_content:
     if len(raw_sentence) > 0:
         book5_sentences.append(' '.join(sentence_to_wordlist(raw_sentence)))
 ```
-<br>
+
 Once we have a clean list of sentences for each book, we can extract BERT embeddings using the code below:
 
 ```python
@@ -160,7 +160,7 @@ book5_embedding = generate_bert_embeddings(book5_sentences)
 
 ><b><i>These embeddings are out of pre-trained BERT model. You can also fine-tune BERT on GOT texts before fetching the embeddings.</i></b>
 
-<br>
+
 
 ## 2. Dimensionality Reduction: BERT Embeddings
 BERT embeddings are 768 dimension vectors i.e. we have 768 numbers to represent each word or tokens found in the books.
@@ -184,7 +184,7 @@ def reduce_dimension(embedding_df):
     pca_3d[‘words’] = embedding_df[‘words’].values
     return tsvd_3d, pca_3d
 ```
-<br>
+
 Let’s apply the above function to our embeddings
 
 ```python
@@ -194,13 +194,13 @@ tsvd_book3, pca_book3 = reduce_dimension(book3_embedding)
 tsvd_book4, pca_book4 = reduce_dimension(book4_embedding)
 tsvd_book5, pca_book5 = reduce_dimension(book5_embedding)
 ```
-<br>
+
 
 🥳 Voila! Now we have 3 dimension projection of each word in all the GOT books
 
 >Extraction of BERT embeddings and dimensionality reduction can be a time-consuming process. You can download Game of Thrones BERT Embeddings from here: [Download](https://drive.google.com/open?id=1M5vHLQqCv_AB1dm9kXW4AHsA5CjcFrm1)
 
-<br>
+
 
 ## 3. Building A Web App to visualize on the Browser
 This is the final part of this project. We will build a front end to visualize these embeddings in 3 dimensions in pure python.
@@ -242,7 +242,7 @@ app = dash.Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP,"https://co
 # adding a title to your dash app
 app.title="Visualizing Game of Thrones Using BERT"
 ```
-<br>
+
 
 **2. Layout**
 
@@ -316,7 +316,7 @@ app.layout = html.Div([
 	])
 ```
 
-<br>
+
 
 **3. Callbacks**
 
@@ -387,7 +387,7 @@ if __name__ == '__main__':
     app.run_server(host='0.0.0.0',debug=True, port=8050)
 ```
 
-<br>
+
 
 Lets write all the 3 parts of the Dash app in a single `app.py` file and run the `app.py` file in your terminal: 
 
@@ -551,7 +551,7 @@ if __name__ == '__main__':
     app.run_server(host='0.0.0.0',debug=True, port=8050)
 ```
 
-<br>
+
 
 ##  🥳 Hooray, you’re done!
 
@@ -559,7 +559,7 @@ Now you can explore your GOT characters in 3D.
 
  {{< figure src="/posts/dl/images/got.gif" >}}
 
-<br>
+
 
 > **But, what did I find out from this experiment?**
 >- Were all characters, food items, places, things formed seperate clusters?

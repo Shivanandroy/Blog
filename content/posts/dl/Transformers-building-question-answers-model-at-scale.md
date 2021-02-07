@@ -61,11 +61,6 @@ data.head()
 We will use `abstract` column to train our QA model.
 
 
-
-
-
-
-
 ### Haystack
 Now, Welcome `Haystack`! The secret sauce behind scaling up to thousands of documents is `Haystack`.
 
@@ -174,12 +169,6 @@ And finally: The Finder sticks together reader and retriever in a pipeline to an
 ```python
 finder = Finder(reader, retriever)
 ```
-
-
-
-
-
-
 
 
 ## 🥳 Voila! We're Done.
@@ -336,5 +325,4 @@ The results are promising. Please note that we have used a pretrained model `dee
 - [Go to Published Kaggle Kernel](https://www.kaggle.com/officialshivanandroy/question-answering-with-arxiv-papers-at-scale)
 {{< /admonition >}}
 
-***
 

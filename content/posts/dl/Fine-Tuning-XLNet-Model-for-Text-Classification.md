@@ -30,7 +30,6 @@ In this article, we will see how to fine tune a XLNet model on custom data, for 
 
 {{< figure src="/posts/dl/images/FineTuningXLnet.jpg" >}}
 
-<br>
 
 ## Introduction
 **XLNet** is powerful! It beats BERT and its other variants in 20 different tasks.
@@ -91,14 +90,14 @@ df_train.head()
 ```
 {{< figure src="/posts/dl/images/XLNet-dataframe.png" >}}
 
-***
+
 We have 5 columns in our data:
 - `id`: it is a unique identifier of tweets.
 - `keyword`: It contains the keywords made on the tweets.
 - `location`: The location the tweet was sent from.
 - `text`: it is actual tweet made by the users
 - `target`: Whether a given tweet is about a real disaster or not. If so, predict a 1. If not, predict a 0.
-***
+
 
 Let's look at the distribution of target class
 ```python
@@ -111,7 +110,8 @@ df_train.target.value_counts()
 `Name: target, dtype: int64`
 
 The dataset is pretty much balanced. We have 3271 tweets about disasters while 4342 tweets otherwise.
-***
+
+
 Let's have a look at the `keyword` and `location` columns
 ```python
 print(f"Keyword column has {df_train.keyword.isnull().sum()/df_train.shape[0]*100}% null values")
@@ -125,7 +125,7 @@ print(f"Location column has {df_train.location.isnull().sum()/df_train.shape[0]*
 
 The `text` and `target` columns is of our interest.
 
-***
+
 Let's have a look at the `text` column
 
 ```python
@@ -151,7 +151,8 @@ df_train.sample(10)['text'].tolist()
  `'My back is so sunburned :(']`
 
  We see that the text columns contains `#`, `@`, and `links` which needs to be cleaned.
- ***
+ 
+
  Let's write a simple function to clean up:
   - `#`
   - username starting with `@`
@@ -186,7 +187,7 @@ df_test['clean_text'] = df_test['text'].astype(str).progress_map(clean_text)
 `3263/3263 [00:48<00:00, 67.34it/s]`
 
 Now, we have clean text in `clean_text` column.
-***
+
 Now, let's split our data into `train` and `eval` set
 
 ```python
@@ -315,7 +316,7 @@ result, model_outputs, wrong_predictions = model.eval_model(eval_df, acc=sklearn
 191/191 [00:20<00:00, 9.17it/s]`
 
 `INFO:simpletransformers.classification.classification_model:{'mcc': 0.6457675302369492, 'tp': 518, 'tn': 741, 'fp': 128, 'fn': 136, 'acc': 0.8266579120157583, 'eval_loss': 0.5341164009543184}`
-***
+
 
 We have achieved a decent accuracy of 82.6% on our eval set. This accracy is just out of the box - means with **no feature engineering**, with **no hyparameter-tuning**. **Just out of the box!**  
 
@@ -335,7 +336,7 @@ sample_sub.to_csv("submission_09092020_xlnet_base.csv", index=False)
 
 `100%`
 `408/408 [00:38<00:00, 10.68it/s]`
-***
+
 
 
 
@@ -358,5 +359,4 @@ Now, we have a decent baseline to improve our model upon.
 [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1KUJoHQU_19iav6Lxu0_Ay2qWUrOLiltN?usp=sharing)
 {{< /admonition >}}
 
-***
 
