@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Fine Tuning XLNet Model for Text Classification - Shivanand Roy | Deep Learning</title>
+
+        <link rel="alternate" href="http://shivanandroy.com/index.xml" type="application/rss+xml" title="Shivanand Roy | Deep Learning"/><meta name="Description" content="In this article, we will see how to fine tune a XLNet model on custom data, for text classification using Transformers🤗. XLNet is powerful! It beats BERT and its other variants in 20 different tasks. In simple words - XLNet is a generalized autoregressive model.
+An Autoregressive model is a model which uses the context word to predict the next word. So, the next token is dependent on all previous tokens.
+XLNET is generalized because it captures bi-directional context by means of a mechanism called permutation language modeling.
+It integrates the idea of auto-regressive models and bi-directional context modeling, yet overcoming the disadvantages of BERT and thus outperforming BERT on 20 tasks, often by a large margin in tasks such as question answering, natural language inference, sentiment analysis, and document ranking.
+
+In this article, we will take a pretrained `XLNet` model and fine tune it on our dataset."><meta property="og:title" content="Fine Tuning XLNet Model for Text Classification" />
+<meta property="og:description" content="In this article, we will see how to fine tune a XLNet model on custom data, for text classification using Transformers🤗. XLNet is powerful! It beats BERT and its other variants in 20 different tasks. In simple words - XLNet is a generalized autoregressive model.
+An Autoregressive model is a model which uses the context word to predict the next word. So, the next token is dependent on all previous tokens.
+XLNET is generalized because it captures bi-directional context by means of a mechanism called permutation language modeling.
+It integrates the idea of auto-regressive models and bi-directional context modeling, yet overcoming the disadvantages of BERT and thus outperforming BERT on 20 tasks, often by a large margin in tasks such as question answering, natural language inference, sentiment analysis, and document ranking.
+
+In this article, we will take a pretrained `XLNet` model and fine tune it on our dataset." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/" />
+<meta property="og:image" content="http://shivanandroy.com/posts/dl/images/FineTuningXLnet.jpg" />
+<meta property="article:published_time" content="2020-10-13T00:40:27+05:30" />
+<meta property="article:modified_time" content="2020-10-13T00:40:27+05:30" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://shivanandroy.com/posts/dl/images/FineTuningXLnet.jpg"/>
+
+<meta name="twitter:title" content="Fine Tuning XLNet Model for Text Classification"/>
+<meta name="twitter:description" content="In this article, we will see how to fine tune a XLNet model on custom data, for text classification using Transformers🤗. XLNet is powerful! It beats BERT and its other variants in 20 different tasks. In simple words - XLNet is a generalized autoregressive model.
+An Autoregressive model is a model which uses the context word to predict the next word. So, the next token is dependent on all previous tokens.
+XLNET is generalized because it captures bi-directional context by means of a mechanism called permutation language modeling.
+It integrates the idea of auto-regressive models and bi-directional context modeling, yet overcoming the disadvantages of BERT and thus outperforming BERT on 20 tasks, often by a large margin in tasks such as question answering, natural language inference, sentiment analysis, and document ranking.
+
+In this article, we will take a pretrained `XLNet` model and fine tune it on our dataset."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/" /><link rel="prev" href="http://shivanandroy.com/transformers-building-question-answers-model-at-scale/" /><link rel="next" href="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Fine Tuning XLNet Model for Text Classification",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/shivanandroy.com\/fine-tuning-xlnet-model-for-text-classification\/"
+        },"genre": "posts","keywords": "Deep Learning, Transformers, XLNet, Text Classification","wordcount":  1482 ,
+        "url": "http:\/\/shivanandroy.com\/fine-tuning-xlnet-model-for-text-classification\/","datePublished": "2020-10-13T00:40:27+05:30","dateModified": "2020-10-13T00:40:27+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Shivanand Roy"
+            },"description": "In this article, we will see how to fine tune a XLNet model on custom data, for text classification using Transformers🤗. XLNet is powerful! It beats BERT and its other variants in 20 different tasks. In simple words - XLNet is a generalized autoregressive model.\nAn Autoregressive model is a model which uses the context word to predict the next word. So, the next token is dependent on all previous tokens.\nXLNET is generalized because it captures bi-directional context by means of a mechanism called permutation language modeling.\nIt integrates the idea of auto-regressive models and bi-directional context modeling, yet overcoming the disadvantages of BERT and thus outperforming BERT on 20 tasks, often by a large margin in tasks such as question answering, natural language inference, sentiment analysis, and document ranking.\n\nIn this article, we will take a pretrained `XLNet` model and fine tune it on our dataset."
+    }
+    </script>
+		    <script data-ad-client="ca-pub-1337012385171026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </head>
+    <body header-desktop="fixed" header-mobile="auto"><script defer type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/dl/" title="Deep Learning"> Deep Learning </a><a class="menu-item" href="/posts/ml/" title="Machine Learning"> Machine Learning </a><a class="menu-item" href="/posts/codebase/" title="Code Base"> Code Base </a><a class="menu-item" href="/categories/" title="Categories"> Categories </a><a class="menu-item" href="/tags/" title="Tags"> Tags </a><a class="menu-item" href="/subscribe/" title="Subscribe🚀"> Subscribe🚀 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/dl/" title="Deep Learning">Deep Learning</a><a class="menu-item" href="/posts/ml/" title="Machine Learning">Machine Learning</a><a class="menu-item" href="/posts/codebase/" title="Code Base">Code Base</a><a class="menu-item" href="/categories/" title="Categories">Categories</a><a class="menu-item" href="/tags/" title="Tags">Tags</a><a class="menu-item" href="/subscribe/" title="Subscribe🚀">Subscribe🚀</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Fine Tuning XLNet Model for Text Classification</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://shivanandroy.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Shivanand Roy</a></span>&nbsp;<span class="post-category">included in <a href="/categories/text-classification/"><i class="far fa-folder fa-fw"></i>Text Classification</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="13/10/2020">13/10/2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;1482 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;7 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#lets-code">Let&rsquo;s Code</a>
+      <ul>
+        <li><a href="#installing-dependencies">Installing Dependencies</a></li>
+        <li><a href="#preprocessing">Preprocessing</a></li>
+        <li><a href="#xlnet-training">XLNet Training</a></li>
+      </ul>
+    </li>
+    <li><a href="#-were-done">🥳 We&rsquo;re Done!</a></li>
+    <li><a href="#notebooks">Notebooks</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw"></i>Abstract<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><p>In this article, we will see how to fine tune a XLNet model on custom data, for text classification using <strong>Transformers🤗</strong></p>
+<p><a href="https://colab.research.google.com/drive/1KUJoHQU_19iav6Lxu0_Ay2qWUrOLiltN?usp=sharing" target="_blank" rel="noopener noreffer"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://colab.research.google.com/assets/colab-badge.svg"
+        data-srcset="https://colab.research.google.com/assets/colab-badge.svg, https://colab.research.google.com/assets/colab-badge.svg 1.5x, https://colab.research.google.com/assets/colab-badge.svg 2x"
+        data-sizes="auto"
+        alt="https://colab.research.google.com/assets/colab-badge.svg"
+        title="Open In Colab" /></a></p>
+</div>
+        </div>
+    </div>
+<figure>
+    <img src="/posts/dl/images/FineTuningXLnet.jpg"/> 
+</figure>
+
+<h2 id="introduction">Introduction</h2>
+<p><strong>XLNet</strong> is powerful! It beats BERT and its other variants in 20 different tasks.</p>
+<blockquote>
+<p>The XLNet model was proposed in XLNet: <a href="https://arxiv.org/abs/1906.08237" target="_blank" rel="noopener noreffer">Generalized Autoregressive Pretraining for Language Understanding</a> by Zhilin Yang*, Zihang Dai*, Yiming Yang, Jaime Carbonell, Ruslan Salakhutdinov, Quoc V. Le. XLnet is an extension of the Transformer-XL model pre-trained using an autoregressive method to learn bidirectional contexts by maximizing the expected likelihood over all permutations of the input sequence factorization order.</p>
+</blockquote>
+<p>In simple words - XLNet is a generalized autoregressive model.</p>
+<p>An <strong>Autoregressive model</strong> is a model which uses the context word to predict the next word. So, the next token is dependent on all previous tokens.</p>
+<p>XLNET is <strong>generalized</strong> because it captures bi-directional context by means of a mechanism called “permutation language modeling”.</p>
+<p>It integrates the idea of auto-regressive models and bi-directional context modeling, yet overcoming the disadvantages of BERT and thus outperforming BERT on 20 tasks, often by a large margin in tasks such as question answering, natural language inference, sentiment analysis, and document ranking.</p>
+<p><strong>In this article, we will take a pretrained <code>XLNet</code> model and fine tune it on our dataset.</strong></p>
+<p>So, let&rsquo;s talk about the dataset.</p>
+<h2 id="data">Data</h2>
+<p>We will take a dataset from Kaggle&rsquo;s text classification challenge (Ongoing as of now) -  <a href="https://www.kaggle.com/c/nlp-getting-started/overview" target="_blank" rel="noopener noreffer">Real or Not? NLP with Disaster Tweets</a>.</p>
+<p>In this competition, we have to build a machine learning model that predicts which Tweets are about real disasters and which one’s aren’t. It&rsquo;s a small dataset of 10,000 tweets that were hand classified.</p>
+<p>We will use this data to fine tune a pretrained XLNet model.</p>
+<h2 id="lets-code">Let&rsquo;s Code</h2>
+<div class="details admonition note open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">We will use Colab notebook to write our code so that we can leverage GPU enabled environment.</div>
+        </div>
+    </div>
+<h3 id="installing-dependencies">Installing Dependencies</h3>
+<ul>
+<li>First, lets spin up a <a href="https://colab.research.google.com/" target="_blank" rel="noopener noreffer">Colab notebook</a>.</li>
+<li>Download the data from <a href="https://www.kaggle.com/c/nlp-getting-started/data" target="_blank" rel="noopener noreffer">Real or Not? NLP with Disaster Tweets</a>. You will have 3 files, <code>train.csv</code>, <code>test.csv</code> and <code>sample_submission.csv</code></li>
+<li>Upload it to your Colab Notebook session.</li>
+<li>Install the latest stable <code>pytorch 1.6</code>, <code>transformers</code> and <code>simpletransformers</code>.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="err">!</span> <span class="n">pip</span> <span class="n">uninstall</span> <span class="n">torch</span> <span class="n">torchvision</span> <span class="o">-</span><span class="n">y</span>
+<span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">torch</span><span class="o">==</span><span class="mf">1.6</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="n">cu101</span> <span class="n">torchvision</span><span class="o">==</span><span class="mf">0.7</span><span class="o">.</span><span class="mi">0</span><span class="o">+</span><span class="n">cu101</span> <span class="o">-</span><span class="n">f</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">pytorch</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">whl</span><span class="o">/</span><span class="n">torch_stable</span><span class="o">.</span><span class="n">html</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">transformers</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">U</span> <span class="n">simpletransformers</span>  
+</code></pre></td></tr></table>
+</div>
+</div><p>Now we&rsquo;re good to go.</p>
+<h3 id="preprocessing">Preprocessing</h3>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span><span class="lnt">8
+</span><span class="lnt">9
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python">
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+
+<span class="n">df_train</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;train.csv&#34;</span><span class="p">)</span>
+<span class="n">df_test</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;test.csv&#34;</span><span class="p">)</span>
+
+<span class="n">df_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><figure>
+    <img src="/posts/dl/images/XLNet-dataframe.png"/> 
+</figure>
+
+<p>We have 5 columns in our data:</p>
+<ul>
+<li><code>id</code>: it is a unique identifier of tweets.</li>
+<li><code>keyword</code>: It contains the keywords made on the tweets.</li>
+<li><code>location</code>: The location the tweet was sent from.</li>
+<li><code>text</code>: it is actual tweet made by the users</li>
+<li><code>target</code>: Whether a given tweet is about a real disaster or not. If so, predict a 1. If not, predict a 0.</li>
+</ul>
+<p>Let&rsquo;s look at the distribution of target class</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">df_train</span><span class="o">.</span><span class="n">target</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>0    4342</code></p>
+<p><code>1    3271</code></p>
+<p><code>Name: target, dtype: int64</code></p>
+<p>The dataset is pretty much balanced. We have 3271 tweets about disasters while 4342 tweets otherwise.</p>
+<p>Let&rsquo;s have a look at the <code>keyword</code> and <code>location</code> columns</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;Keyword column has {df_train.keyword.isnull().sum()/df_train.shape[0]*100}% null values&#34;</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;Location column has {df_train.location.isnull().sum()/df_train.shape[0]*100}% null values)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>Keyword column has 0.80% null values</code></p>
+<p><code>Location column has 33.27% null values</code></p>
+<p><code>location</code> has 33% missing values while <code>keyword</code> has 0.8% null values. We will not delve into filling up missing values and will leave these columns as it is.</p>
+<p>The <code>text</code> and <code>target</code> columns is of our interest.</p>
+<p>Let&rsquo;s have a look at the <code>text</code> column</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">df_train</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">)[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>['Two giant cranes holding a bridge collapse into nearby homes http://t.co/jBJRg3eP1Q',</code></p>
+<p><code>&quot;Apollo Brown - 'Detonate' f. M.O.P. | http://t.co/H1xiGcEn7F&quot;,</code></p>
+<p><code>'Listening to Blowers and Tuffers on the Aussie batting collapse at Trent Bridge reminds me why I love @bbctms! Wonderful stuff! #ENGvAUS',</code></p>
+<p><code>'Downtown Emergency Service Center is hiring! #Chemical #Dependency Counselor or Intern in #Seattle apply now! #jobs http://t.co/HhTwAyT4yo',</code></p>
+<p><code>'Car engulfed in flames backs up traffic at Parley\x89Ûªs Summit http://t.co/RmucfjCaZr',</code></p>
+<p><code>'After death of Palestinian toddler in arson\nattack Israel cracks down on Jewish',</code></p>
+<p><code>'Students at Sutherland remember Australian casualties at Lone Pine Gallipoli\n http://t.co/d50oRfXoFB via @theleadernews',</code>
+<code>'FedEx no longer to transport bioterror germs in wake of anthrax lab mishaps http://t.co/hrqCJdovJZ',</code></p>
+<p><code>'@newyorkcity for the #international emergency medicine conference w/ Lennox Hill hospital and #drjustinmazur',</code></p>
+<p><code>'My back is so sunburned :(']</code></p>
+<p>We see that the text columns contains <code>#</code>, <code>@</code>, and <code>links</code> which needs to be cleaned.</p>
+<p>Let&rsquo;s write a simple function to clean up:</p>
+<ul>
+<li><code>#</code></li>
+<li>username starting with <code>@</code></li>
+<li><code>links</code></li>
+</ul>
+<p>We will use <code>tweet-preprocessor</code> to do this.</p>
+<p><code>tweet-preprocessor.clean()</code> function can help us get rid of irrelevant tokens such as any hashtags, @username or links from the tweet and make it super clean to feed into <code>XLNet</code> model.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="err">!</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">tweet</span><span class="o">-</span><span class="n">preprocessor</span>
+<span class="kn">import</span> <span class="nn">preprocessor</span> <span class="kn">as</span> <span class="nn">p</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="n">pandas</span><span class="p">()</span>
+
+<span class="c1"># function to clean @, #, and links from tweets</span>
+<span class="k">def</span> <span class="nf">clean_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+ <span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&#34;#&#34;</span><span class="p">,</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+ <span class="k">return</span> <span class="n">p</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1"># Appling function to train and test data</span>
+<span class="kn">from</span> <span class="nn">tqdm.notebook</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<span class="n">tqdm</span><span class="o">.</span><span class="n">pandas</span><span class="p">()</span>
+
+<span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;clean_text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">progress_map</span><span class="p">(</span><span class="n">clean_text</span><span class="p">)</span>
+<span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;clean_text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_test</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">progress_map</span><span class="p">(</span><span class="n">clean_text</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><code>100%</code>
+<code>7613/7613 [00:49&lt;00:00, 154.19it/s]</code></p>
+<p><code>100%</code>
+<code>3263/3263 [00:48&lt;00:00, 67.34it/s]</code></p>
+<p>Now, we have clean text in <code>clean_text</code> column.</p>
+<p>Now, let&rsquo;s split our data into <code>train</code> and <code>eval</code> set</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># splitting the data into training and eval dataset</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;clean_text&#39;</span><span class="p">]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df_train</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
+<span class="n">train_df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_train</span>
+
+<span class="n">eval_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">eval_df</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">y_test</span>
+
+<span class="n">train_df</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">eval_df</span><span class="o">.</span><span class="n">shape</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><code>((6090, 2), (1523, 2))</code></p>
+<p>We divided our data into <code>train_df</code> and <code>eval_df</code> in 80:20 startified split.
+We have 6090 tweets for training and 1523 tweets for evaluation.</p>
+<p>Now, we are all set for training <code>XLNet</code>.</p>
+<h3 id="xlnet-training">XLNet Training</h3>
+<p>For training <code>XLNet</code>, we will use <code>simpletransformers</code> which is super easy to use library built on top of our beloved <code>transformers</code>.</p>
+<p><code>simpletransformers</code> has a unified functions to train any SOTA pretrained NLP model available in <code>transformers</code>.
+So you get the power of SOTA pretrained language models like <code>BERT</code> and its variants, <code>XLNet</code>, <code>ELECTRA</code>, <code>T5</code> etc. wrapped in easy to use functions.</p>
+<p>As you see below, it just takes 3 lines of code to train a <code>XLNet</code> model. And the same holds true for training it from scratch or just fine tuning the model on custom dataset.</p>
+<p>I have kept <code>num_train_epochs: 4</code>, <code>train_batch_size: 32</code> and <code>max_seq_length: 128</code> - so that it fits into Colab compute limits. Feel free to play with a lot of parameters mentioned in <code>args</code> in the code below.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># We will import ClassificationModel - as we need to solve binary text classification</span>
+<span class="kn">from</span> <span class="nn">simpletransformers.classification</span> <span class="kn">import</span> <span class="n">ClassificationModel</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">sklearn</span>
+
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">transformers_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&#34;transformers&#34;</span><span class="p">)</span>
+<span class="n">transformers_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+<span class="c1"># They are lot of arguments to play with</span>
+<span class="s1">&#39;&#39;&#39;
+</span><span class="s1">args = {
+</span><span class="s1">   &#39;output_dir&#39;: &#39;outputs/&#39;,
+</span><span class="s1">   &#39;cache_dir&#39;: &#39;cache/&#39;,
+</span><span class="s1">   &#39;fp16&#39;: True,
+</span><span class="s1">   &#39;fp16_opt_level&#39;: &#39;O1&#39;,
+</span><span class="s1">   &#39;max_seq_length&#39;: 256,
+</span><span class="s1">   &#39;train_batch_size&#39;: 8,
+</span><span class="s1">   &#39;eval_batch_size&#39;: 8,
+</span><span class="s1">   &#39;gradient_accumulation_steps&#39;: 1,
+</span><span class="s1">   &#39;num_train_epochs&#39;: 3,
+</span><span class="s1">   &#39;weight_decay&#39;: 0,
+</span><span class="s1">   &#39;learning_rate&#39;: 4e-5,
+</span><span class="s1">   &#39;adam_epsilon&#39;: 1e-8,
+</span><span class="s1">   &#39;warmup_ratio&#39;: 0.06,
+</span><span class="s1">   &#39;warmup_steps&#39;: 0,
+</span><span class="s1">   &#39;max_grad_norm&#39;: 1.0,
+</span><span class="s1">   &#39;logging_steps&#39;: 50,
+</span><span class="s1">   &#39;evaluate_during_training&#39;: False,
+</span><span class="s1">   &#39;save_steps&#39;: 2000,
+</span><span class="s1">   &#39;eval_all_checkpoints&#39;: True,
+</span><span class="s1">   &#39;use_tensorboard&#39;: True,
+</span><span class="s1">   &#39;overwrite_output_dir&#39;: True,
+</span><span class="s1">   &#39;reprocess_input_data&#39;: False,
+</span><span class="s1">}
+</span><span class="s1">
+</span><span class="s1">&#39;&#39;&#39;</span>
+
+<span class="c1"># Create a ClassificationModel</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ClassificationModel</span><span class="p">(</span><span class="s1">&#39;xlnet&#39;</span><span class="p">,</span> <span class="s1">&#39;xlnet-base-cased&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;num_train_epochs&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;train_batch_size&#39;</span><span class="p">:</span><span class="mi">32</span><span class="p">,</span> <span class="s1">&#39;max_seq_length&#39;</span><span class="p">:</span><span class="mi">128</span><span class="p">})</span> <span class="c1"># You can set class weights by using the optional weight argument</span>
+
+<span class="c1"># Train the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train_model</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the model</span>
+<span class="n">result</span><span class="p">,</span> <span class="n">model_outputs</span><span class="p">,</span> <span class="n">wrong_predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval_model</span><span class="p">(</span><span class="n">eval_df</span><span class="p">,</span> <span class="n">acc</span><span class="o">=</span><span class="n">sklearn</span><span class="o">.</span><span class="n">metrics</span><span class="o">.</span><span class="n">accuracy_score</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p><code>Downloading: 100% 760/760 [00:10&lt;00:00, 71.0B/s]</code></p>
+<p><code>Downloading: 100% 467M/467M [00:10&lt;00:00, 45.2MB/s]</code></p>
+<p><code>Downloading: 100% 798k/798k [00:14&lt;00:00, 56.1kB/s]</code></p>
+<p><code>100% 6090/6090 [08:15&lt;00:00, 12.29it/s]</code></p>
+<p><code>Epoch 4 of 4: 100% 4/4 [08:12&lt;00:00, 123.24s/it]</code></p>
+<p><code>Epochs 0/4. Running Loss: 0.4059: 100% 191/191 [08:12&lt;00:00, 2.58s/it]</code></p>
+<p><code>Epochs 1/4. Running Loss: 0.2305: 100% 191/191 [02:01&lt;00:00, 1.57it/s]</code></p>
+<p><code>Epochs 2/4. Running Loss: 0.4360: 100% 191/191 [04:24&lt;00:00, 1.38s/it]</code></p>
+<p><code>Epochs 3/4. Running Loss: 0.0260: 100% 191/191 [02:28&lt;00:00, 1.28it/s]</code></p>
+<p><code>100% 1523/1523 [00:23&lt;00:00, 65.14it/s]</code></p>
+<p><code>Running Evaluation: 100% 191/191 [00:20&lt;00:00, 9.17it/s]</code></p>
+<p><code>INFO:simpletransformers.classification.classification_model:{'mcc': 0.6457675302369492, 'tp': 518, 'tn': 741, 'fp': 128, 'fn': 136, 'acc': 0.8266579120157583, 'eval_loss': 0.5341164009543184}</code></p>
+<p>We have achieved a decent accuracy of 82.6% on our eval set. This accracy is just out of the box - means with <strong>no feature engineering</strong>, with <strong>no hyparameter-tuning</strong>. <strong>Just out of the box!</strong></p>
+<h2 id="-were-done">🥳 We&rsquo;re Done!</h2>
+<p>Let&rsquo;s submit the predictions to Kaggle and see where we stand.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">predictions</span><span class="p">,</span> <span class="n">raw_outputs</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df_test</span><span class="o">.</span><span class="n">clean_text</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">sample_sub</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;sample_submission.csv&#34;</span><span class="p">)</span>
+<span class="n">sample_sub</span><span class="p">[</span><span class="s1">&#39;target&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">predictions</span>
+
+<span class="n">sample_sub</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&#34;submission_09092020_xlnet_base.csv&#34;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><code>INFO:simpletransformers.classification.classification_model: Converting to features started. Cache is not used.</code></p>
+<p><code>100% 3263/3263 [00:01&lt;00:00, 3216.81it/s]</code></p>
+<p><code>100%</code>
+<code>408/408 [00:38&lt;00:00, 10.68it/s]</code></p>
+<p><figure>
+    <img src="/posts/dl/images/xlnet-kaggle.png"/> 
+</figure>
+
+We&rsquo;re in top 18%. It&rsquo;s a good start considering <code>XLNet</code> out of the box performance - with no feature engineering at all.</p>
+<p>Now, we have a decent baseline to improve our model upon.</p>
+<h2 id="notebooks">Notebooks</h2>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>Attachments<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li><a href="https://www.kaggle.com/c/nlp-getting-started/overview" target="_blank" rel="noopener noreffer">Go to Dataset</a>.</li>
+<li><a href="https://colab.research.google.com/drive/1KUJoHQU_19iav6Lxu0_Ay2qWUrOLiltN?usp=sharing" target="_blank" rel="noopener noreffer">Go to Google Colab Notebook</a>
+<a href="https://colab.research.google.com/drive/1KUJoHQU_19iav6Lxu0_Ay2qWUrOLiltN?usp=sharing" target="_blank" rel="noopener noreffer"><img
+        class="lazyload"
+        src="/svg/loading.min.svg"
+        data-src="https://colab.research.google.com/assets/colab-badge.svg"
+        data-srcset="https://colab.research.google.com/assets/colab-badge.svg, https://colab.research.google.com/assets/colab-badge.svg 1.5x, https://colab.research.google.com/assets/colab-badge.svg 2x"
+        data-sizes="auto"
+        alt="https://colab.research.google.com/assets/colab-badge.svg"
+        title="Open In Colab" /></a></li>
+</ul>
+</div>
+        </div>
+    </div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 13/10/2020</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/" data-title="Fine Tuning XLNet Model for Text Classification" data-via="snrspeaks" data-hashtags="Deep Learning,Transformers,XLNet,Text Classification"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/" data-hashtag="Deep Learning"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/" data-title="Fine Tuning XLNet Model for Text Classification" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/" data-title="Fine Tuning XLNet Model for Text Classification"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/" data-title="Fine Tuning XLNet Model for Text Classification"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/" data-title="Fine Tuning XLNet Model for Text Classification" data-description="In this article, we will see how to fine tune a XLNet model on custom data, for text classification using Transformers🤗. XLNet is powerful! It beats BERT and its other variants in 20 different tasks. In simple words - XLNet is a generalized autoregressive model.
+An Autoregressive model is a model which uses the context word to predict the next word. So, the next token is dependent on all previous tokens.
+XLNET is generalized because it captures bi-directional context by means of a mechanism called permutation language modeling.
+It integrates the idea of auto-regressive models and bi-directional context modeling, yet overcoming the disadvantages of BERT and thus outperforming BERT on 20 tasks, often by a large margin in tasks such as question answering, natural language inference, sentiment analysis, and document ranking.
+
+In this article, we will take a pretrained `XLNet` model and fine tune it on our dataset."><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/" data-title="Fine Tuning XLNet Model for Text Classification" data-description="In this article, we will see how to fine tune a XLNet model on custom data, for text classification using Transformers🤗. XLNet is powerful! It beats BERT and its other variants in 20 different tasks. In simple words - XLNet is a generalized autoregressive model.
+An Autoregressive model is a model which uses the context word to predict the next word. So, the next token is dependent on all previous tokens.
+XLNET is generalized because it captures bi-directional context by means of a mechanism called permutation language modeling.
+It integrates the idea of auto-regressive models and bi-directional context modeling, yet overcoming the disadvantages of BERT and thus outperforming BERT on 20 tasks, often by a large margin in tasks such as question answering, natural language inference, sentiment analysis, and document ranking.
+
+In this article, we will take a pretrained `XLNet` model and fine tune it on our dataset."><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/" data-title="Fine Tuning XLNet Model for Text Classification"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/deep-learning/">Deep Learning</a>,&nbsp;<a href="/tags/transformers/">Transformers</a>,&nbsp;<a href="/tags/xlnet/">XLNet</a>,&nbsp;<a href="/tags/text-classification/">Text Classification</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/transformers-building-question-answers-model-at-scale/" class="prev" rel="prev" title="Building Question Answering Model at Scale using 🤗Transformers"><i class="fas fa-angle-left fa-fw"></i>Building Question Answering Model at Scale using 🤗Transformers</a>
+            <a href="/building-a-faster-accurate-covid-search-engine-with-transformers/" class="next" rel="next" title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗">Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><a href="/policy/">Privacy & Policies</a>&nbsp&nbsp|&nbsp&nbsp<a href="/contact/">Contact Us</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://shivanandroy.com" target="_blank">Shivanand Roy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":1000},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"title","label":"","lightTheme":"github-light","repo":"Shivanandroy/Blog"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-177212842-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-177212842-1" async></script></body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Code📝: Fine Tune BERT Model for Binary Text Classification - Shivanand Roy | Deep Learning</title>
+
+        <link rel="alternate" href="http://shivanandroy.com/index.xml" type="application/rss+xml" title="Shivanand Roy | Deep Learning"/><meta name="Description" content="This is the code for downloading and fine tuning pre-trained BERT model on custom dataset for binary text classification"><meta property="og:title" content="Code📝: Fine Tune BERT Model for Binary Text Classification" />
+<meta property="og:description" content="This is the code for downloading and fine tuning pre-trained BERT model on custom dataset for binary text classification" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/" />
+<meta property="og:image" content="http://shivanandroy.com/posts/codebase/images/bert-binary-text-classification.png" />
+<meta property="article:published_time" content="2020-10-08T00:42:27+05:30" />
+<meta property="article:modified_time" content="2020-10-08T00:42:27+05:30" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://shivanandroy.com/posts/codebase/images/bert-binary-text-classification.png"/>
+
+<meta name="twitter:title" content="Code📝: Fine Tune BERT Model for Binary Text Classification"/>
+<meta name="twitter:description" content="This is the code for downloading and fine tuning pre-trained BERT model on custom dataset for binary text classification"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Code📝: Fine Tune BERT Model for Binary Text Classification",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/shivanandroy.com\/fine-tune-bert-for-binary-text-classification\/"
+        },"genre": "posts","keywords": "Deep Learning, Transformers, Text Classification, BERT","wordcount":  195 ,
+        "url": "http:\/\/shivanandroy.com\/fine-tune-bert-for-binary-text-classification\/","datePublished": "2020-10-08T00:42:27+05:30","dateModified": "2020-10-08T00:42:27+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Shivanand Roy"
+            },"description": "This is the code for downloading and fine tuning pre-trained BERT model on custom dataset for binary text classification"
+    }
+    </script>
+		    <script data-ad-client="ca-pub-1337012385171026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </head>
+    <body header-desktop="fixed" header-mobile="auto"><script defer type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/dl/" title="Deep Learning"> Deep Learning </a><a class="menu-item" href="/posts/ml/" title="Machine Learning"> Machine Learning </a><a class="menu-item" href="/posts/codebase/" title="Code Base"> Code Base </a><a class="menu-item" href="/categories/" title="Categories"> Categories </a><a class="menu-item" href="/tags/" title="Tags"> Tags </a><a class="menu-item" href="/subscribe/" title="Subscribe🚀"> Subscribe🚀 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/dl/" title="Deep Learning">Deep Learning</a><a class="menu-item" href="/posts/ml/" title="Machine Learning">Machine Learning</a><a class="menu-item" href="/posts/codebase/" title="Code Base">Code Base</a><a class="menu-item" href="/categories/" title="Categories">Categories</a><a class="menu-item" href="/tags/" title="Tags">Tags</a><a class="menu-item" href="/subscribe/" title="Subscribe🚀">Subscribe🚀</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Code📝: Fine Tune BERT Model for Binary Text Classification</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://shivanandroy.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Shivanand Roy</a></span>&nbsp;<span class="post-category">included in <a href="/categories/text-classification/"><i class="far fa-folder fa-fw"></i>Text Classification</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="08/10/2020">08/10/2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;195 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;One minute&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents"></nav></div>
+            </div><div class="content" id="content"><div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Requirements: pytorch&gt;=1.6 cudatoolkit=10.2 </span>
+<span class="c1"># install it from here: https://pytorch.org/</span>
+
+<span class="c1"># pip install simpletransformers</span>
+<span class="kn">from</span> <span class="nn">simpletransformers.classification</span> <span class="kn">import</span> <span class="n">ClassificationModel</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">transformers_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&#34;transformers&#34;</span><span class="p">)</span>
+<span class="n">transformers_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+<span class="c1"># Train and Evaluation data needs to be in a Pandas Dataframe of two columns. The first column is the text with type str, and the second column is the label with type int.</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Example sentence belonging to class 1&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Example sentence belonging to class 0&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
+
+<span class="n">eval_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Example eval sentence belonging to class 1&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Example eval sentence belonging to class 0&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="n">eval_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">eval_data</span><span class="p">)</span>
+
+<span class="c1"># Create a ClassificationModel (model_type, model_name): For e.g. </span>
+<span class="c1"># (&#39;roberta&#39;, &#39;roberta-base&#39;)</span>
+<span class="c1"># (&#39;albert&#39;,&#39;albert-base-v2&#39;)</span>
+<span class="c1"># (&#39;distilbert&#39;, &#39;distilbert-base-uncased&#39;)</span>
+<span class="c1"># Supported model type: CamemBERT, RoBERTa, DistilBERT, ELECTRA, FlauBERT, Longformer, MobileBERT, XLM, XLM-RoBERTa, XLNet</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ClassificationModel</span><span class="p">(</span><span class="s1">&#39;bert&#39;</span><span class="p">,</span> <span class="s1">&#39;bert-base-uncased&#39;</span><span class="p">)</span> <span class="c1"># You can set class weights by using the optional weight argument</span>
+
+<span class="c1"># Train the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train_model</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the model</span>
+<span class="n">result</span><span class="p">,</span> <span class="n">model_outputs</span><span class="p">,</span> <span class="n">wrong_predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval_model</span><span class="p">(</span><span class="n">eval_df</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 08/10/2020</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/" data-title="Code📝: Fine Tune BERT Model for Binary Text Classification" data-via="snrspeaks" data-hashtags="Deep Learning,Transformers,Text Classification,BERT"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/" data-hashtag="Deep Learning"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/" data-title="Code📝: Fine Tune BERT Model for Binary Text Classification" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/" data-title="Code📝: Fine Tune BERT Model for Binary Text Classification"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/" data-title="Code📝: Fine Tune BERT Model for Binary Text Classification"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/" data-title="Code📝: Fine Tune BERT Model for Binary Text Classification" data-description="This is the code for downloading and fine tuning pre-trained BERT model on custom dataset for binary text classification"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/" data-title="Code📝: Fine Tune BERT Model for Binary Text Classification" data-description="This is the code for downloading and fine tuning pre-trained BERT model on custom dataset for binary text classification"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/" data-title="Code📝: Fine Tune BERT Model for Binary Text Classification"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/deep-learning/">Deep Learning</a>,&nbsp;<a href="/tags/transformers/">Transformers</a>,&nbsp;<a href="/tags/text-classification/">Text Classification</a>,&nbsp;<a href="/tags/bert/">BERT</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><a href="/policy/">Privacy & Policies</a>&nbsp&nbsp|&nbsp&nbsp<a href="/contact/">Contact Us</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://shivanandroy.com" target="_blank">Shivanand Roy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":1000},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"title","label":"","lightTheme":"github-light","repo":"Shivanandroy/Blog"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-177212842-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-177212842-1" async></script></body>
+</html>

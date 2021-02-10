@@ -1,0 +1,27 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Text Classification - Tag - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/tags/text-classification/</link>
+        <description>Text Classification - Tag - Shivanand Roy | Deep Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamshivanandroy@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>iamshivanandroy@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Tue, 13 Oct 2020 00:40:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/text-classification/" rel="self" type="application/rss+xml" /><item>
+    <title>Fine Tuning XLNet Model for Text Classification</title>
+    <link>http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/</link>
+    <pubDate>Tue, 13 Oct 2020 00:40:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/</guid>
+    <description><![CDATA[In this article, we will see how to fine tune a XLNet model on custom data, for text classification using Transformers🤗. XLNet is powerful! It beats BERT and its other variants in 20 different tasks. In simple words - XLNet is a generalized autoregressive model.
+An Autoregressive model is a model which uses the context word to predict the next word. So, the next token is dependent on all previous tokens.
+XLNET is generalized because it captures bi-directional context by means of a mechanism called permutation language modeling.
+It integrates the idea of auto-regressive models and bi-directional context modeling, yet overcoming the disadvantages of BERT and thus outperforming BERT on 20 tasks, often by a large margin in tasks such as question answering, natural language inference, sentiment analysis, and document ranking.
+
+In this article, we will take a pretrained `XLNet` model and fine tune it on our dataset.]]></description>
+</item><item>
+    <title>Code📝: Fine Tune BERT Model for Binary Text Classification</title>
+    <link>http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/</link>
+    <pubDate>Thu, 08 Oct 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/</guid>
+    <description><![CDATA[This is the code for downloading and fine tuning pre-trained BERT model on custom dataset for binary text classification]]></description>
+</item></channel>
+</rss>

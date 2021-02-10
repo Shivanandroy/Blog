@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Game of Thrones - Tag - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/tags/game-of-thrones/</link>
+        <description>Game of Thrones - Tag - Shivanand Roy | Deep Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamshivanandroy@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>iamshivanandroy@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Fri, 13 Nov 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/game-of-thrones/" rel="self" type="application/rss+xml" /><item>
+    <title>Visualizing Game of Thrones with BERT</title>
+    <link>http://shivanandroy.com/visualizing-game-of-thrones-with-bert/</link>
+    <pubDate>Fri, 13 Nov 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/visualizing-game-of-thrones-with-bert/</guid>
+    <description><![CDATA[In this article, we will visualize Game of Thrones books with BERT in 3D space.]]></description>
+</item></channel>
+</rss>

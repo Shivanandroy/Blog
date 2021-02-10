@@ -5,26 +5,24 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="robots" content="noodp" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
-        <title>Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗 - Shivanand Roy | Deep Learning</title><meta name="Description" content=""><meta property="og:title" content="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗" />
-<meta property="og:description" content="AbstractThis article will let you build a faster and accurate COVID Search Engine using Transformers🤗   Introduction In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response.
-To achieve this, we will need:
- a structured dataset with reserach papers and its full text." />
+        <title>Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗 - Shivanand Roy | Deep Learning</title>
+
+        <link rel="alternate" href="http://shivanandroy.com/index.xml" type="application/rss+xml" title="Shivanand Roy | Deep Learning"/><meta name="Description" content="This article is a step by step guide to build a faster and accurate COVID Semantic Search Engine using HuggingFace Transformers🤗. In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response"><meta property="og:title" content="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗" />
+<meta property="og:description" content="This article is a step by step guide to build a faster and accurate COVID Semantic Search Engine using HuggingFace Transformers🤗. In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response" />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" />
-<meta property="og:image" content="http://shivanandroy.com/images/covid-19.png" />
-<meta property="article:published_time" content="2020-09-06T00:42:27+05:30" />
-<meta property="article:modified_time" content="2020-09-06T00:42:27+05:30" />
+<meta property="og:image" content="http://shivanandroy.com/emoticon.png"/>
+<meta property="article:published_time" content="2020-10-14T00:42:27+05:30" />
+<meta property="article:modified_time" content="2020-10-14T00:42:27+05:30" />
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="http://shivanandroy.com/images/covid-19.png"/>
+<meta name="twitter:image" content="http://shivanandroy.com/emoticon.png"/>
 
 <meta name="twitter:title" content="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗"/>
-<meta name="twitter:description" content="AbstractThis article will let you build a faster and accurate COVID Search Engine using Transformers🤗   Introduction In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response.
-To achieve this, we will need:
- a structured dataset with reserach papers and its full text."/>
+<meta name="twitter:description" content="This article is a step by step guide to build a faster and accurate COVID Semantic Search Engine using HuggingFace Transformers🤗. In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response"/>
 <meta name="application-name" content="LoveIt">
 <meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" /><link rel="prev" href="http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" /><link rel="prev" href="http://shivanandroy.com/fine-tuning-xlnet-model-for-text-classification/" /><link rel="next" href="http://shivanandroy.com/visualizing-game-of-thrones-with-bert/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
     {
         "@context": "http://schema.org",
         "@type": "BlogPosting",
@@ -33,26 +31,26 @@ To achieve this, we will need:
         "mainEntityOfPage": {
             "@type": "WebPage",
             "@id": "http:\/\/shivanandroy.com\/building-a-faster-accurate-covid-search-engine-with-transformers\/"
-        },"genre": "posts","keywords": "Deep Learning, Transformers, Search Engine","wordcount":  2941 ,
-        "url": "http:\/\/shivanandroy.com\/building-a-faster-accurate-covid-search-engine-with-transformers\/","datePublished": "2020-09-06T00:42:27+05:30","dateModified": "2020-09-06T00:42:27+05:30","publisher": {
+        },"genre": "posts","keywords": "Deep Learning, Transformers, Semantic Search, QA Model","wordcount":  2949 ,
+        "url": "http:\/\/shivanandroy.com\/building-a-faster-accurate-covid-search-engine-with-transformers\/","datePublished": "2020-10-14T00:42:27+05:30","dateModified": "2020-10-14T00:42:27+05:30","publisher": {
             "@type": "Organization",
             "name": ""},"author": {
                 "@type": "Person",
                 "name": "Shivanand Roy"
-            },"description": ""
+            },"description": "This article is a step by step guide to build a faster and accurate COVID Semantic Search Engine using HuggingFace Transformers🤗. In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response"
     }
     </script>
-		<script data-ad-client="ca-pub-1337012385171026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		    <script data-ad-client="ca-pub-1337012385171026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
     </head>
-    <body header-desktop="fixed" header-mobile="auto"><script type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+    <body header-desktop="fixed" header-mobile="auto"><script defer type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
 
         <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
     <div class="header-wrapper">
         <div class="header-title">
-            <a href="/" title="Shivanand Roy | Deep Learning">Shivanand Roy</a>
+            <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
         </div>
         <div class="menu">
-            <div class="menu-inner"><a class="menu-item" href="/posts/"> Posts </a><a class="menu-item" href="/tags/"> Tags </a><a class="menu-item" href="/categories/"> Categories </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+            <div class="menu-inner"><a class="menu-item" href="/posts/dl/" title="Deep Learning"> Deep Learning </a><a class="menu-item" href="/posts/ml/" title="Machine Learning"> Machine Learning </a><a class="menu-item" href="/posts/codebase/" title="Code Base"> Code Base </a><a class="menu-item" href="/categories/" title="Categories"> Categories </a><a class="menu-item" href="/tags/" title="Tags"> Tags </a><a class="menu-item" href="/subscribe/" title="Subscribe🚀"> Subscribe🚀 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
                         <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
                         <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
                             <i class="fas fa-search fa-fw"></i>
@@ -73,7 +71,7 @@ To achieve this, we will need:
     <div class="header-container">
         <div class="header-wrapper">
             <div class="header-title">
-                <a href="/" title="Shivanand Roy | Deep Learning">Shivanand Roy</a>
+                <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
             </div>
             <div class="menu-toggle" id="menu-toggle-mobile">
                 <span></span><span></span><span></span>
@@ -95,7 +93,7 @@ To achieve this, we will need:
                     <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
                         Cancel
                     </a>
-                </div><a class="menu-item" href="/posts/" title="">Posts</a><a class="menu-item" href="/tags/" title="">Tags</a><a class="menu-item" href="/categories/" title="">Categories</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                </div><a class="menu-item" href="/posts/dl/" title="Deep Learning">Deep Learning</a><a class="menu-item" href="/posts/ml/" title="Machine Learning">Machine Learning</a><a class="menu-item" href="/posts/codebase/" title="Code Base">Code Base</a><a class="menu-item" href="/categories/" title="Categories">Categories</a><a class="menu-item" href="/tags/" title="Tags">Tags</a><a class="menu-item" href="/subscribe/" title="Subscribe🚀">Subscribe🚀</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
                 <i class="fas fa-adjust fa-fw"></i>
             </a></div>
     </div>
@@ -109,10 +107,10 @@ To achieve this, we will need:
 <main class="main">
                 <div class="container"><div class="toc" id="toc-auto">
             <h2 class="toc-title">Contents</h2>
-            <div class="toc-content" id="toc-content-auto"></div>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
         </div><article class="page single"><h1 class="single-title animated flipInX">Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗</h1><div class="post-meta">
-            <div class="post-meta-line"><span class="post-author"><a href="/" title="Author" rel=" author" class="author"><i class="fas fa-user-circle fa-fw"></i>Shivanand Roy</a></span>&nbsp;<span class="post-category">included in <a href="/categories/search-engine/"><i class="far fa-folder fa-fw"></i>Search Engine</a></span></div>
-            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="06/09/2020">06/09/2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2941 words&nbsp;
+            <div class="post-meta-line"><span class="post-author"><a href="https://shivanandroy.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Shivanand Roy</a></span>&nbsp;<span class="post-category">included in <a href="/categories/natural-language-understanding/"><i class="far fa-folder fa-fw"></i>Natural Language Understanding</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="14/10/2020">14/10/2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2949 words&nbsp;
                 <i class="far fa-clock fa-fw"></i>&nbsp;14 minutes&nbsp;</div>
         </div><div class="details toc" id="toc-static"  kept="">
                 <div class="details-summary toc-title">
@@ -121,15 +119,19 @@ To achieve this, we will need:
                 </div>
                 <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
   <ul>
-    <li>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#data">Data</a></li>
+    <li><a href="#lets-code">Let&rsquo;s Code</a>
       <ul>
-        <li><a href="#introduction">Introduction</a></li>
-        <li><a href="#data">Data</a></li>
-        <li><a href="#code">Code</a></li>
+        <li><a href="#load-the-data">Load the data</a></li>
         <li><a href="#haystack">Haystack</a></li>
+        <li><a href="#1-install-haystack">1. Install <code>haystack</code></a></li>
+        <li><a href="#2-setting-up-documentstore">2. Setting up <code>DocumentStore</code></a></li>
+        <li><a href="#3-setup-retriever-reader-and-finder">3. Setup <code>Retriever</code>, <code>Reader</code> and <code>Finder</code></a></li>
         <li><a href="#-voila-were-done">🥳 Voila! We&rsquo;re Done.</a></li>
       </ul>
     </li>
+    <li><a href="#notebooks">Notebooks</a></li>
   </ul>
 </nav></div>
             </div><div class="content" id="content"><div class="details admonition abstract open">
@@ -141,10 +143,11 @@ To achieve this, we will need:
         </div>
     </div>
 <figure>
-    <img src="/images/covid-19.png"/> 
+    <img src="/posts/dl/images/covid19.jpg"/> 
 </figure>
 
-<h3 id="introduction">Introduction</h3>
+<p>Image by <a href="https://pixabay.com/users/geralt-9301/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4999179">Gerd Altmann</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=4999179">Pixabay</a></p>
+<h2 id="introduction">Introduction</h2>
 <p>In this article, we will build a search engine, which will not only <strong>retrieve</strong> and <strong>rank</strong> the articles based on the query but also give us the <strong>response</strong>, along with a 1000 words <strong>context</strong> around the response.</p>
 <p>To achieve this, we will need:</p>
 <ul>
@@ -152,7 +155,7 @@ To achieve this, we will need:
 <li><code>Transformers</code> library to build QA model</li>
 <li>and Finally, <code>Haystack</code> library to scale QA model to thousands of documents and build a search engine.</li>
 </ul>
-<h3 id="data">Data</h3>
+<h2 id="data">Data</h2>
 <p>For this tutorial, we will use <a href="https://www.kaggle.com/allen-institute-for-ai/CORD-19-research-challenge" target="_blank" rel="noopener noreffer">COVID-19 Open Research Dataset Challenge (CORD-19)</a>.</p>
 <blockquote>
 <p>CORD-19 is a resource of over 200,000 scholarly articles, including over 100,000 with full text, about COVID-19, SARS-CoV-2, and related coronaviruses. This freely available dataset is provided to the global research community to apply recent advances in natural language processing and other AI techniques to generate new insights in support of the ongoing fight against this infectious disease.</p>
@@ -162,13 +165,13 @@ To achieve this, we will need:
 <li><code>paper_id</code>: Unique identifier of research paper</li>
 <li><code>title</code>: title of research paper</li>
 <li><code>abstract</code>: Bried summary of the research paper</li>
-<li><code>full_text</code>: Full text/content of the research paper</li>
+<li><code>full_text</code>: Full text/content of the research paper;</li>
 </ul>
 <p>are of our interest.</p>
 <p>In <strong>Kaggle Folder Structure</strong> - There are 2 directories - <code>pmc_json</code> and <code>pdf_json</code> - which contains the data in the <code>json</code> format.
 We will take 25,000 articles from <code>pmc_json</code> directory and 25000 articles from <code>pdf_json</code> - So, a total of 50,000 research articles to build our search engine.</p>
 <p>We will extract <code>paper_id</code>, <code>title</code>, <code>abstract</code>, <code>full_text</code> and put it in an easy to use <code>pandas.DataFrame</code>.</p>
-<h3 id="code">Code</h3>
+<h2 id="lets-code">Let&rsquo;s Code</h2>
 <div class="details admonition note open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-pencil-alt fa-fw"></i>Note<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -177,7 +180,7 @@ We will take 25,000 articles from <code>pmc_json</code> directory and 25000 arti
             <div class="admonition-content">We will use Kaggle notebook to write our code to leverage GPU.</div>
         </div>
     </div>
-<p><strong>Load the data</strong></p>
+<h3 id="load-the-data">Load the data</h3>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
 <pre class="chroma"><code><span class="lnt"> 1
@@ -280,18 +283,18 @@ We will take 25,000 articles from <code>pmc_json</code> directory and 25000 arti
 <hr>
 <p><code>(50000, 4)</code></p>
 <figure>
-    <img src="/images/covid-search-engine-data.png"/> 
+    <img src="/posts/dl/images/covid-search-engine-data.png"/> 
 </figure>
 
 <hr>
 <p>We have 50,000 articles and columns like <code>paper_id</code>, <code>title</code>, <code>abstract</code> and <code>full_text</code></p>
 <p>We will be interested in <code>title</code> and <code>full_text</code> columns as these columns will be used to build the engine. Let&rsquo;s setup a Search Engine on top <code>full_text</code> - which contains the full content of the research papers.</p>
 <h3 id="haystack">Haystack</h3>
-<p>Now, Welcome <code>Haystack</code>! The secret sauce behind setting up a search engine and ability to scale any QA model to thousands of documents.
+<p>Now, Welcome <code>Haystack</code>! The secret sauce behind setting up a search engine and ability to scale any QA model to thousands of documents.</p>
 <figure>
-    <img src="/images/haystack1.png"/> 
+    <img src="/posts/dl/images/haystack1.png"/> 
 </figure>
-</p>
+
 <p><code>Haystack</code> helps you scale QA models to large collections of documents! You can read more about this amazing library here <a href="https://github.com/deepset-ai/haystack">https://github.com/deepset-ai/haystack</a></p>
 <p>For installation: <code>! pip install git+https://github.com/deepset-ai/haystack.git</code></p>
 <p>But just to give a background, there are 3 major components to Haystack.</p>
@@ -307,7 +310,7 @@ We will take 25,000 articles from <code>pmc_json</code> directory and 25000 arti
 <li>Setup <code>DocumentStore</code></li>
 <li>Setup <code>Retriever</code>, <code>Reader</code> and <code>Finder</code></li>
 </ol>
-<p><strong>1. Install <code>haystack</code></strong></p>
+<h3 id="1-install-haystack">1. Install <code>haystack</code></h3>
 <p>Let&rsquo;s install <code>haystack</code> and import all the required modules</p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -335,7 +338,7 @@ We will take 25,000 articles from <code>pmc_json</code> directory and 25000 arti
 <span class="kn">from</span> <span class="nn">haystack.utils</span> <span class="kn">import</span> <span class="n">print_answers</span>
 </code></pre></td></tr></table>
 </div>
-</div><p><strong>2. Setting up <code>DocumentStore</code></strong></p>
+</div><h3 id="2-setting-up-documentstore">2. Setting up <code>DocumentStore</code></h3>
 <p>Haystack finds answers to queries within the documents stored in a <code>DocumentStore</code>. The current implementations of <code>DocumentStore</code> include <code>ElasticsearchDocumentStore</code>, <code>SQLDocumentStore</code>, and <code>InMemoryDocumentStore</code>.</p>
 <p>But they recommend <code>ElasticsearchDocumentStore</code> because as it comes preloaded with features like full-text queries, BM25 retrieval, and vector storage for text embeddings.</p>
 <p>So - Let&rsquo;s set up a <code>ElasticsearchDocumentStore</code>.</p>
@@ -411,7 +414,7 @@ We will take 25,000 articles from <code>pmc_json</code> directory and 25000 arti
 <span class="n">document_store</span><span class="o">.</span><span class="n">write_documents</span><span class="p">(</span><span class="n">data</span><span class="p">[[</span><span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;abstract&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;title&#39;</span><span class="p">:</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;full_text&#39;</span><span class="p">:</span><span class="s1">&#39;text&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">))</span>
 </code></pre></td></tr></table>
 </div>
-</div><p><strong>3. Setup <code>Retriever</code>, <code>Reader</code> and <code>Finder</code></strong></p>
+</div><h3 id="3-setup-retriever-reader-and-finder">3. Setup <code>Retriever</code>, <code>Reader</code> and <code>Finder</code></h3>
 <p>Retrievers help narrowing down the scope for the Reader to smaller units of text where a given question could be answered. They use some simple but fast algorithm.</p>
 <p>Here: We use Elasticsearch&rsquo;s default BM25 algorithm</p>
 <div class="highlight"><div class="chroma">
@@ -510,13 +513,13 @@ We will take 25,000 articles from <code>pmc_json</code> directory and 25000 arti
 <hr>
 <p><code>Question: What is the impact of coronavirus on babies?</code></p>
 <p><code>#1</code></p>
-<p><code>Answer:  While babies have been infected, the naivete of the neonatal immune system in relation to the inflammatory response would appear to be protective, with further inflammatory responses achieved with the consumption of human milk.</code></p>
+<p><code>Answer:  While babies have been infected, the naivete of the neonatal immune system in relation to the inflammatory response would appear to be protective, with further inflammatory responses achieved with the consumption of human milk.</code></p>
 <p><code>Research Paper: COVID 19 in babies: Knowledge for neonatal care</code></p>
-<p><code>Context: ance to minimize the health systems impact of this pandemic across the lifespan.The Covid-19 pandemic has presented neonatal nurses and midwives with challenges when caring for mother and babies. This review has presented what is currently known aboutCovid-19 and neonatal health, and information and research as they are generated will add to a complete picture of the health outcomes. While babies have been infected, the naivete of the neonatal immune system in relation to the inflammatory response would appear to be protective, with further inflammatory responses achieved with the consumption of human milk. The WHO has made clear recommendations about the benefits of breastfeeding, even if the mother and baby dyad is Covid-19 positive, if they remain well. The mother and baby should not be separated, and the mother needs to be able to participate in her baby's care and develop her mothering role. The complexities of not being able to access her usual support people mean that the mother</code></p>
+<p><code>Context: ance to minimize the health systems impact of this pandemic across the lifespan.The Covid-19 pandemic has presented neonatal nurses and midwives with challenges when caring for mother and babies. This review has presented what is currently known aboutCovid-19 and neonatal health, and information and research as they are generated will add to a complete picture of the health outcomes. While babies have been infected, the naivete of the neonatal immune system in relation to the inflammatory response would appear to be protective, with further inflammatory responses achieved with the consumption of human milk. The WHO has made clear recommendations about the benefits of breastfeeding, even if the mother and baby dyad is Covid-19 positive, if they remain well. The mother and baby should not be separated, and the mother needs to be able to participate in her baby's care and develop her mothering role. The complexities of not being able to access her usual support people mean that the mother</code></p>
 <hr>
 <hr>
 <p><code>#2</code>
-<code>Answer:  neonate are mild, with low-grade fever and gastrointestinal signs such as poor feeding and vomiting. The respiratory symptoms are also limited to mild tachypnoea and/or tachycardia.</code></p>
+<code>Answer:  neonate are mild, with low-grade fever and gastrointestinal signs such as poor feeding and vomiting. The respiratory symptoms are also limited to mild tachypnoea and/or tachycardia.</code></p>
 <p><code>Research Paper: COVID 19 in babies: Knowledge for neonatal care</code></p>
 <p><code>Context: Likewise, if the mother and baby are well, skin-to-skin and breast feeding should be encouraged, as the benefits outweigh any potential harms. If a neonate becomes unwell and requires intensive care, they should be nursed with droplet precautions in a closed incubator in a negative pressure room. The management is dictated by the presenting signs and symptoms. It would appear the presenting symptoms in the neonate are mild, with low-grade fever and gastrointestinal signs such as poor feeding and vomiting. The respiratory symptoms are also limited to mild tachypnoea and/or tachycardia. However, as there has been a presentation of seizure activity with fever a neurological examination should be part of the investigations.As of writing this paper, there has been a preliminary study published in the general media The WHO has also welcomed these preliminary results and state it is &quot;looking forward to a full data analysis&quot; (https://www.who.int/news-room/detail/16-06-2020-who-welcomesprelimin</code></p>
 <hr>
@@ -561,19 +564,15 @@ We will take 25,000 articles from <code>pmc_json</code> directory and 25000 arti
 <code>Inferencing Samples: 100%|██████████| 1/1 [00:01&lt;00:00,  1.09s/ Batches]</code>
 <code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.83 Batches/s]</code>
 <code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.57 Batches/s]</code></p>
-<hr>
 <p><code>Question: What is the impact of coronavirus on pregnant women?</code></p>
 <p><code>#1</code>
-<code>Answer:  pregnant woman may be more vulnerable to severe infection (Favre et al. 2020 ) and evidence from previous viral outbreaks suggests a higher risk of unfavourable maternal and neonatal outcomes in this population</code></p>
-<p><code>Research Paper: COVID 19 in babies: Knowledge for neonatal care</code></p>
+<code>Answer:  pregnant woman may be more vulnerable to severe infection (Favre et al. 2020 ) and evidence from previous viral outbreaks suggests a higher risk of unfavourable maternal and neonatal outcomes in this population</code></p>
+<p><code>Research Paper: COVID 19 in babies: Knowledge for neonatal care</code></p>
 <p><code>Context: na. The disease manifests with a spectrum of symptoms ranging from mild upper respiratory tract infection to severe pneumonitis, acute respiratory distress syndrome (ARDS) and death.Relatively few cases have occurred in children and neonates who seem to have a more favourable clinical course than other age groups (De Rose et al. 2020) . While not initially identified as a population at risk, pregnant woman may be more vulnerable to severe infection (Favre et al. 2020 ) and evidence from previous viral outbreaks suggests a higher risk of unfavourable maternal and neonatal outcomes in this population (Alfaraj et al. 2019) .Moreover, the associated policies developed as a result of the pandemic relating to social distancing and prevention of cross infection have led to important considerations specific to the field of maternal and neonatal health, and a necessity to consider unintended consequences for both the mother and baby (Buekens et al. 2020) .Countries are faced with a rapidly deve</code></p>
-<hr>
-<hr>
 <p><code>#2</code>
-<code>Answer:  While not initially identified as a population at risk, pregnant woman may be more vulnerable to severe infection (Favre et al., 2020) and evidence from previous viral outbreaks suggests a higher risk of unfavourable maternal and neonatal outcomes in this population</code></p>
-<p><code>Research Paper:  COVID 19 in babies: Knowledge for neonatal care</code></p>
-<p><code>Context: tified in Wuhan, Hubei, China. The disease manifests with a spectrum of symptoms ranging from mild upper respiratory tract infection to severe pneumonitis, acute respiratory distress syndrome (ARDS) and death. Relatively few cases have occurred in children and neonates who seem to have a more favourable clinical course than other age groups (De Rose et al., 2020). While not initially identified as a population at risk, pregnant woman may be more vulnerable to severe infection (Favre et al., 2020) and evidence from previous viral outbreaks suggests a higher risk of unfavourable maternal and neonatal outcomes in this population (Alfaraj et al., 2019). Moreover, the associated policies developed as a result of the pandemic relating to social distancing and prevention of cross infection have led to important considerations specific to the field of maternal and neonatal health, and a necessity to consider unintended consequences for both the mother and baby (Buekens et al., 2020).Countries</code></p>
-<hr>
+<code>Answer:  While not initially identified as a population at risk, pregnant woman may be more vulnerable to severe infection (Favre et al., 2020) and evidence from previous viral outbreaks suggests a higher risk of unfavourable maternal and neonatal outcomes in this population</code></p>
+<p><code>Research Paper:  COVID 19 in babies: Knowledge for neonatal care</code></p>
+<p><code>Context: tified in Wuhan, Hubei, China. The disease manifests with a spectrum of symptoms ranging from mild upper respiratory tract infection to severe pneumonitis, acute respiratory distress syndrome (ARDS) and death. Relatively few cases have occurred in children and neonates who seem to have a more favourable clinical course than other age groups (De Rose et al., 2020). While not initially identified as a population at risk, pregnant woman may be more vulnerable to severe infection (Favre et al., 2020) and evidence from previous viral outbreaks suggests a higher risk of unfavourable maternal and neonatal outcomes in this population (Alfaraj et al., 2019). Moreover, the associated policies developed as a result of the pandemic relating to social distancing and prevention of cross infection have led to important considerations specific to the field of maternal and neonatal health, and a necessity to consider unintended consequences for both the mother and baby (Buekens et al., 2020).Countries</code></p>
 <p><strong>Example 3: Which organ does coronavirus impact?</strong></p>
 <div class="highlight"><div class="chroma">
 <table class="lntable"><tr><td class="lntd">
@@ -615,20 +614,17 @@ We will take 25,000 articles from <code>pmc_json</code> directory and 25000 arti
 <code>Inferencing Samples: 100%|██████████| 1/1 [00:01&lt;00:00,  1.09s/ Batches]</code>
 <code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.83 Batches/s]</code>
 <code>Inferencing Samples: 100%|██████████| 1/1 [00:00&lt;00:00,  1.57 Batches/s]</code></p>
-<hr>
 <p><code>Question: which organ does coronavirus impact?</code></p>
 <p><code>#1</code></p>
-<p><code>Answer: central nervous system</code></p>
-<p><code>Research Paper: Special considerations in the assessment of catastrophic brain injury and determination of brain death in patients with SARS-CoV-2</code></p>
+<p><code>Answer: central nervous system</code></p>
+<p><code>Research Paper: Special considerations in the assessment of catastrophic brain injury and determination of brain death in patients with SARS-CoV-2</code></p>
 <p><code>Context: ix patients with Covid-19 who developed catastrophic brain injuries. While only 3 of these patients were ultimately declared dead based on neurologic criteria, the other 3 had catastrophic irreversible brain damage prompting us to carefully consider whether they could be declared dead using neurologic criteria.A prerequisite to the determination of brain death is the identification of the proximate cause and irreversibility of injury. The exact mechanism by which Covid-19 affects the central nervous system remains largely unknown, but direct and indirect pathways of injury have been proposed. SARS-CoV-2 enters cells using ACE2 receptors, which are expressed in the brain and may facilitate direct damage to the cardiorespiratory center in the brainstem through trans-synaptic migration of the virus from the respiratory system [6,7]. Indirect damage to the central nervous system may occur from induction of pro-inflammatory cytokines in the glial cells of the brain and spinal cord, disrupti</code></p>
-<hr>
-<hr>
 <p><code>#2</code>
 <code>Answer: central nervous system</code></p>
 <p><code>Research Paper: Journal Pre-proof Special considerations in the assessment of catastrophic brain injury and determination of brain death in patients with SARS- CoV-2 Special Considerations in the Assessment of Catastrophic Brain Injury and Determination of Brain Death in Patients with SARS- CoV-2</code></p>
 <p><code>Context: ix patients with Covid-19 who developed catastrophic brain injuries. While only 3 of these patients were ultimately declared dead based on neurologic criteria, the other 3 had catastrophic irreversible brain damage prompting us to carefully consider whether they could be declared dead using neurologic criteria.A prerequisite to the determination of brain death is the identification of the proximate cause and irreversibility of injury. The exact mechanism by which Covid-19 affects the central nervous system remains largely unknown, but direct and indirect pathways of injury have been proposed. SARS-CoV-2 enters cells using ACE2 receptors, which are expressed in the brain and may facilitate direct damage to the cardiorespiratory center in the brainstem through trans-synaptic migration of the virus from the respiratory system [6, 7] . Indirect damage to the central nervous system may occur from induction of proinflammatory cytokines in the glial cells of the brain and spinal cord, disrupt</code></p>
-<hr>
 <p>The results are meaningful😄. Please note that we have used a pretrained model <code>deepset/roberta-base-squad2</code> for this tutorial. We might expect a significant improvement if we use a QA model trained specific to this dataset.</p>
+<h2 id="notebooks">Notebooks</h2>
 <div class="details admonition success open">
         <div class="details-summary admonition-title">
             <i class="icon fas fa-check-circle fa-fw"></i>Attachments<i class="details-icon fas fa-angle-right fa-fw"></i>
@@ -640,37 +636,37 @@ We will take 25,000 articles from <code>pmc_json</code> directory and 25000 arti
 </ul>
 </div>
         </div>
-    </div>
-</div><div class="post-footer" id="post-footer">
+    </div></div><div class="post-footer" id="post-footer">
     <div class="post-info">
         <div class="post-info-line">
             <div class="post-info-mod">
-                <span>Updated on 06/09/2020</span>
+                <span>Updated on 14/10/2020</span>
             </div>
             <div class="post-info-license"></div>
         </div>
         <div class="post-info-line">
             <div class="post-info-md"></div>
             <div class="post-info-share">
-                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗" data-via="snrspeaks" data-hashtags="Deep Learning,Transformers,Search Engine"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-hashtag="Deep Learning"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗" data-description=""><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗" data-description=""><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗"><i class="fab fa-evernote fa-fw"></i></a></span>
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗" data-via="snrspeaks" data-hashtags="Deep Learning,Transformers,Semantic Search,QA Model"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-hashtag="Deep Learning"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗" data-description="This article is a step by step guide to build a faster and accurate COVID Semantic Search Engine using HuggingFace Transformers🤗. In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗" data-description="This article is a step by step guide to build a faster and accurate COVID Semantic Search Engine using HuggingFace Transformers🤗. In this article, we will build a search engine, which will not only retrieve and rank the articles based on the query but also give us the response, along with a 1000 words context around the response"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" data-title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗"><i class="fab fa-evernote fa-fw"></i></a></span>
             </div>
         </div>
     </div>
 
     <div class="post-info-more">
-        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/deep-learning/">Deep Learning</a>,&nbsp;<a href="/tags/transformers/">Transformers</a>,&nbsp;<a href="/tags/search-engine/">Search Engine</a></section>
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/deep-learning/">Deep Learning</a>,&nbsp;<a href="/tags/transformers/">Transformers</a>,&nbsp;<a href="/tags/semantic-search/">Semantic Search</a>,&nbsp;<a href="/tags/qa-model/">QA Model</a></section>
         <section>
             <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
         </section>
     </div>
 
-    <div class="post-nav"><a href="/transformers-generating-arxiv-papers-title-from-abstracts/" class="prev" rel="prev" title="Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers"><i class="fas fa-angle-left fa-fw"></i>Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers</a></div>
+    <div class="post-nav"><a href="/fine-tuning-xlnet-model-for-text-classification/" class="prev" rel="prev" title="Fine Tuning XLNet Model for Text Classification"><i class="fas fa-angle-left fa-fw"></i>Fine Tuning XLNet Model for Text Classification</a>
+            <a href="/visualizing-game-of-thrones-with-bert/" class="next" rel="next" title="Visualizing Game of Thrones with BERT">Visualizing Game of Thrones with BERT<i class="fas fa-angle-right fa-fw"></i></a></div>
 </div>
 <div id="comments"><div id="utterances"></div><noscript>
                 Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
             </noscript></div></article></div>
             </main><footer class="footer">
-        <div class="footer-container"><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2020</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="/" target="_blank">Shivanand Roy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        <div class="footer-container"><div class="footer-line"><a href="/policy/">Privacy & Policies</a>&nbsp&nbsp|&nbsp&nbsp<a href="/contact/">Contact Us</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://shivanandroy.com" target="_blank">Shivanand Roy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
         </div>
     </footer></div>
 
@@ -679,7 +675,7 @@ We will take 25,000 articles from <code>pmc_json</code> directory and 25000 arti
             </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
                 <i class="fas fa-comment fa-fw"></i>
             </a>
-        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":100},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"title","label":"","lightTheme":"github-light","repo":"Shivanandroy/Blog"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"}};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":1000},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"title","label":"","lightTheme":"github-light","repo":"Shivanandroy/Blog"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
             window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
             gtag('config', 'UA-177212842-1', { 'anonymize_ip': true });
         </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-177212842-1" async></script></body>

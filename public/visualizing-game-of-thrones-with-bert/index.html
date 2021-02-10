@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Visualizing Game of Thrones with BERT - Shivanand Roy | Deep Learning</title>
+
+        <link rel="alternate" href="http://shivanandroy.com/index.xml" type="application/rss+xml" title="Shivanand Roy | Deep Learning"/><meta name="Description" content="In this article, we will visualize Game of Thrones books with BERT in 3D space."><meta property="og:title" content="Visualizing Game of Thrones with BERT" />
+<meta property="og:description" content="In this article, we will visualize Game of Thrones books with BERT in 3D space." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://shivanandroy.com/visualizing-game-of-thrones-with-bert/" />
+<meta property="og:image" content="http://shivanandroy.com/posts/dl/images/GOT.png" />
+<meta property="article:published_time" content="2020-11-13T00:42:27+05:30" />
+<meta property="article:modified_time" content="2020-11-13T00:42:27+05:30" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://shivanandroy.com/posts/dl/images/GOT.png"/>
+
+<meta name="twitter:title" content="Visualizing Game of Thrones with BERT"/>
+<meta name="twitter:description" content="In this article, we will visualize Game of Thrones books with BERT in 3D space."/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://shivanandroy.com/visualizing-game-of-thrones-with-bert/" /><link rel="prev" href="http://shivanandroy.com/building-a-faster-accurate-covid-search-engine-with-transformers/" /><link rel="next" href="http://shivanandroy.com/fine-tune-t5-transformer-with-pytorch/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Visualizing Game of Thrones with BERT",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/shivanandroy.com\/visualizing-game-of-thrones-with-bert\/"
+        },"genre": "posts","keywords": "Deep Learning, Game of Thrones, BERT","wordcount":  2108 ,
+        "url": "http:\/\/shivanandroy.com\/visualizing-game-of-thrones-with-bert\/","datePublished": "2020-11-13T00:42:27+05:30","dateModified": "2020-11-13T00:42:27+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Shivanand Roy"
+            },"description": "In this article, we will visualize Game of Thrones books with BERT in 3D space."
+    }
+    </script>
+		    <script data-ad-client="ca-pub-1337012385171026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </head>
+    <body header-desktop="fixed" header-mobile="auto"><script defer type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/dl/" title="Deep Learning"> Deep Learning </a><a class="menu-item" href="/posts/ml/" title="Machine Learning"> Machine Learning </a><a class="menu-item" href="/posts/codebase/" title="Code Base"> Code Base </a><a class="menu-item" href="/categories/" title="Categories"> Categories </a><a class="menu-item" href="/tags/" title="Tags"> Tags </a><a class="menu-item" href="/subscribe/" title="Subscribe🚀"> Subscribe🚀 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/dl/" title="Deep Learning">Deep Learning</a><a class="menu-item" href="/posts/ml/" title="Machine Learning">Machine Learning</a><a class="menu-item" href="/posts/codebase/" title="Code Base">Code Base</a><a class="menu-item" href="/categories/" title="Categories">Categories</a><a class="menu-item" href="/tags/" title="Tags">Tags</a><a class="menu-item" href="/subscribe/" title="Subscribe🚀">Subscribe🚀</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Visualizing Game of Thrones with BERT</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://shivanandroy.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Shivanand Roy</a></span>&nbsp;<span class="post-category">included in <a href="/categories/natural-language-understanding/"><i class="far fa-folder fa-fw"></i>Natural Language Understanding</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="13/11/2020">13/11/2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2108 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;10 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#1-extracting-bert-embeddings-for-game-of-thrones-books">1. Extracting BERT Embeddings for Game of Thrones Books</a></li>
+    <li><a href="#2-dimensionality-reduction-bert-embeddings">2. Dimensionality Reduction: BERT Embeddings</a></li>
+    <li><a href="#3-building-a-web-app-to-visualize-on-the-browser">3. Building A Web App to visualize on the Browser</a></li>
+    <li><a href="#-hooray-youre-done">🥳 Hooray, you’re done!</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><div class="details admonition abstract open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-list-ul fa-fw"></i>Abstract<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content">In this article, we will visualize <strong>Game of Thrones</strong> books with <strong>BERT</strong> in 3D embedding space .</div>
+        </div>
+    </div>
+<figure>
+    <img src="/posts/dl/images/GOT.png"/> 
+</figure>
+
+<h2 id="introduction">Introduction</h2>
+<p>This past weekend while watching Game of Thrones at dinner — I had a thought!</p>
+<p><strong>How does BERT understand Game of Thrones?</strong></p>
+<p>The thought of visualizing all the texts of GOT books with mightly BERT in 3D space.</p>
+<p>How can we achieve this —</p>
+<ul>
+<li>First — we will extract the BERT embeddings for each word across all GOT books.</li>
+<li>Then — reduce the dimension of BERT embeddings to visualize it in 3D</li>
+<li>And finally — create a web application to visualize it on the browser</li>
+</ul>
+<figure>
+    <img src="/posts/dl/images/got.gif"/> 
+</figure>
+
+<p>So, Let&rsquo;s get started</p>
+<h2 id="1-extracting-bert-embeddings-for-game-of-thrones-books">1. Extracting BERT Embeddings for Game of Thrones Books</h2>
+<p>Extracting BERT embeddings for your custom data can be intimidating at first — but not anymore.</p>
+<p><a href="https://github.com/imgarylai" target="_blank" rel="noopener noreffer">Gary Lai</a> has this awesome package <a href="https://github.com/imgarylai/bert-embedding" target="_blank" rel="noopener noreffer"><code>bert-embedding</code></a> which lets you extract token level embeddings without any hassle. The code looks as simple as:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># installing bert-embedding</span>
+<span class="err">!</span><span class="n">pip</span> <span class="n">install</span> <span class="n">bert</span><span class="o">-</span><span class="n">embedding</span>
+<span class="c1"># importing bert_embedding</span>
+<span class="kn">from</span> <span class="nn">bert_embedding</span> <span class="kn">import</span> <span class="n">BertEmbedding</span>
+<span class="c1"># text to be encoded</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;We introduce a new language representation model called BERT, which stands for Bidirectional Encoder Representations from Transformers.
+</span><span class="s2"> Unlike recent language representation models, BERT is designed to pre-train deep bidirectional representations by jointly conditioning on both left and right context in all layers.
+</span><span class="s2">&#34;&#34;&#34;</span>
+<span class="c1"># generating sentences</span>
+<span class="n">sentences</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># instantiating BerEmbedding class</span>
+<span class="n">bert_embedding</span> <span class="o">=</span> <span class="n">BertEmbedding</span><span class="p">()</span>
+<span class="c1"># passing sentences to bert_embedding model</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">bert_embedding</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Let’s use this package for our data —
+We will extract 5 Game of Thrones books using <code>requests</code> —</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">book1</span> <span class="o">=</span> <span class="s2">&#34;https://raw.githubusercontent.com/llSourcell/word_vectors_game_of_thrones-LIVE/master/data/got1.txt&#34;</span>
+<span class="n">book2</span> <span class="o">=</span> <span class="s2">&#34;https://raw.githubusercontent.com/llSourcell/word_vectors_game_of_thrones-LIVE/master/data/got2.txt&#34;</span>
+<span class="n">book3</span> <span class="o">=</span> <span class="s2">&#34;https://raw.githubusercontent.com/llSourcell/word_vectors_game_of_thrones-LIVE/master/data/got3.txt&#34;</span>
+<span class="n">book4</span> <span class="o">=</span> <span class="s2">&#34;https://raw.githubusercontent.com/llSourcell/word_vectors_game_of_thrones-LIVE/master/data/got4.txt&#34;</span>
+<span class="n">book5</span> <span class="o">=</span> <span class="s2">&#34;https://raw.githubusercontent.com/llSourcell/word_vectors_game_of_thrones-LIVE/master/data/got5.txt&#34;</span>
+
+<span class="c1"># fetch the content of the books</span>
+<span class="n">b1</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">book1</span><span class="p">)</span>
+<span class="n">b2</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">book2</span><span class="p">)</span>
+<span class="n">b3</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">book3</span><span class="p">)</span>
+<span class="n">b4</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">book4</span><span class="p">)</span>
+<span class="n">b5</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">book5</span><span class="p">)</span>
+
+<span class="c1"># break it into list of sentences</span>
+<span class="n">book1_content</span> <span class="o">=</span> <span class="p">[</span><span class="n">sent</span> <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">b1</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">sent</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="n">book2_content</span> <span class="o">=</span> <span class="p">[</span><span class="n">sent</span> <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">b2</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">sent</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="n">book3_content</span> <span class="o">=</span> <span class="p">[</span><span class="n">sent</span> <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">b3</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">sent</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="n">book4_content</span> <span class="o">=</span> <span class="p">[</span><span class="n">sent</span> <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">b4</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">sent</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
+<span class="n">book5_content</span> <span class="o">=</span> <span class="p">[</span><span class="n">sent</span> <span class="k">for</span> <span class="n">sent</span> <span class="ow">in</span> <span class="n">b5</span><span class="o">.</span><span class="n">text</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()</span> <span class="k">if</span> <span class="n">sent</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">]</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Next — We will clean the content of the books. And we will store the content as a list of sentences</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">re</span>
+<span class="k">def</span> <span class="nf">sentence_to_wordlist</span><span class="p">(</span><span class="n">raw</span><span class="p">):</span>
+    <span class="n">clean</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="err">“</span><span class="p">[</span><span class="o">^</span><span class="n">a</span><span class="o">-</span><span class="n">zA</span><span class="o">-</span><span class="n">Z</span><span class="p">]</span><span class="err">”</span><span class="p">,</span><span class="err">”</span> <span class="err">“</span><span class="p">,</span> <span class="n">raw</span><span class="p">)</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="n">clean</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">words</span>
+
+<span class="n">book1_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">raw_sentence</span> <span class="ow">in</span> <span class="n">book1_content</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_sentence</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">book1_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sentence_to_wordlist</span><span class="p">(</span><span class="n">raw_sentence</span><span class="p">)))</span>
+
+<span class="n">book2_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">raw_sentence</span> <span class="ow">in</span> <span class="n">book2_content</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_sentence</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">book2_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sentence_to_wordlist</span><span class="p">(</span><span class="n">raw_sentence</span><span class="p">)))</span>
+
+<span class="n">book3_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">raw_sentence</span> <span class="ow">in</span> <span class="n">book3_content</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_sentence</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">book3_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sentence_to_wordlist</span><span class="p">(</span><span class="n">raw_sentence</span><span class="p">)))</span>
+
+<span class="n">book4_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">raw_sentence</span> <span class="ow">in</span> <span class="n">book4_content</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_sentence</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">book4_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sentence_to_wordlist</span><span class="p">(</span><span class="n">raw_sentence</span><span class="p">)))</span>
+
+<span class="n">book5_sentences</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">raw_sentence</span> <span class="ow">in</span> <span class="n">book5_content</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">raw_sentence</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">book5_sentences</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sentence_to_wordlist</span><span class="p">(</span><span class="n">raw_sentence</span><span class="p">)))</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Once we have a clean list of sentences for each book, we can extract BERT embeddings using the code below:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># imorting dependencies</span>
+<span class="kn">from</span> <span class="nn">bert_embedding</span> <span class="kn">import</span> <span class="n">BertEmbedding</span>
+<span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm_notebook</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">mxnet</span> <span class="kn">as</span> <span class="nn">mx</span>
+<span class="c1"># bert_embedding supports GPU for faster processsing</span>
+<span class="n">ctx</span> <span class="o">=</span> <span class="n">mx</span><span class="o">.</span><span class="n">gpu</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># This function will extract BERT embeddings and store it in a </span>
+<span class="c1"># structured format i.e. dataframe</span>
+<span class="k">def</span> <span class="nf">generate_bert_embeddings</span><span class="p">(</span><span class="n">sentences</span><span class="p">):</span>
+    <span class="n">bert_embedding</span> <span class="o">=</span> <span class="n">BertEmbedding</span><span class="p">(</span><span class="n">ctx</span><span class="o">=</span><span class="n">ctx</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="err">“</span><span class="n">Encoding</span> <span class="n">Sentences</span><span class="p">:</span><span class="err">”</span><span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">bert_embedding</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="err">“</span><span class="n">Encoding</span> <span class="n">Finished</span><span class="err">”</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">tqdm_notebook</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">result</span><span class="p">))):</span>
+        <span class="n">embed</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">embed</span><span class="p">[</span><span class="err">‘</span><span class="n">words</span><span class="err">’</span><span class="p">]</span> <span class="o">=</span> <span class="n">result</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">concat</span><span class="p">([</span><span class="n">df</span><span class="p">,</span> <span class="n">embed</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">df</span>
+<span class="n">book1_embedding</span> <span class="o">=</span> <span class="n">generate_bert_embeddings</span><span class="p">(</span><span class="n">book1_sentences</span><span class="p">)</span>
+<span class="n">book2_embedding</span> <span class="o">=</span> <span class="n">generate_bert_embeddings</span><span class="p">(</span><span class="n">book2_sentences</span><span class="p">)</span>
+<span class="n">book3_embedding</span> <span class="o">=</span> <span class="n">generate_bert_embeddings</span><span class="p">(</span><span class="n">book3_sentences</span><span class="p">)</span>
+<span class="n">book4_embedding</span> <span class="o">=</span> <span class="n">generate_bert_embeddings</span><span class="p">(</span><span class="n">book4_sentences</span><span class="p">)</span>
+<span class="n">book5_embedding</span> <span class="o">=</span> <span class="n">generate_bert_embeddings</span><span class="p">(</span><span class="n">book5_sentences</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><blockquote>
+<p><b><i>These embeddings are out of pre-trained BERT model. You can also fine-tune BERT on GOT texts before fetching the embeddings.</i></b></p>
+</blockquote>
+<h2 id="2-dimensionality-reduction-bert-embeddings">2. Dimensionality Reduction: BERT Embeddings</h2>
+<p>BERT embeddings are 768 dimension vectors i.e. we have 768 numbers to represent each word or tokens found in the books.</p>
+<p>We will reduce the dimensionality of these words from 768 to 3 — to visualize these tokens/words in 3 dimensions using the code below:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">TruncatedSVD</span>
+<span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
+<span class="c1"># This function will reduce dimension of the embeddings using tSVD </span>
+<span class="c1"># and PCA</span>
+<span class="k">def</span> <span class="nf">reduce_dimension</span><span class="p">(</span><span class="n">embedding_df</span><span class="p">):</span>
+<span class="c1"># Dimensionality Reduction using tSVD</span>
+    <span class="n">tsvd</span> <span class="o">=</span> <span class="n">TruncatedSVD</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">tsvd_3d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tsvd</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">embedding_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="err">‘</span><span class="n">words</span><span class="err">’</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">tsvd_3d</span><span class="p">[</span><span class="err">‘</span><span class="n">words</span><span class="err">’</span><span class="p">]</span> <span class="o">=</span> <span class="n">embedding_df</span><span class="p">[</span><span class="err">‘</span><span class="n">words</span><span class="err">’</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Dimensionality reduction using PCA</span>
+    <span class="n">pca</span> <span class="o">=</span> <span class="n">PCA</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">pca_3d</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">pca</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">embedding_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="err">‘</span><span class="n">words</span><span class="err">’</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="n">pca_3d</span><span class="p">[</span><span class="err">‘</span><span class="n">words</span><span class="err">’</span><span class="p">]</span> <span class="o">=</span> <span class="n">embedding_df</span><span class="p">[</span><span class="err">‘</span><span class="n">words</span><span class="err">’</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+    <span class="k">return</span> <span class="n">tsvd_3d</span><span class="p">,</span> <span class="n">pca_3d</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Let’s apply the above function to our embeddings</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">tsvd_book1</span><span class="p">,</span> <span class="n">pca_book1</span> <span class="o">=</span> <span class="n">reduce_dimension</span><span class="p">(</span><span class="n">book1_embedding</span><span class="p">)</span>
+<span class="n">tsvd_book2</span><span class="p">,</span> <span class="n">pca_book2</span> <span class="o">=</span> <span class="n">reduce_dimension</span><span class="p">(</span><span class="n">book2_embedding</span><span class="p">)</span>
+<span class="n">tsvd_book3</span><span class="p">,</span> <span class="n">pca_book3</span> <span class="o">=</span> <span class="n">reduce_dimension</span><span class="p">(</span><span class="n">book3_embedding</span><span class="p">)</span>
+<span class="n">tsvd_book4</span><span class="p">,</span> <span class="n">pca_book4</span> <span class="o">=</span> <span class="n">reduce_dimension</span><span class="p">(</span><span class="n">book4_embedding</span><span class="p">)</span>
+<span class="n">tsvd_book5</span><span class="p">,</span> <span class="n">pca_book5</span> <span class="o">=</span> <span class="n">reduce_dimension</span><span class="p">(</span><span class="n">book5_embedding</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>🥳 Voila! Now we have 3 dimension projection of each word in all the GOT books</p>
+<blockquote>
+<p>Extraction of BERT embeddings and dimensionality reduction can be a time-consuming process. You can download Game of Thrones BERT Embeddings from here: <a href="https://drive.google.com/open?id=1M5vHLQqCv_AB1dm9kXW4AHsA5CjcFrm1" target="_blank" rel="noopener noreffer">Download</a></p>
+</blockquote>
+<h2 id="3-building-a-web-app-to-visualize-on-the-browser">3. Building A Web App to visualize on the Browser</h2>
+<p>This is the final part of this project. We will build a front end to visualize these embeddings in 3 dimensions in pure python.</p>
+<p>To do this, we will use <code>Dash</code>.</p>
+<p><code>Dash</code> is a python framework that lets you build beautiful web-based analytical apps in pure python. No JavaScript required.</p>
+<p>You can install dash : <code>pip install dash</code></p>
+<blockquote>
+<p><em><strong>If you need a end-to-end article on how to build web apps in pure python with <code>Dash</code>, let me know in the comments</strong></em></p>
+</blockquote>
+<p>A Dash application consists of 3parts —</p>
+<p><strong>1. Dependencies and app instantiation</strong></p>
+<p>This section talks about importing dependent packages and starting a Dash app</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># pip install dash==1.8.0</span>
+<span class="kn">import</span> <span class="nn">dash</span>
+<span class="kn">import</span> <span class="nn">dash_html_components</span> <span class="kn">as</span> <span class="nn">html</span>
+<span class="kn">import</span> <span class="nn">dash_core_components</span> <span class="kn">as</span> <span class="nn">dcc</span>
+<span class="kn">import</span> <span class="nn">dash_table</span>
+<span class="kn">from</span> <span class="nn">dash.dependencies</span> <span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Output</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="c1"># pip install dash_bootstrap_components</span>
+<span class="kn">import</span> <span class="nn">dash_bootstrap_components</span> <span class="kn">as</span> <span class="nn">dbc</span>
+
+<span class="c1"># pip install plotly_express</span>
+<span class="kn">import</span> <span class="nn">plotly_express</span> <span class="kn">as</span> <span class="nn">px</span>
+
+<span class="c1"># pip install sd_material_ui</span>
+<span class="kn">import</span> <span class="nn">sd_material_ui</span> <span class="kn">as</span> <span class="nn">sd</span>
+
+<span class="c1"># instantiating dash application</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">external_stylesheets</span><span class="o">=</span><span class="p">[</span><span class="n">dbc</span><span class="o">.</span><span class="n">themes</span><span class="o">.</span><span class="n">BOOTSTRAP</span><span class="p">,</span><span class="s2">&#34;https://codepen.io/chriddyp/pen/brPBPO.css&#34;</span><span class="p">])</span>
+
+<span class="c1"># adding a title to your dash app</span>
+<span class="n">app</span><span class="o">.</span><span class="n">title</span><span class="o">=</span><span class="s2">&#34;Visualizing Game of Thrones Using BERT&#34;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>2. Layout</strong></p>
+<p>It lets you define how your web application would look like - widgets, sliders, dropdowns etc. &amp; their alignment</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># Loading the data: You can download it from </span>
+<span class="c1"># https://drive.google.com/open?id=1M5vHLQqCv_AB1dm9kXW4AHsA5CjcFrm1</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;got_embeddings.csv&#34;</span><span class="p">)</span>
+
+<span class="c1"># Defining the app layout</span>
+<span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+
+	<span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">H4</span><span class="p">(</span><span class="s2">&#34;Visualizing Game of Thrones with BERT&#34;</span><span class="p">),</span>
+			<span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;textAlign&#39;</span><span class="p">:</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span><span class="s1">&#39;#ff8533&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="s1">&#39;font-size&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;padding&#39;</span><span class="p">:</span><span class="s1">&#39;1px&#39;</span><span class="p">}),</span>
+
+	<span class="n">dbc</span><span class="o">.</span><span class="n">Row</span><span class="p">([</span>
+		<span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">([</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Br</span><span class="p">(),</span>
+			<span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="s2">&#34;Choose a Book&#34;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;font-weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">}),</span>
+			<span class="n">sd</span><span class="o">.</span><span class="n">DropDownMenu</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;book&#39;</span><span class="p">,</span>
+                                    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 1&#39;</span><span class="p">,</span>
+                                    <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+                                        <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 1&#39;</span><span class="p">,</span> <span class="n">primaryText</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 1&#39;</span><span class="p">,</span>
+                                             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 1&#39;</span><span class="p">),</span>
+                                        <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 2&#39;</span><span class="p">,</span> <span class="n">primaryText</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 2&#39;</span><span class="p">),</span>
+                                        <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 3&#39;</span><span class="p">,</span> <span class="n">primaryText</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 3&#39;</span><span class="p">),</span>
+										<span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 4&#39;</span><span class="p">,</span> <span class="n">primaryText</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 4&#39;</span><span class="p">),</span>
+                                        <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 5&#39;</span><span class="p">,</span> <span class="n">primaryText</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 5&#39;</span><span class="p">),</span>
+                                    <span class="p">],</span>
+                                    <span class="n">menuStyle</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">),</span>  <span class="c1"># controls style of the open menu</span>
+                                    <span class="n">listStyle</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">35</span><span class="p">),</span>
+                                    <span class="n">selectedMenuItemStyle</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
+                                    <span class="n">anchorOrigin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">vertical</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">horizontal</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)),</span>
+
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Hr</span><span class="p">(),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="s2">&#34;Number of words:&#34;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;font-weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">}),</span>
+			<span class="n">dcc</span><span class="o">.</span><span class="n">Slider</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;num_words&#39;</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tooltip</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;always_visible&#39;</span><span class="p">:</span><span class="bp">False</span><span class="p">},</span> <span class="n">value</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Hr</span><span class="p">(),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="s2">&#34;Projection&#34;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;font-weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">}),</span>
+			<span class="n">dbc</span><span class="o">.</span><span class="n">RadioItems</span><span class="p">(</span> <span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s2">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;Truncated SVD&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;tSVD&#34;</span><span class="p">},</span>
+									 <span class="p">{</span><span class="s2">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;PCA&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;PCA&#34;</span><span class="p">}],</span>
+									 <span class="n">value</span><span class="o">=</span><span class="s2">&#34;tSVD&#34;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&#34;projection&#34;</span><span class="p">),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Hr</span><span class="p">(),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="s2">&#34;Options&#34;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;font-weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">}),</span>
+			<span class="n">dbc</span><span class="o">.</span><span class="n">Checklist</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s2">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;Show Noun Phrases&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">:</span> <span class="s1">&#39;noun&#39;</span><span class="p">}],</span>
+			            	<span class="nb">id</span><span class="o">=</span><span class="s2">&#34;noun_toggle&#34;</span><span class="p">,</span><span class="n">switch</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[]),</span>
+			<span class="n">dbc</span><span class="o">.</span><span class="n">Checklist</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s2">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;Show Unique Words&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">:</span> <span class="s1">&#39;unique&#39;</span><span class="p">}],</span>
+			            	<span class="nb">id</span><span class="o">=</span><span class="s2">&#34;unique_toggle&#34;</span><span class="p">,</span><span class="n">switch</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;unique&#39;</span><span class="p">]),</span>
+			<span class="n">dbc</span><span class="o">.</span><span class="n">Checklist</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s2">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;Remove Stopwords&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">:</span> <span class="s1">&#39;stopword&#39;</span><span class="p">}],</span>
+			            	<span class="nb">id</span><span class="o">=</span><span class="s2">&#34;stopword_toggle&#34;</span><span class="p">,</span><span class="n">switch</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;stopword&#39;</span><span class="p">]),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Hr</span><span class="p">(),</span>
+
+		<span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+
+		<span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span><span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;visualization&#39;</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+
+
+	<span class="p">],</span> <span class="n">no_gutters</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+	<span class="p">])</span>
+</code></pre></td></tr></table>
+</div>
+</div><p><strong>3. Callbacks</strong></p>
+<p>It lets you add interactivity on your charts, visuals or buttons.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="nd">@app.callback</span><span class="p">(</span><span class="n">Output</span><span class="p">(</span><span class="s2">&#34;visualization&#34;</span><span class="p">,</span> <span class="s2">&#34;figure&#34;</span><span class="p">),</span>
+    <span class="p">[</span>
+        <span class="n">Input</span><span class="p">(</span><span class="s2">&#34;book&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">),</span>
+        <span class="n">Input</span><span class="p">(</span><span class="s2">&#34;num_words&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">),</span>
+        <span class="n">Input</span><span class="p">(</span><span class="s2">&#34;projection&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">),</span>
+		<span class="n">Input</span><span class="p">(</span><span class="s2">&#34;noun_toggle&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">),</span>
+		<span class="n">Input</span><span class="p">(</span><span class="s2">&#34;unique_toggle&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">),</span>
+		<span class="n">Input</span><span class="p">(</span><span class="s2">&#34;stopword_toggle&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">)</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">on_form_change</span><span class="p">(</span><span class="n">book_num</span><span class="p">,</span> <span class="n">num_words</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">is_noun</span><span class="p">,</span> <span class="n">is_unique</span><span class="p">,</span> <span class="n">is_stopwords</span><span class="p">):</span>
+
+	<span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="o">.</span><span class="n">book</span> <span class="o">==</span> <span class="n">book_num</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">projection</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">length</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)]</span>
+	<span class="n">df</span><span class="p">[</span><span class="s1">&#39;word_usage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">frequency</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Rare&#39;</span><span class="p">,</span><span class="s1">&#39;Less Frequent&#39;</span><span class="p">,</span><span class="s1">&#39;Moderate&#39;</span><span class="p">,</span> <span class="s1">&#39;Frequent&#39;</span><span class="p">,</span><span class="s1">&#39;Most Frequent&#39;</span><span class="p">])</span>
+	<span class="k">if</span> <span class="s2">&#34;noun&#34;</span> <span class="ow">in</span> <span class="n">is_noun</span><span class="p">:</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="s2">&#34;NN&#34;</span><span class="p">]</span>
+	<span class="k">if</span> <span class="s2">&#34;unique&#34;</span> <span class="ow">in</span> <span class="n">is_unique</span><span class="p">:</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">words</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+	<span class="k">if</span> <span class="s2">&#34;stopword&#34;</span> <span class="ow">in</span> <span class="n">is_stopwords</span><span class="p">:</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">stopwords</span> <span class="o">==</span> <span class="bp">False</span><span class="p">]</span>
+	<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;frequency&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)[:</span><span class="n">num_words</span><span class="p">]</span>
+	<span class="n">n_words</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Dimension 1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&#34;Dimension 2&#34;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="s2">&#34;Dimension 3&#34;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;frequency&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;frequency&#39;</span><span class="p">,</span> <span class="n">size_max</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">hover_name</span><span class="o">=</span><span class="s1">&#39;words&#39;</span><span class="p">)</span>
+
+	<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+			<span class="n">scene</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">xaxis</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                         <span class="n">backgroundcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                         <span class="n">gridcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                         <span class="n">showbackground</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                         <span class="n">zerolinecolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+						 <span class="n">ticks</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+						<span class="n">showticklabels</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+                    <span class="n">yaxis</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                        <span class="n">backgroundcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                        <span class="n">gridcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                        <span class="n">showbackground</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">zerolinecolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+						<span class="n">ticks</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+						<span class="n">showticklabels</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+                    <span class="n">zaxis</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                        <span class="n">backgroundcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                        <span class="n">gridcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                        <span class="n">showbackground</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">zerolinecolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+						<span class="n">ticks</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+						<span class="n">showticklabels</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+					<span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
+                    <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
+                    <span class="n">zaxis_title</span><span class="o">=</span><span class="s1">&#39;.&#39;</span>
+
+						<span class="p">),</span>
+
+
+                  <span class="p">)</span>
+	<span class="k">return</span> <span class="n">fig</span>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8050</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Lets write all the 3 parts of the Dash app in a single <code>app.py</code> file and run the <code>app.py</code> file in your terminal:</p>
+<p><code>&gt;&gt; python app.py</code></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">  1
+</span><span class="lnt">  2
+</span><span class="lnt">  3
+</span><span class="lnt">  4
+</span><span class="lnt">  5
+</span><span class="lnt">  6
+</span><span class="lnt">  7
+</span><span class="lnt">  8
+</span><span class="lnt">  9
+</span><span class="lnt"> 10
+</span><span class="lnt"> 11
+</span><span class="lnt"> 12
+</span><span class="lnt"> 13
+</span><span class="lnt"> 14
+</span><span class="lnt"> 15
+</span><span class="lnt"> 16
+</span><span class="lnt"> 17
+</span><span class="lnt"> 18
+</span><span class="lnt"> 19
+</span><span class="lnt"> 20
+</span><span class="lnt"> 21
+</span><span class="lnt"> 22
+</span><span class="lnt"> 23
+</span><span class="lnt"> 24
+</span><span class="lnt"> 25
+</span><span class="lnt"> 26
+</span><span class="lnt"> 27
+</span><span class="lnt"> 28
+</span><span class="lnt"> 29
+</span><span class="lnt"> 30
+</span><span class="lnt"> 31
+</span><span class="lnt"> 32
+</span><span class="lnt"> 33
+</span><span class="lnt"> 34
+</span><span class="lnt"> 35
+</span><span class="lnt"> 36
+</span><span class="lnt"> 37
+</span><span class="lnt"> 38
+</span><span class="lnt"> 39
+</span><span class="lnt"> 40
+</span><span class="lnt"> 41
+</span><span class="lnt"> 42
+</span><span class="lnt"> 43
+</span><span class="lnt"> 44
+</span><span class="lnt"> 45
+</span><span class="lnt"> 46
+</span><span class="lnt"> 47
+</span><span class="lnt"> 48
+</span><span class="lnt"> 49
+</span><span class="lnt"> 50
+</span><span class="lnt"> 51
+</span><span class="lnt"> 52
+</span><span class="lnt"> 53
+</span><span class="lnt"> 54
+</span><span class="lnt"> 55
+</span><span class="lnt"> 56
+</span><span class="lnt"> 57
+</span><span class="lnt"> 58
+</span><span class="lnt"> 59
+</span><span class="lnt"> 60
+</span><span class="lnt"> 61
+</span><span class="lnt"> 62
+</span><span class="lnt"> 63
+</span><span class="lnt"> 64
+</span><span class="lnt"> 65
+</span><span class="lnt"> 66
+</span><span class="lnt"> 67
+</span><span class="lnt"> 68
+</span><span class="lnt"> 69
+</span><span class="lnt"> 70
+</span><span class="lnt"> 71
+</span><span class="lnt"> 72
+</span><span class="lnt"> 73
+</span><span class="lnt"> 74
+</span><span class="lnt"> 75
+</span><span class="lnt"> 76
+</span><span class="lnt"> 77
+</span><span class="lnt"> 78
+</span><span class="lnt"> 79
+</span><span class="lnt"> 80
+</span><span class="lnt"> 81
+</span><span class="lnt"> 82
+</span><span class="lnt"> 83
+</span><span class="lnt"> 84
+</span><span class="lnt"> 85
+</span><span class="lnt"> 86
+</span><span class="lnt"> 87
+</span><span class="lnt"> 88
+</span><span class="lnt"> 89
+</span><span class="lnt"> 90
+</span><span class="lnt"> 91
+</span><span class="lnt"> 92
+</span><span class="lnt"> 93
+</span><span class="lnt"> 94
+</span><span class="lnt"> 95
+</span><span class="lnt"> 96
+</span><span class="lnt"> 97
+</span><span class="lnt"> 98
+</span><span class="lnt"> 99
+</span><span class="lnt">100
+</span><span class="lnt">101
+</span><span class="lnt">102
+</span><span class="lnt">103
+</span><span class="lnt">104
+</span><span class="lnt">105
+</span><span class="lnt">106
+</span><span class="lnt">107
+</span><span class="lnt">108
+</span><span class="lnt">109
+</span><span class="lnt">110
+</span><span class="lnt">111
+</span><span class="lnt">112
+</span><span class="lnt">113
+</span><span class="lnt">114
+</span><span class="lnt">115
+</span><span class="lnt">116
+</span><span class="lnt">117
+</span><span class="lnt">118
+</span><span class="lnt">119
+</span><span class="lnt">120
+</span><span class="lnt">121
+</span><span class="lnt">122
+</span><span class="lnt">123
+</span><span class="lnt">124
+</span><span class="lnt">125
+</span><span class="lnt">126
+</span><span class="lnt">127
+</span><span class="lnt">128
+</span><span class="lnt">129
+</span><span class="lnt">130
+</span><span class="lnt">131
+</span><span class="lnt">132
+</span><span class="lnt">133
+</span><span class="lnt">134
+</span><span class="lnt">135
+</span><span class="lnt">136
+</span><span class="lnt">137
+</span><span class="lnt">138
+</span><span class="lnt">139
+</span><span class="lnt">140
+</span><span class="lnt">141
+</span><span class="lnt">142
+</span><span class="lnt">143
+</span><span class="lnt">144
+</span><span class="lnt">145
+</span><span class="lnt">146
+</span><span class="lnt">147
+</span><span class="lnt">148
+</span><span class="lnt">149
+</span><span class="lnt">150
+</span><span class="lnt">151
+</span><span class="lnt">152
+</span><span class="lnt">153
+</span><span class="lnt">154
+</span><span class="lnt">155
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># importing packages</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+
+<span class="c1"># pip install dash==1.8.0</span>
+<span class="kn">import</span> <span class="nn">dash</span>
+<span class="kn">import</span> <span class="nn">dash_html_components</span> <span class="kn">as</span> <span class="nn">html</span>
+<span class="kn">import</span> <span class="nn">dash_core_components</span> <span class="kn">as</span> <span class="nn">dcc</span>
+<span class="kn">import</span> <span class="nn">dash_table</span>
+<span class="kn">from</span> <span class="nn">dash.dependencies</span> <span class="kn">import</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Output</span><span class="p">,</span> <span class="n">State</span>
+
+<span class="c1"># pip install dash_bootstrap_components</span>
+<span class="kn">import</span> <span class="nn">dash_bootstrap_components</span> <span class="kn">as</span> <span class="nn">dbc</span>
+
+<span class="c1"># pip install plotly_express</span>
+<span class="kn">import</span> <span class="nn">plotly_express</span> <span class="kn">as</span> <span class="nn">px</span>
+
+<span class="c1"># pip install sd_material_ui</span>
+<span class="kn">import</span> <span class="nn">sd_material_ui</span> <span class="kn">as</span> <span class="nn">sd</span>
+
+<span class="c1"># instantiating dash application</span>
+<span class="n">app</span> <span class="o">=</span> <span class="n">dash</span><span class="o">.</span><span class="n">Dash</span><span class="p">(</span><span class="vm">__name__</span><span class="p">,</span> <span class="n">external_stylesheets</span><span class="o">=</span><span class="p">[</span><span class="n">dbc</span><span class="o">.</span><span class="n">themes</span><span class="o">.</span><span class="n">BOOTSTRAP</span><span class="p">,</span><span class="s2">&#34;https://codepen.io/chriddyp/pen/brPBPO.css&#34;</span><span class="p">])</span>
+<span class="c1"># adding a title to your dash app</span>
+<span class="n">app</span><span class="o">.</span><span class="n">title</span><span class="o">=</span><span class="s2">&#34;Visualizing Game of Thrones Using BERT&#34;</span>
+<span class="c1"># Loading screen CSS</span>
+<span class="c1">#app.css.append_css({&#34;external_url&#34;: &#34;https://codepen.io/chriddyp/pen/brPBPO.css&#34;})</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;got_embeddings.csv&#34;</span><span class="p">)</span>
+
+<span class="c1">#fig = px.scatter_3d(df[:10000], x=&#39;Dimension 1&#39;, y=&#34;Dimension 2&#34;, z=&#34;Dimension 3&#34;, height=600, size=&#39;frequency&#39;, color=&#39;frequency&#39;, hover_name=&#39;words&#39;)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">layout</span> <span class="o">=</span> <span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">([</span>
+
+	<span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="n">html</span><span class="o">.</span><span class="n">H4</span><span class="p">(</span><span class="s2">&#34;Visualizing Game of Thrones with BERT&#34;</span><span class="p">),</span>
+			<span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;textAlign&#39;</span><span class="p">:</span><span class="s1">&#39;center&#39;</span><span class="p">,</span><span class="s1">&#39;backgroundColor&#39;</span><span class="p">:</span><span class="s1">&#39;#ff8533&#39;</span><span class="p">,</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;white&#39;</span><span class="p">,</span><span class="s1">&#39;font-size&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span><span class="s1">&#39;padding&#39;</span><span class="p">:</span><span class="s1">&#39;1px&#39;</span><span class="p">}),</span>
+
+	<span class="n">dbc</span><span class="o">.</span><span class="n">Row</span><span class="p">([</span>
+		<span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">([</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Br</span><span class="p">(),</span>
+			<span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="s2">&#34;Choose a Book&#34;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;font-weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">}),</span>
+			<span class="n">sd</span><span class="o">.</span><span class="n">DropDownMenu</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;book&#39;</span><span class="p">,</span>
+                                    <span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 1&#39;</span><span class="p">,</span>
+                                    <span class="n">options</span><span class="o">=</span><span class="p">[</span>
+                                        <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 1&#39;</span><span class="p">,</span> <span class="n">primaryText</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 1&#39;</span><span class="p">,</span>
+                                             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 1&#39;</span><span class="p">),</span>
+                                        <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 2&#39;</span><span class="p">,</span> <span class="n">primaryText</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 2&#39;</span><span class="p">),</span>
+                                        <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 3&#39;</span><span class="p">,</span> <span class="n">primaryText</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 3&#39;</span><span class="p">),</span>
+										<span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 4&#39;</span><span class="p">,</span> <span class="n">primaryText</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 4&#39;</span><span class="p">),</span>
+                                        <span class="nb">dict</span><span class="p">(</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;Book 5&#39;</span><span class="p">,</span> <span class="n">primaryText</span><span class="o">=</span><span class="s1">&#39;Game of Thrones 5&#39;</span><span class="p">),</span>
+                                    <span class="p">],</span>
+                                    <span class="n">menuStyle</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">),</span>  <span class="c1"># controls style of the open menu</span>
+                                    <span class="n">listStyle</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">35</span><span class="p">),</span>
+                                    <span class="n">selectedMenuItemStyle</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">),</span>
+                                    <span class="n">anchorOrigin</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">vertical</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">horizontal</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)),</span>
+
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Hr</span><span class="p">(),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="s2">&#34;Number of words:&#34;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;font-weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">}),</span>
+			<span class="n">dcc</span><span class="o">.</span><span class="n">Slider</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;num_words&#39;</span><span class="p">,</span> <span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">tooltip</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;always_visible&#39;</span><span class="p">:</span><span class="bp">False</span><span class="p">},</span> <span class="n">value</span><span class="o">=</span><span class="mi">5000</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">10000</span><span class="p">,</span> <span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Hr</span><span class="p">(),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="s2">&#34;Projection&#34;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;font-weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">}),</span>
+			<span class="n">dbc</span><span class="o">.</span><span class="n">RadioItems</span><span class="p">(</span> <span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s2">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;Truncated SVD&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;tSVD&#34;</span><span class="p">},</span>
+									 <span class="p">{</span><span class="s2">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;PCA&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">:</span> <span class="s2">&#34;PCA&#34;</span><span class="p">}],</span>
+									 <span class="n">value</span><span class="o">=</span><span class="s2">&#34;tSVD&#34;</span><span class="p">,</span> <span class="nb">id</span><span class="o">=</span><span class="s2">&#34;projection&#34;</span><span class="p">),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Hr</span><span class="p">(),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Div</span><span class="p">(</span><span class="s2">&#34;Options&#34;</span><span class="p">,</span> <span class="n">style</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;font-weight&#39;</span><span class="p">:</span><span class="s1">&#39;bold&#39;</span><span class="p">}),</span>
+			<span class="n">dbc</span><span class="o">.</span><span class="n">Checklist</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s2">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;Show Noun Phrases&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">:</span> <span class="s1">&#39;noun&#39;</span><span class="p">}],</span>
+			            	<span class="nb">id</span><span class="o">=</span><span class="s2">&#34;noun_toggle&#34;</span><span class="p">,</span><span class="n">switch</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[]),</span>
+			<span class="n">dbc</span><span class="o">.</span><span class="n">Checklist</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s2">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;Show Unique Words&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">:</span> <span class="s1">&#39;unique&#39;</span><span class="p">}],</span>
+			            	<span class="nb">id</span><span class="o">=</span><span class="s2">&#34;unique_toggle&#34;</span><span class="p">,</span><span class="n">switch</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;unique&#39;</span><span class="p">]),</span>
+			<span class="n">dbc</span><span class="o">.</span><span class="n">Checklist</span><span class="p">(</span><span class="n">options</span><span class="o">=</span><span class="p">[{</span><span class="s2">&#34;label&#34;</span><span class="p">:</span> <span class="s2">&#34;Remove Stopwords&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">:</span> <span class="s1">&#39;stopword&#39;</span><span class="p">}],</span>
+			            	<span class="nb">id</span><span class="o">=</span><span class="s2">&#34;stopword_toggle&#34;</span><span class="p">,</span><span class="n">switch</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;stopword&#39;</span><span class="p">]),</span>
+
+			<span class="n">html</span><span class="o">.</span><span class="n">Hr</span><span class="p">(),</span>
+
+		<span class="p">],</span> <span class="n">width</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+
+		<span class="n">dbc</span><span class="o">.</span><span class="n">Col</span><span class="p">(</span><span class="n">dcc</span><span class="o">.</span><span class="n">Graph</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="s1">&#39;visualization&#39;</span><span class="p">),</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+
+
+
+	<span class="p">],</span> <span class="n">no_gutters</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+	<span class="p">])</span>
+
+
+
+<span class="nd">@app.callback</span><span class="p">(</span><span class="n">Output</span><span class="p">(</span><span class="s2">&#34;visualization&#34;</span><span class="p">,</span> <span class="s2">&#34;figure&#34;</span><span class="p">),</span>
+    <span class="p">[</span>
+        <span class="n">Input</span><span class="p">(</span><span class="s2">&#34;book&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">),</span>
+        <span class="n">Input</span><span class="p">(</span><span class="s2">&#34;num_words&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">),</span>
+        <span class="n">Input</span><span class="p">(</span><span class="s2">&#34;projection&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">),</span>
+		<span class="n">Input</span><span class="p">(</span><span class="s2">&#34;noun_toggle&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">),</span>
+		<span class="n">Input</span><span class="p">(</span><span class="s2">&#34;unique_toggle&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">),</span>
+		<span class="n">Input</span><span class="p">(</span><span class="s2">&#34;stopword_toggle&#34;</span><span class="p">,</span> <span class="s2">&#34;value&#34;</span><span class="p">)</span>
+    <span class="p">],</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">on_form_change</span><span class="p">(</span><span class="n">book_num</span><span class="p">,</span> <span class="n">num_words</span><span class="p">,</span> <span class="n">projection</span><span class="p">,</span> <span class="n">is_noun</span><span class="p">,</span> <span class="n">is_unique</span><span class="p">,</span> <span class="n">is_stopwords</span><span class="p">):</span>
+
+	<span class="n">df</span> <span class="o">=</span> <span class="n">data</span><span class="p">[(</span><span class="n">data</span><span class="o">.</span><span class="n">book</span> <span class="o">==</span> <span class="n">book_num</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">type</span> <span class="o">==</span> <span class="n">projection</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">length</span> <span class="o">!=</span> <span class="mi">1</span><span class="p">)]</span>
+	<span class="n">df</span><span class="p">[</span><span class="s1">&#39;word_usage&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">qcut</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">frequency</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span> <span class="n">labels</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Rare&#39;</span><span class="p">,</span><span class="s1">&#39;Less Frequent&#39;</span><span class="p">,</span><span class="s1">&#39;Moderate&#39;</span><span class="p">,</span> <span class="s1">&#39;Frequent&#39;</span><span class="p">,</span><span class="s1">&#39;Most Frequent&#39;</span><span class="p">])</span>
+	<span class="k">if</span> <span class="s2">&#34;noun&#34;</span> <span class="ow">in</span> <span class="n">is_noun</span><span class="p">:</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">pos</span> <span class="o">==</span> <span class="s2">&#34;NN&#34;</span><span class="p">]</span>
+	<span class="k">if</span> <span class="s2">&#34;unique&#34;</span> <span class="ow">in</span> <span class="n">is_unique</span><span class="p">:</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">words</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">index</span><span class="p">]</span>
+
+	<span class="k">if</span> <span class="s2">&#34;stopword&#34;</span> <span class="ow">in</span> <span class="n">is_stopwords</span><span class="p">:</span>
+		<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">stopwords</span> <span class="o">==</span> <span class="bp">False</span><span class="p">]</span>
+	<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;frequency&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="bp">False</span><span class="p">)[:</span><span class="n">num_words</span><span class="p">]</span>
+	<span class="n">n_words</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+	<span class="n">fig</span> <span class="o">=</span> <span class="n">px</span><span class="o">.</span><span class="n">scatter_3d</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;Dimension 1&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&#34;Dimension 2&#34;</span><span class="p">,</span> <span class="n">z</span><span class="o">=</span><span class="s2">&#34;Dimension 3&#34;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">600</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="s1">&#39;frequency&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;frequency&#39;</span><span class="p">,</span> <span class="n">size_max</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span><span class="n">hover_name</span><span class="o">=</span><span class="s1">&#39;words&#39;</span><span class="p">)</span>
+
+	<span class="n">fig</span><span class="o">.</span><span class="n">update_layout</span><span class="p">(</span>
+			<span class="n">scene</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                    <span class="n">xaxis</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                         <span class="n">backgroundcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                         <span class="n">gridcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                         <span class="n">showbackground</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                         <span class="n">zerolinecolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+						 <span class="n">ticks</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+						<span class="n">showticklabels</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+                    <span class="n">yaxis</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                        <span class="n">backgroundcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                        <span class="n">gridcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                        <span class="n">showbackground</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">zerolinecolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+						<span class="n">ticks</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+						<span class="n">showticklabels</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+                    <span class="n">zaxis</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+                        <span class="n">backgroundcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                        <span class="n">gridcolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+                        <span class="n">showbackground</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                        <span class="n">zerolinecolor</span><span class="o">=</span><span class="s2">&#34;white&#34;</span><span class="p">,</span>
+						<span class="n">ticks</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+						<span class="n">showticklabels</span><span class="o">=</span><span class="bp">False</span><span class="p">),</span>
+					<span class="n">xaxis_title</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
+                    <span class="n">yaxis_title</span><span class="o">=</span><span class="s1">&#39;.&#39;</span><span class="p">,</span>
+                    <span class="n">zaxis_title</span><span class="o">=</span><span class="s1">&#39;.&#39;</span>
+
+						<span class="p">),</span>
+
+
+                  <span class="p">)</span>
+	<span class="k">return</span> <span class="n">fig</span>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">app</span><span class="o">.</span><span class="n">run_server</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">,</span><span class="n">debug</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="mi">8050</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h2 id="-hooray-youre-done">🥳 Hooray, you’re done!</h2>
+<p>Now you can explore your GOT characters in 3D.</p>
+<figure>
+    <img src="/posts/dl/images/got.gif"/> 
+</figure>
+
+<blockquote>
+<p><strong>But, what did I find out from this experiment?</strong></p>
+<ul>
+<li>Were all characters, food items, places, things formed seperate clusters?</li>
+<li>Which all characters were in close proximity?</li>
+</ul>
+</blockquote>
+<p><strong>I will keep it for the next time</strong></p></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 13/11/2020</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://shivanandroy.com/visualizing-game-of-thrones-with-bert/" data-title="Visualizing Game of Thrones with BERT" data-via="snrspeaks" data-hashtags="Deep Learning,Game of Thrones,BERT"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://shivanandroy.com/visualizing-game-of-thrones-with-bert/" data-hashtag="Deep Learning"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://shivanandroy.com/visualizing-game-of-thrones-with-bert/" data-title="Visualizing Game of Thrones with BERT" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://shivanandroy.com/visualizing-game-of-thrones-with-bert/" data-title="Visualizing Game of Thrones with BERT"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://shivanandroy.com/visualizing-game-of-thrones-with-bert/" data-title="Visualizing Game of Thrones with BERT"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://shivanandroy.com/visualizing-game-of-thrones-with-bert/" data-title="Visualizing Game of Thrones with BERT" data-description="In this article, we will visualize Game of Thrones books with BERT in 3D space."><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://shivanandroy.com/visualizing-game-of-thrones-with-bert/" data-title="Visualizing Game of Thrones with BERT" data-description="In this article, we will visualize Game of Thrones books with BERT in 3D space."><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://shivanandroy.com/visualizing-game-of-thrones-with-bert/" data-title="Visualizing Game of Thrones with BERT"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/deep-learning/">Deep Learning</a>,&nbsp;<a href="/tags/game-of-thrones/">Game of Thrones</a>,&nbsp;<a href="/tags/bert/">BERT</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/building-a-faster-accurate-covid-search-engine-with-transformers/" class="prev" rel="prev" title="Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗"><i class="fas fa-angle-left fa-fw"></i>Building A Faster &amp; Accurate COVID Search Engine with Transformers🤗</a>
+            <a href="/fine-tune-t5-transformer-with-pytorch/" class="next" rel="next" title="Fine Tuning T5 Transformer Model with PyTorch">Fine Tuning T5 Transformer Model with PyTorch<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><a href="/policy/">Privacy & Policies</a>&nbsp&nbsp|&nbsp&nbsp<a href="/contact/">Contact Us</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://shivanandroy.com" target="_blank">Shivanand Roy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":1000},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"title","label":"","lightTheme":"github-light","repo":"Shivanandroy/Blog"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-177212842-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-177212842-1" async></script></body>
+</html>

@@ -1,0 +1,29 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>BERT - Tag - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/tags/bert/</link>
+        <description>BERT - Tag - Shivanand Roy | Deep Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamshivanandroy@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>iamshivanandroy@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Fri, 13 Nov 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/bert/" rel="self" type="application/rss+xml" /><item>
+    <title>Visualizing Game of Thrones with BERT</title>
+    <link>http://shivanandroy.com/visualizing-game-of-thrones-with-bert/</link>
+    <pubDate>Fri, 13 Nov 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/visualizing-game-of-thrones-with-bert/</guid>
+    <description><![CDATA[In this article, we will visualize Game of Thrones books with BERT in 3D space.]]></description>
+</item><item>
+    <title>Building Question Answering Model at Scale using 🤗Transformers</title>
+    <link>http://shivanandroy.com/transformers-building-question-answers-model-at-scale/</link>
+    <pubDate>Mon, 12 Oct 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/transformers-building-question-answers-model-at-scale/</guid>
+    <description><![CDATA[In this article, you will learn how to fetch contextual answers in a huge corpus of documents using Transformers🤗. We will build a neural question and answering system using transformers models (`RoBERTa`). This approach is capable to perform Q&A across millions of documents in few seconds.]]></description>
+</item><item>
+    <title>Code📝: Fine Tune BERT Model for Binary Text Classification</title>
+    <link>http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/</link>
+    <pubDate>Thu, 08 Oct 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/fine-tune-bert-for-binary-text-classification/</guid>
+    <description><![CDATA[This is the code for downloading and fine tuning pre-trained BERT model on custom dataset for binary text classification]]></description>
+</item></channel>
+</rss>

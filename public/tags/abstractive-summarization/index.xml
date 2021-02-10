@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Abstractive Summarization - Tag - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/tags/abstractive-summarization/</link>
+        <description>Abstractive Summarization - Tag - Shivanand Roy | Deep Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamshivanandroy@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>iamshivanandroy@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Sun, 11 Oct 2020 00:40:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/abstractive-summarization/" rel="self" type="application/rss+xml" /><item>
+    <title>Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers</title>
+    <link>http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/</link>
+    <pubDate>Sun, 11 Oct 2020 00:40:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/</guid>
+    <description><![CDATA[In this article, you will learn how to train a `T5 model` for text generation - to generate title given a research paper's abstract or summary using Transformers🤗. For this tutorial, We will take research paper's abstract or brief summary as our input text and its corrosponding paper's title as output text and feed it to a `T5 model` to train. Once the model is trained, it will be able to generate the paper's title based on the abstract. ]]></description>
+</item></channel>
+</rss>

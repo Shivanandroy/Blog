@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Resume Analyzer - Tag - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/tags/resume-analyzer/</link>
+        <description>Resume Analyzer - Tag - Shivanand Roy | Deep Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamshivanandroy@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>iamshivanandroy@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Sat, 10 Oct 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/resume-analyzer/" rel="self" type="application/rss+xml" /><item>
+    <title>ResumeAnalyzer | An Easy Solution to Rank Resumes using Spacy</title>
+    <link>http://shivanandroy.com/resume-analyzer/</link>
+    <pubDate>Sat, 10 Oct 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/resume-analyzer/</guid>
+    <description><![CDATA[ResumeAnalyzer is an easy, lightweight python package to rank resumes based on your requirement in just one line of code.]]></description>
+</item></channel>
+</rss>

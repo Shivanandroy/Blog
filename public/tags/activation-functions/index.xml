@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Activation Functions - Tag - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/tags/activation-functions/</link>
+        <description>Activation Functions - Tag - Shivanand Roy | Deep Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamshivanandroy@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>iamshivanandroy@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Wed, 09 Sep 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/activation-functions/" rel="self" type="application/rss+xml" /><item>
+    <title>Why Do We Need Activation Functions?</title>
+    <link>http://shivanandroy.com/why-do-we-need-activation-functions/</link>
+    <pubDate>Wed, 09 Sep 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/why-do-we-need-activation-functions/</guid>
+    <description><![CDATA[By now, we all are familiar with neural networks and its architecture (input layer, hidden layer, output layer) but one thing that I’m continuously asked is - ‘why do we need activation functions?’ or ‘what will happen if we pass the output to the next layer without an activation function’ or ‘Is nonlinearities really needed by the neural networks?’]]></description>
+</item></channel>
+</rss>

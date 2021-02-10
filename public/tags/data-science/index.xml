@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Data Science - Tag - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/tags/data-science/</link>
+        <description>Data Science - Tag - Shivanand Roy | Deep Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamshivanandroy@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>iamshivanandroy@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Sun, 18 Oct 2020 00:42:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/data-science/" rel="self" type="application/rss+xml" /><item>
+    <title>Top 10 Most Useful But Underrated Python Libraries for Data Science</title>
+    <link>http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/</link>
+    <pubDate>Sun, 18 Oct 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/</guid>
+    <description><![CDATA[Top 10 most useful but underrated python libraries for data science and machine learning]]></description>
+</item></channel>
+</rss>

@@ -1,0 +1,15 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Awesome NLP - Tag - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/tags/awesome-nlp/</link>
+        <description>Awesome NLP - Tag - Shivanand Roy | Deep Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamshivanandroy@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>iamshivanandroy@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Sat, 31 Oct 2020 00:44:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/awesome-nlp/" rel="self" type="application/rss+xml" /><item>
+    <title>NLP360 : Awesome NLP Resources</title>
+    <link>http://shivanandroy.com/awesome-nlp-resources/</link>
+    <pubDate>Sat, 31 Oct 2020 00:44:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/awesome-nlp-resources/</guid>
+    <description><![CDATA[NLP360 is curated list of resources related to Natural Language Processing (NLP) x updated weekly]]></description>
+</item></channel>
+</rss>

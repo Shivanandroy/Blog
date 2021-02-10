@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling - Shivanand Roy | Deep Learning</title>
+
+        <link rel="alternate" href="http://shivanandroy.com/index.xml" type="application/rss+xml" title="Shivanand Roy | Deep Learning"/><meta name="Description" content="Uber just open-sourced its time series modeling packagae - Orbit based on probabilistic modeling"><meta property="og:title" content="Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling" />
+<meta property="og:description" content="Uber just open-sourced its time series modeling packagae - Orbit based on probabilistic modeling" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/" />
+<meta property="og:image" content="http://shivanandroy.com/posts/ml/images/orbit.png" />
+<meta property="article:published_time" content="2020-10-30T00:42:27+05:30" />
+<meta property="article:modified_time" content="2020-10-30T00:42:27+05:30" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://shivanandroy.com/posts/ml/images/orbit.png"/>
+
+<meta name="twitter:title" content="Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling"/>
+<meta name="twitter:description" content="Uber just open-sourced its time series modeling packagae - Orbit based on probabilistic modeling"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/" /><link rel="prev" href="http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/" /><link rel="next" href="http://shivanandroy.com/awesome-nlp-resources/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Orbit | Uber's New Open Source Python Library for Time Series Modeling",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/shivanandroy.com\/orbit-uber-opensources-python-package-for-time-series-modeling\/"
+        },"genre": "posts","keywords": "Orbit, Machine Learning, Time Series Modeling, Python Packages","wordcount":  307 ,
+        "url": "http:\/\/shivanandroy.com\/orbit-uber-opensources-python-package-for-time-series-modeling\/","datePublished": "2020-10-30T00:42:27+05:30","dateModified": "2020-10-30T00:42:27+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Shivanand Roy"
+            },"description": "Uber just open-sourced its time series modeling packagae - Orbit based on probabilistic modeling"
+    }
+    </script>
+		    <script data-ad-client="ca-pub-1337012385171026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </head>
+    <body header-desktop="fixed" header-mobile="auto"><script defer type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/dl/" title="Deep Learning"> Deep Learning </a><a class="menu-item" href="/posts/ml/" title="Machine Learning"> Machine Learning </a><a class="menu-item" href="/posts/codebase/" title="Code Base"> Code Base </a><a class="menu-item" href="/categories/" title="Categories"> Categories </a><a class="menu-item" href="/tags/" title="Tags"> Tags </a><a class="menu-item" href="/subscribe/" title="Subscribe🚀"> Subscribe🚀 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/dl/" title="Deep Learning">Deep Learning</a><a class="menu-item" href="/posts/ml/" title="Machine Learning">Machine Learning</a><a class="menu-item" href="/posts/codebase/" title="Code Base">Code Base</a><a class="menu-item" href="/categories/" title="Categories">Categories</a><a class="menu-item" href="/tags/" title="Tags">Tags</a><a class="menu-item" href="/subscribe/" title="Subscribe🚀">Subscribe🚀</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://shivanandroy.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Shivanand Roy</a></span>&nbsp;<span class="post-category">included in <a href="/categories/python-packages/"><i class="far fa-folder fa-fw"></i>Python Packages</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="30/10/2020">30/10/2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;307 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;2 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#quick-start">Quick Start</a>
+      <ul>
+        <li>
+          <ul>
+            <li><a href="#installation">Installation</a></li>
+            <li><a href="#data">Data</a></li>
+            <li><a href="#quick-starter-code">Quick Starter Code</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#references">References</a></li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><p><code>Orbit</code> is Uber&rsquo;s new python package for time series modeling and inference using Bayesian sampling methods for model estimation.</p>
+<figure>
+    <img src="/posts/ml/images/orbit.png"/> 
+</figure>
+
+<p><strong>Orbit</strong> provides a familiar and intuitive initialize-fit-predict interface for working with time series tasks, while utilizing probabilistic modeling under the hood.</p>
+<p>As per Orbit&rsquo;s documentation, initial release supports concrete implementation for the following models:</p>
+<ul>
+<li>Local Global Trend (LGT)</li>
+<li>Damped Local Trend (DLT)</li>
+</ul>
+<p>Both models, which are variants of exponential smoothing, support seasonality and exogenous (time-independent) features.</p>
+<p>The initial release also supports the following sampling methods for model estimation:</p>
+<ul>
+<li><strong>Markov-Chain Monte Carlo (MCMC)</strong> as a full sampling method</li>
+<li><strong>Maximum a Posteriori (MAP)</strong> as a point estimate method</li>
+<li><strong>Variational Inference (VI)</strong> as a hybrid-sampling method on approximate distribution</li>
+</ul>
+<h2 id="quick-start">Quick Start</h2>
+<h4 id="installation">Installation</h4>
+<p><code>pip install orbit-ml</code></p>
+<p>Orbit requires PyStan as a system dependency. PyStan is licensed under GPLv3 , which is a free, copyleft license for software.</p>
+<h4 id="data">Data</h4>
+<p><code>iclaims_example</code> is a dataset containing the weekly initial claims for US unemployment benefits against a few related google trend queries from Jan 2010 - June 2018.</p>
+<p>Number of claims are obtained from <a href="https://fred.stlouisfed.org/series/ICNSA" target="_blank" rel="noopener noreffer">Federal Reserve Bank of St. Louis</a> while google queries are obtained through <a href="https://trends.google.com/trends/?geo=US" target="_blank" rel="noopener noreffer">Google Trends API</a>.</p>
+<h4 id="quick-starter-code">Quick Starter Code</h4>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># import dependencies</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="kn">from</span> <span class="nn">orbit.models.dlt</span> <span class="kn">import</span> <span class="n">DLTMAP</span><span class="p">,</span> <span class="n">DLTFull</span>
+<span class="kn">from</span> <span class="nn">orbit.diagnostics.plot</span> <span class="kn">import</span> <span class="n">plot_predicted_data</span>
+
+<span class="c1"># Load data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&#34;../../examples/data/iclaims_example.csv&#34;</span><span class="p">,</span> <span class="n">parse_dates</span><span class="o">=</span><span class="p">[</span><span class="s2">&#34;week&#34;</span><span class="p">])</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&#34;claims&#34;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&#34;claims&#34;</span><span class="p">])</span>
+
+<span class="c1"># train test split</span>
+<span class="n">test_size</span> <span class="o">=</span> <span class="mi">104</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:</span><span class="o">-</span><span class="n">test_size</span><span class="p">]</span>
+<span class="n">test_df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="o">-</span><span class="n">test_size</span><span class="p">:]</span>
+
+<span class="c1"># DLT model </span>
+<span class="n">dlt</span> <span class="o">=</span> <span class="n">DLTMAP</span><span class="p">(</span>
+    <span class="n">response_col</span><span class="o">=</span><span class="s2">&#34;claims&#34;</span><span class="p">,</span>
+    <span class="n">date_col</span><span class="o">=</span><span class="s2">&#34;week&#34;</span><span class="p">,</span>
+    <span class="n">seasonality</span><span class="o">=</span><span class="mi">52</span><span class="p">,</span>
+    <span class="n">seed</span><span class="o">=</span><span class="mi">2020</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># fit</span>
+<span class="n">dlt</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">train_df</span><span class="p">)</span>
+
+<span class="c1"># predict</span>
+<span class="n">predicted_df</span> <span class="o">=</span> <span class="n">dlt</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">df</span><span class="o">=</span><span class="n">test_df</span><span class="p">)</span>
+
+<span class="c1"># plot</span>
+<span class="n">plot_predicted_data</span><span class="p">(</span><span class="n">training_actual_df</span><span class="o">=</span><span class="n">train_df</span><span class="p">,</span> <span class="n">predicted_df</span><span class="o">=</span><span class="n">predicted_df</span><span class="p">,</span>
+                    <span class="n">date_col</span><span class="o">=</span><span class="s2">&#34;week&#34;</span><span class="p">,</span> <span class="n">actual_col</span><span class="o">=</span><span class="s2">&#34;claims&#34;</span><span class="p">,</span>
+                    <span class="n">test_actual_df</span><span class="o">=</span><span class="n">test_df</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><figure>
+    <img src="/posts/ml/images/orbit-quickstart.png"/> 
+</figure>
+
+<h2 id="references">References</h2>
+<div class="details admonition success open">
+        <div class="details-summary admonition-title">
+            <i class="icon fas fa-check-circle fa-fw"></i>Reference links<i class="details-icon fas fa-angle-right fa-fw"></i>
+        </div>
+        <div class="details-content">
+            <div class="admonition-content"><ul>
+<li><a href="https://github.com/uber/orbit" target="_blank" rel="noopener noreffer">Github</a></li>
+<li><a href="https://arxiv.org/abs/2004.08492" target="_blank" rel="noopener noreffer">ArXiv Paper</a></li>
+<li><a href="https://uber.github.io/orbit/" target="_blank" rel="noopener noreffer">Documentation</a></li>
+</ul>
+</div>
+        </div>
+    </div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 30/10/2020</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/" data-title="Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling" data-via="snrspeaks" data-hashtags="Orbit,Machine Learning,Time Series Modeling,Python Packages"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/" data-hashtag="Orbit"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/" data-title="Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/" data-title="Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/" data-title="Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/" data-title="Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling" data-description="Uber just open-sourced its time series modeling packagae - Orbit based on probabilistic modeling"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/" data-title="Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling" data-description="Uber just open-sourced its time series modeling packagae - Orbit based on probabilistic modeling"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/" data-title="Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/orbit/">Orbit</a>,&nbsp;<a href="/tags/machine-learning/">Machine Learning</a>,&nbsp;<a href="/tags/time-series-modeling/">Time Series Modeling</a>,&nbsp;<a href="/tags/python-packages/">Python Packages</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/top-useful-but-underrated-python-libraries-for-data-science/" class="prev" rel="prev" title="Top 10 Most Useful But Underrated Python Libraries for Data Science"><i class="fas fa-angle-left fa-fw"></i>Top 10 Most Useful But Underrated Python Libraries for Data Science</a>
+            <a href="/awesome-nlp-resources/" class="next" rel="next" title="NLP360 : Awesome NLP Resources">NLP360 : Awesome NLP Resources<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><a href="/policy/">Privacy & Policies</a>&nbsp&nbsp|&nbsp&nbsp<a href="/contact/">Contact Us</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://shivanandroy.com" target="_blank">Shivanand Roy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":1000},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"title","label":"","lightTheme":"github-light","repo":"Shivanandroy/Blog"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-177212842-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-177212842-1" async></script></body>
+</html>

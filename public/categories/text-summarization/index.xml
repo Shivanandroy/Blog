@@ -3,13 +3,13 @@
         <title>Text Summarization - Category - Shivanand Roy | Deep Learning</title>
         <link>http://shivanandroy.com/categories/text-summarization/</link>
         <description>Text Summarization - Category - Shivanand Roy | Deep Learning</description>
-        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>Shivanandroy.official@gmail.com (Shivanand Roy)</managingEditor>
-            <webMaster>Shivanandroy.official@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Tue, 01 Sep 2020 00:40:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/categories/text-summarization/" rel="self" type="application/rss+xml" /><item>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamshivanandroy@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>iamshivanandroy@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Sun, 11 Oct 2020 00:40:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/categories/text-summarization/" rel="self" type="application/rss+xml" /><item>
     <title>Training a T5 Transformer Model - Generating Titles from ArXiv Paper&#39;s Abstracts using 🤗Transformers</title>
     <link>http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/</link>
-    <pubDate>Tue, 01 Sep 2020 00:40:27 &#43;0530</pubDate>
+    <pubDate>Sun, 11 Oct 2020 00:40:27 &#43;0530</pubDate>
     <author>Author</author>
     <guid>http://shivanandroy.com/transformers-generating-arxiv-papers-title-from-abstracts/</guid>
-    <description><![CDATA[AbstractIn this article, you will learn how to train a T5 model for text generation - to generate title given a research paper&rsquo;s abstract or summary using Transformers🤗 Introduction T5 model is a Sequence-to-Sequence model. A Sequence-to-Sequence model is fully capable to perform any text to text conversion task. What does it mean? - It means that a T5 model can take any input text and convert it into any output text.]]></description>
+    <description><![CDATA[In this article, you will learn how to train a `T5 model` for text generation - to generate title given a research paper's abstract or summary using Transformers🤗. For this tutorial, We will take research paper's abstract or brief summary as our input text and its corrosponding paper's title as output text and feed it to a `T5 model` to train. Once the model is trained, it will be able to generate the paper's title based on the abstract. ]]></description>
 </item></channel>
 </rss>

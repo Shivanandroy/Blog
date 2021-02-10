@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="robots" content="noodp" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+        <title>Top 10 Most Useful But Underrated Python Libraries for Data Science - Shivanand Roy | Deep Learning</title>
+
+        <link rel="alternate" href="http://shivanandroy.com/index.xml" type="application/rss+xml" title="Shivanand Roy | Deep Learning"/><meta name="Description" content="Top 10 most useful but underrated python libraries for data science and machine learning"><meta property="og:title" content="Top 10 Most Useful But Underrated Python Libraries for Data Science" />
+<meta property="og:description" content="Top 10 most useful but underrated python libraries for data science and machine learning" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/" />
+<meta property="og:image" content="http://shivanandroy.com/posts/ml/images/underratedpythonlibrary.jpg" />
+<meta property="article:published_time" content="2020-10-18T00:42:27+05:30" />
+<meta property="article:modified_time" content="2020-10-18T00:42:27+05:30" />
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="http://shivanandroy.com/posts/ml/images/underratedpythonlibrary.jpg"/>
+
+<meta name="twitter:title" content="Top 10 Most Useful But Underrated Python Libraries for Data Science"/>
+<meta name="twitter:description" content="Top 10 most useful but underrated python libraries for data science and machine learning"/>
+<meta name="application-name" content="LoveIt">
+<meta name="apple-mobile-web-app-title" content="LoveIt"><meta name="theme-color" content="#ffffff"><meta name="msapplication-TileColor" content="#da532c"><link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><link rel="manifest" href="/site.webmanifest"><link rel="canonical" href="http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/" /><link rel="prev" href="http://shivanandroy.com/resume-analyzer/" /><link rel="next" href="http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/" /><link rel="stylesheet" href="/lib/normalize/normalize.min.css"><link rel="stylesheet" href="/css/style.min.css"><link rel="stylesheet" href="/lib/fontawesome-free/all.min.css"><link rel="stylesheet" href="/lib/animate/animate.min.css"><script type="application/ld+json">
+    {
+        "@context": "http://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Top 10 Most Useful But Underrated Python Libraries for Data Science",
+        "inLanguage": "en",
+        "mainEntityOfPage": {
+            "@type": "WebPage",
+            "@id": "http:\/\/shivanandroy.com\/top-useful-but-underrated-python-libraries-for-data-science\/"
+        },"genre": "posts","keywords": "Data Science, Machine Learning, Python Packages","wordcount":  2212 ,
+        "url": "http:\/\/shivanandroy.com\/top-useful-but-underrated-python-libraries-for-data-science\/","datePublished": "2020-10-18T00:42:27+05:30","dateModified": "2020-10-18T00:42:27+05:30","publisher": {
+            "@type": "Organization",
+            "name": ""},"author": {
+                "@type": "Person",
+                "name": "Shivanand Roy"
+            },"description": "Top 10 most useful but underrated python libraries for data science and machine learning"
+    }
+    </script>
+		    <script data-ad-client="ca-pub-1337012385171026" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    </head>
+    <body header-desktop="fixed" header-mobile="auto"><script defer type="text/javascript">(window.localStorage && localStorage.getItem('theme') ? localStorage.getItem('theme') === 'dark' : ('auto' === 'auto' ? window.matchMedia('(prefers-color-scheme: dark)').matches : 'auto' === 'dark')) && document.body.setAttribute('theme', 'dark');</script>
+
+        <div id="mask"></div><div class="wrapper"><header class="desktop" id="header-desktop">
+    <div class="header-wrapper">
+        <div class="header-title">
+            <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
+        </div>
+        <div class="menu">
+            <div class="menu-inner"><a class="menu-item" href="/posts/dl/" title="Deep Learning"> Deep Learning </a><a class="menu-item" href="/posts/ml/" title="Machine Learning"> Machine Learning </a><a class="menu-item" href="/posts/codebase/" title="Code Base"> Code Base </a><a class="menu-item" href="/categories/" title="Categories"> Categories </a><a class="menu-item" href="/tags/" title="Tags"> Tags </a><a class="menu-item" href="/subscribe/" title="Subscribe🚀"> Subscribe🚀 </a><span class="menu-item delimiter"></span><span class="menu-item search" id="search-desktop">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-desktop">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-desktop" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-desktop" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-desktop">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </span><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                    <i class="fas fa-adjust fa-fw"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</header><header class="mobile" id="header-mobile">
+    <div class="header-container">
+        <div class="header-wrapper">
+            <div class="header-title">
+                <a href="/" title="Shivanand Roy | Deep Learning"><span class="header-title-pre"><span style="font-size:23px"><span style="font-family:Helvetica"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span></span></a>
+            </div>
+            <div class="menu-toggle" id="menu-toggle-mobile">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+        <div class="menu" id="menu-mobile"><div class="search-wrapper">
+                    <div class="search mobile" id="search-mobile">
+                        <input type="text" placeholder="Search titles or contents..." id="search-input-mobile">
+                        <a href="javascript:void(0);" class="search-button search-toggle" id="search-toggle-mobile" title="Search">
+                            <i class="fas fa-search fa-fw"></i>
+                        </a>
+                        <a href="javascript:void(0);" class="search-button search-clear" id="search-clear-mobile" title="Clear">
+                            <i class="fas fa-times-circle fa-fw"></i>
+                        </a>
+                        <span class="search-button search-loading" id="search-loading-mobile">
+                            <i class="fas fa-spinner fa-fw fa-spin"></i>
+                        </span>
+                    </div>
+                    <a href="javascript:void(0);" class="search-cancel" id="search-cancel-mobile">
+                        Cancel
+                    </a>
+                </div><a class="menu-item" href="/posts/dl/" title="Deep Learning">Deep Learning</a><a class="menu-item" href="/posts/ml/" title="Machine Learning">Machine Learning</a><a class="menu-item" href="/posts/codebase/" title="Code Base">Code Base</a><a class="menu-item" href="/categories/" title="Categories">Categories</a><a class="menu-item" href="/tags/" title="Tags">Tags</a><a class="menu-item" href="/subscribe/" title="Subscribe🚀">Subscribe🚀</a><a href="javascript:void(0);" class="menu-item theme-switch" title="Switch Theme">
+                <i class="fas fa-adjust fa-fw"></i>
+            </a></div>
+    </div>
+</header>
+<div class="search-dropdown desktop">
+    <div id="search-dropdown-desktop"></div>
+</div>
+<div class="search-dropdown mobile">
+    <div id="search-dropdown-mobile"></div>
+</div>
+<main class="main">
+                <div class="container"><div class="toc" id="toc-auto">
+            <h2 class="toc-title">Contents</h2>
+            <div class="toc-content always-active" id="toc-content-auto"></div>
+        </div><article class="page single"><h1 class="single-title animated flipInX">Top 10 Most Useful But Underrated Python Libraries for Data Science</h1><div class="post-meta">
+            <div class="post-meta-line"><span class="post-author"><a href="https://shivanandroy.com" title="Author" target="_blank" rel="noopener noreffer author" class="author"><i class="fas fa-user-circle fa-fw"></i>Shivanand Roy</a></span>&nbsp;<span class="post-category">included in <a href="/categories/python-packages/"><i class="far fa-folder fa-fw"></i>Python Packages</a></span></div>
+            <div class="post-meta-line"><i class="far fa-calendar-alt fa-fw"></i>&nbsp;<time datetime="18/10/2020">18/10/2020</time>&nbsp;<i class="fas fa-pencil-alt fa-fw"></i>&nbsp;2212 words&nbsp;
+                <i class="far fa-clock fa-fw"></i>&nbsp;11 minutes&nbsp;</div>
+        </div><div class="details toc" id="toc-static"  kept="">
+                <div class="details-summary toc-title">
+                    <span>Contents</span>
+                    <span><i class="details-icon fas fa-angle-right"></i></span>
+                </div>
+                <div class="details-content toc-content" id="toc-content-static"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#1-missingno">1. <code>MissingNo</code></a></li>
+        <li><a href="#2-mlextend">2. <code>MLExtend</code></a></li>
+        <li><a href="#3--flair">3.  <code>Flair</code></a></li>
+        <li><a href="#4-adaptnlp">4. <code>AdaptNLP</code></a></li>
+        <li><a href="#5-simpletransformers">5. <code>SimpleTransformers</code></a></li>
+        <li><a href="#6-sentence-transformers">6. <code>Sentence-Transformers</code></a></li>
+        <li><a href="#7-tweet-preprocessor">7. <code>Tweet-Preprocessor</code></a></li>
+        <li><a href="#8-gradio">8. <code>Gradio</code></a></li>
+        <li><a href="#9-ppscore">9. <code>PPScore</code></a></li>
+        <li><a href="#10-pytorch-forecasting">10. <code>Pytorch-Forecasting</code></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav></div>
+            </div><div class="content" id="content"><figure>
+    <img src="/posts/ml/images/underratedpythonlibrary.jpg"/> 
+</figure>
+
+<h2 id="introduction">Introduction</h2>
+<p>Python community offers jillion of python packages for data science pipeline starting from data cleaning to building deep learning models to deployment. Most appreciated and commonly used packages are - </p>
+<ul>
+<li><code>Pandas</code>  : Data manipulation and analysis</li>
+<li><code>Matplotlib/Seaborn/Plotly </code> :  Data visualization</li>
+<li><code>Scikit-learn</code>  :  Building Machine Learning models</li>
+<li><code>Keras/Tensorflow/Pytorch</code>  :  building deep learning models</li>
+<li><code>Flask </code> :  Web app development/ML Applications</li>
+</ul>
+<p>These packages have received their appreciation and love from the data science community.</p>
+<p>But there are some python libraries in data science that are useful but underrated at the same time. 
+These packages can save you from writing a lot of code.</p>
+<p>They give you the ease of using state of the art models in one just single line of code.</p>
+<p>Let&rsquo;s dive in.</p>
+<h3 id="1-missingno">1. <code>MissingNo</code></h3>
+<p><a href="https://github.com/ResidentMario/missingno" target="_blank" rel="noopener noreffer"><code>MissingNo</code></a> is a python library for null value or missing values analysis with impressive visualization like data display, bar charts, heatmaps and dendograms.</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install missingno</code></li>
+<li><strong>Github</strong>: <a href="https://github.com/ResidentMario/missingno" target="_blank" rel="noopener noreffer"><code>MissingNo</code></a></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="c1"># pip install missingno</span>
+<span class="kn">import</span> <span class="nn">missingno</span> <span class="kn">as</span> <span class="nn">msno</span>
+
+<span class="c1"># missing value visualization: dense data display</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">matrix</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span>
+
+<span class="c1"># missing value visualization: bar charts</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span>
+
+<span class="c1"># missing value visualization: heatmaps</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span>
+
+<span class="c1"># missing value visualization: Dendogram</span>
+<span class="n">msno</span><span class="o">.</span><span class="n">dendrogram</span><span class="p">(</span><span class="n">dataframe</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="2-mlextend">2. <code>MLExtend</code></h3>
+<p><a href="http://rasbt.github.io/mlxtend/" target="_blank" rel="noopener noreffer"><code>MLExtend</code></a> stands for Machine Learning Extensions and is created by <a href="http://sebastianraschka.com/" target="_blank" rel="noopener noreffer">Sebastian Raschka</a>.</p>
+<p>As the name suggests, it extends the current implementation of many machine learning algorithms, makes it more useful to use and definitely saves a lot of time.</p>
+<p>For e.g. Association Rule Mining (with Apriori, Fpgrowth &amp; Fpmax support), EnsembleVoteClassifier, StackingCVClassifier</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install mlxtend</code></li>
+<li><strong>Github</strong>: <a href="https://github.com/rasbt/mlxtend" target="_blank" rel="noopener noreffer"><code>MlExtend</code></a></li>
+</ul>
+<p>For e.g. <code>StackingCVClassifier</code> can be implemented as</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">model_selection</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.neighbors</span> <span class="kn">import</span> <span class="n">KNeighborsClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span> 
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">mlxtend.classifier</span> <span class="kn">import</span> <span class="n">StackingCVClassifier</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s1">&#39;ignore&#39;</span><span class="p">)</span>
+
+<span class="n">RANDOM_SEED</span> <span class="o">=</span> <span class="mi">42</span>
+
+<span class="n">clf1</span> <span class="o">=</span> <span class="n">KNeighborsClassifier</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">clf2</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_SEED</span><span class="p">)</span>
+<span class="n">clf3</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span>
+
+<span class="c1"># Starting from v0.16.0, StackingCVRegressor supports</span>
+<span class="c1"># `random_state` to get deterministic result.</span>
+<span class="n">sclf</span> <span class="o">=</span> <span class="n">StackingCVClassifier</span><span class="p">(</span><span class="n">classifiers</span><span class="o">=</span><span class="p">[</span><span class="n">clf1</span><span class="p">,</span> <span class="n">clf2</span><span class="p">,</span> <span class="n">clf3</span><span class="p">],</span>
+                           <span class="n">meta_classifier</span><span class="o">=</span><span class="n">lr</span><span class="p">,</span>
+                           <span class="n">random_state</span><span class="o">=</span><span class="n">RANDOM_SEED</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;3-fold cross validation:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">clf</span><span class="p">,</span> <span class="n">label</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">([</span><span class="n">clf1</span><span class="p">,</span> <span class="n">clf2</span><span class="p">,</span> <span class="n">clf3</span><span class="p">,</span> <span class="n">sclf</span><span class="p">],</span> 
+                     <span class="p">[</span><span class="s1">&#39;KNN&#39;</span><span class="p">,</span> 
+                      <span class="s1">&#39;Random Forest&#39;</span><span class="p">,</span> 
+                      <span class="s1">&#39;Naive Bayes&#39;</span><span class="p">,</span>
+                      <span class="s1">&#39;StackingClassifier&#39;</span><span class="p">]):</span>
+
+   <span class="n">scores</span> <span class="o">=</span> <span class="n">model_selection</span><span class="o">.</span><span class="n">cross_val_score</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> 
+                                             <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;accuracy&#39;</span><span class="p">)</span>
+   <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Accuracy: </span><span class="si">%0.2f</span><span class="s2"> (+/- </span><span class="si">%0.2f</span><span class="s2">) [</span><span class="si">%s</span><span class="s2">]&#34;</span> 
+         <span class="o">%</span> <span class="p">(</span><span class="n">scores</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="n">scores</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span> <span class="n">label</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="3--flair">3.  <code>Flair</code></h3>
+<p><a href="https://github.com/flairNLP/flair" target="_blank" rel="noopener noreffer"><code>Flair</code></a> is a powerful NLP library  which allows you to apply our state-of-the-art natural language processing (NLP) models to your text, such as named entity recognition (NER), part-of-speech tagging (PoS), sense disambiguation and classification.</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install flair</code></li>
+<li><strong>Github</strong>: <a href="https://github.com/flairNLP/flair" target="_blank" rel="noopener noreffer"><code>Flair</code></a></li>
+</ul>
+<p>Yes  -  You have many libraries which promises that  - What sets Flair apart?</p>
+<p>It&rsquo;s Stacked embeddings!</p>
+<p>Stacked embeddings is one of the most interesting features of Flair which will make you use this library even more.</p>
+<p>They provide means to combine different embeddings together. You can use both traditional word embeddings (like GloVe, word2vec, ELMo) together with Flair contextual string embeddings or BERT.</p>
+<p>You can very easily mix and match Flair, ELMo, BERT and classic word embeddings. All you need to do is instantiate each embedding you wish to combine and use them in a <code>StackedEmbedding</code>. </p>
+<p>For instance, let&rsquo;s say we want to combine the multilingual Flair and BERT embeddings to train a hyper-powerful multilingual downstream task model. First, instantiate the embeddings you wish to combine:</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">flair.embeddings</span> <span class="kn">import</span> <span class="n">FlairEmbeddings</span><span class="p">,</span> <span class="n">BertEmbeddings</span>
+
+<span class="c1"># init Flair embeddings</span>
+<span class="n">flair_forward_embedding</span> <span class="o">=</span> <span class="n">FlairEmbeddings</span><span class="p">(</span><span class="s1">&#39;multi-forward&#39;</span><span class="p">)</span>
+<span class="n">flair_backward_embedding</span> <span class="o">=</span> <span class="n">FlairEmbeddings</span><span class="p">(</span><span class="s1">&#39;multi-backward&#39;</span><span class="p">)</span>
+
+<span class="c1"># init multilingual BERT</span>
+<span class="n">bert_embedding</span> <span class="o">=</span> <span class="n">BertEmbeddings</span><span class="p">(</span><span class="s1">&#39;bert-base-multilingual-cased&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">flair.embeddings</span> <span class="kn">import</span> <span class="n">StackedEmbeddings</span>
+
+<span class="c1"># now create the StackedEmbedding object that combines all embeddings</span>
+<span class="n">stacked_embeddings</span> <span class="o">=</span> <span class="n">StackedEmbeddings</span><span class="p">(</span>
+    <span class="n">embeddings</span><span class="o">=</span><span class="p">[</span><span class="n">flair_forward_embedding</span><span class="p">,</span> <span class="n">flair_backward_embedding</span><span class="p">,</span> <span class="n">bert_embedding</span><span class="p">])</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>Now just use this embedding like all the other embeddings, i.e. call the <code>embed()</code> method over your sentences.</p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="n">sentence</span> <span class="o">=</span> <span class="n">Sentence</span><span class="p">(</span><span class="s1">&#39;The grass is green .&#39;</span><span class="p">)</span>
+
+<span class="c1"># just embed a sentence using the StackedEmbedding </span>
+<span class="c1"># as you would with any single embedding.</span>
+<span class="n">stacked_embeddings</span><span class="o">.</span><span class="n">embed</span><span class="p">(</span><span class="n">sentence</span><span class="p">)</span>
+
+<span class="c1"># now check out the embedded tokens.</span>
+<span class="k">for</span> <span class="n">token</span> <span class="ow">in</span> <span class="n">sentence</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">token</span><span class="o">.</span><span class="n">embedding</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="4-adaptnlp">4. <code>AdaptNLP</code></h3>
+<p><a href="https://github.com/Novetta/adaptnlp" target="_blank" rel="noopener noreffer"><code>AdaptNLP</code></a> is another easy to use but powerful NLP toolkit built on top of <code>Flair</code> and <code>Transformers</code> for running, training and deploying state of the art deep learning models.</p>
+<p>It has a unified API for end to end NLP tasks: Token tagging, Text Classification, Question Anaswering, Embeddings, Translation, Text Generation etc.</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install adaptnlp</code></li>
+<li><strong>Github</strong>: <a href="https://github.com/Novetta/adaptnlp" target="_blank" rel="noopener noreffer"><code>AdaptNLP</code></a></li>
+</ul>
+<p>Sample code for <strong>Question Answering</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">adaptnlp</span> <span class="kn">import</span> <span class="n">EasyQuestionAnswering</span> 
+<span class="kn">from</span> <span class="nn">pprint</span> <span class="kn">import</span> <span class="n">pprint</span>
+
+<span class="c1">## Example Query and Context </span>
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&#34;What is the meaning of life?&#34;</span>
+<span class="n">context</span> <span class="o">=</span> <span class="s2">&#34;Machine Learning is the meaning of life.&#34;</span>
+<span class="n">top_n</span> <span class="o">=</span> <span class="mi">5</span>
+
+<span class="c1">## Load the QA module and run inference on results </span>
+<span class="n">qa</span> <span class="o">=</span> <span class="n">EasyQuestionAnswering</span><span class="p">()</span>
+<span class="n">best_answer</span><span class="p">,</span> <span class="n">best_n_answers</span> <span class="o">=</span> <span class="n">qa</span><span class="o">.</span><span class="n">predict_qa</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span> <span class="n">n_best_size</span><span class="o">=</span><span class="n">top_n</span><span class="p">,</span> <span class="n">mini_batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">model_name_or_path</span><span class="o">=</span><span class="s2">&#34;distilbert-base-uncased-distilled-squad&#34;</span><span class="p">)</span>
+
+<span class="c1">## Output top answer as well as top 5 answers</span>
+<span class="k">print</span><span class="p">(</span><span class="n">best_answer</span><span class="p">)</span>
+<span class="n">pprint</span><span class="p">(</span><span class="n">best_n_answers</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>Sample code for <strong>Summarization</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">adaptnlp</span> <span class="kn">import</span> <span class="n">EasySummarizer</span>
+
+<span class="c1"># Text from encyclopedia Britannica on Einstein</span>
+<span class="n">text</span> <span class="o">=</span> <span class="s2">&#34;&#34;&#34;Einstein would write that two “wonders” deeply affected his early years. The first was his encounter with a compass at age five. 
+</span><span class="s2">          He was mystified that invisible forces could deflect the needle. This would lead to a lifelong fascination with invisible forces. 
+</span><span class="s2">          The second wonder came at age 12 when he discovered a book of geometry, which he devoured, calling it his &#39;sacred little geometry 
+</span><span class="s2">          book&#39;. Einstein became deeply religious at age 12, even composing several songs in praise of God and chanting religious songs on 
+</span><span class="s2">          the way to school. This began to change, however, after he read science books that contradicted his religious beliefs. This challenge 
+</span><span class="s2">          to established authority left a deep and lasting impression. At the Luitpold Gymnasium, Einstein often felt out of place and victimized 
+</span><span class="s2">          by a Prussian-style educational system that seemed to stifle originality and creativity. One teacher even told him that he would 
+</span><span class="s2">          never amount to anything.&#34;&#34;&#34;</span>
+
+<span class="n">summarizer</span> <span class="o">=</span> <span class="n">EasySummarizer</span><span class="p">()</span>
+
+
+<span class="c1"># Summarize</span>
+<span class="n">summaries</span> <span class="o">=</span> <span class="n">summarizer</span><span class="o">.</span><span class="n">summarize</span><span class="p">(</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">,</span> <span class="n">model_name_or_path</span><span class="o">=</span><span class="s2">&#34;t5-small&#34;</span><span class="p">,</span> <span class="n">mini_batch_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">num_beams</span> <span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">min_length</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">early_stopping</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s2">&#34;Summaries:</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">summaries</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s2">&#34;</span><span class="se">\n</span><span class="s2">&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="5-simpletransformers">5. <code>SimpleTransformers</code></h3>
+<p><a href="https://github.com/ThilinaRajapakse/simpletransformers" target="_blank" rel="noopener noreffer"><code>SimpleTransformers</code></a> is awesome and my go to library for any NLP deep learning models. It packs all the powerful features of Huggingface&rsquo;s <code>transformers</code> in just 3 lines of code for end to end NLP tasks.</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install simpletransformers</code></li>
+<li><strong>Github</strong>: <a href="https://github.com/ThilinaRajapakse/simpletransformers" target="_blank" rel="noopener noreffer"><code>SimpleTransformers</code></a></li>
+</ul>
+<p>Sample code for <strong>Text Classification</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">simpletransformers.classification</span> <span class="kn">import</span> <span class="n">ClassificationModel</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">transformers_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&#34;transformers&#34;</span><span class="p">)</span>
+<span class="n">transformers_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+<span class="c1"># Train and Evaluation data needs to be in a Pandas Dataframe of two columns. The first column is the text with type str, and the second column is the label with type int.</span>
+<span class="n">train_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Example sentence belonging to class 1&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Example sentence belonging to class 0&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="n">train_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">train_data</span><span class="p">)</span>
+
+<span class="n">eval_data</span> <span class="o">=</span> <span class="p">[[</span><span class="s1">&#39;Example eval sentence belonging to class 1&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;Example eval sentence belonging to class 0&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">]]</span>
+<span class="n">eval_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">eval_data</span><span class="p">)</span>
+
+<span class="c1"># Create a ClassificationModel</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">ClassificationModel</span><span class="p">(</span><span class="s1">&#39;roberta&#39;</span><span class="p">,</span> <span class="s1">&#39;roberta-base&#39;</span><span class="p">)</span> <span class="c1"># You can set class weights by using the optional weight argument</span>
+
+<span class="c1"># Train the model</span>
+<span class="n">model</span><span class="o">.</span><span class="n">train_model</span><span class="p">(</span><span class="n">train_df</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the model</span>
+<span class="n">result</span><span class="p">,</span> <span class="n">model_outputs</span><span class="p">,</span> <span class="n">wrong_predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">eval_model</span><span class="p">(</span><span class="n">eval_df</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Sample code for <strong>Language Model Training</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">simpletransformers.language_modeling</span> <span class="kn">import</span> <span class="n">LanguageModelingModel</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+
+
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span><span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span><span class="p">)</span>
+<span class="n">transformers_logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s2">&#34;transformers&#34;</span><span class="p">)</span>
+<span class="n">transformers_logger</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+
+<span class="n">train_args</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&#34;reprocess_input_data&#34;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+    <span class="s2">&#34;overwrite_output_dir&#34;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">model</span> <span class="o">=</span> <span class="n">LanguageModelingModel</span><span class="p">(</span><span class="s1">&#39;bert&#39;</span><span class="p">,</span> <span class="s1">&#39;bert-base-cased&#39;</span><span class="p">,</span> <span class="n">args</span><span class="o">=</span><span class="n">train_args</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">train_model</span><span class="p">(</span><span class="s2">&#34;wikitext-2/wiki.train.tokens&#34;</span><span class="p">,</span> <span class="n">eval_file</span><span class="o">=</span><span class="s2">&#34;wikitext-2/wiki.test.tokens&#34;</span><span class="p">)</span>
+
+<span class="n">model</span><span class="o">.</span><span class="n">eval_model</span><span class="p">(</span><span class="s2">&#34;wikitext-2/wiki.test.tokens&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="6-sentence-transformers">6. <code>Sentence-Transformers</code></h3>
+<p><a href="https://github.com/UKPLab/sentence-transformers" target="_blank" rel="noopener noreffer"><code>Sentence-Transformers</code></a> is a python package to compute the dense vector representations of sentences or paragraphs.</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install -U sentence-transformers</code></li>
+<li><strong>Github</strong>: <a href="https://github.com/UKPLab/sentence-transformers" target="_blank" rel="noopener noreffer"><code>Sentence-Transformers</code></a></li>
+</ul>
+<p>This library not only allows to generate embeddings from <a href="https://www.sbert.net/docs/pretrained_models.html" target="_blank" rel="noopener noreffer">state of the art pretrained transformer models</a> but also allows embeddings after fine-tuning on your custom dataset.</p>
+<p>These embeddings are useful for various downstream tasks like semantic search or clustering</p>
+<p>Sample code for computing <strong>Embeddings</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">SentenceTransformer</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="s1">&#39;distilbert-base-nli-mean-tokens&#39;</span><span class="p">)</span>
+
+<span class="n">sentences</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;This framework generates embeddings for each input sentence&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Sentences are passed as a list of string.&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;The quick brown fox jumps over the lazy dog.&#39;</span><span class="p">]</span>
+<span class="n">sentence_embeddings</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sentences</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">sentence</span><span class="p">,</span> <span class="n">embedding</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">sentences</span><span class="p">,</span> <span class="n">sentence_embeddings</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Sentence:&#34;</span><span class="p">,</span> <span class="n">sentence</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Embedding:&#34;</span><span class="p">,</span> <span class="n">embedding</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;&#34;</span><span class="p">)</span>
+
+</code></pre></td></tr></table>
+</div>
+</div><p>Sample code for <strong>Semantic Search</strong></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">from</span> <span class="nn">sentence_transformers</span> <span class="kn">import</span> <span class="n">SentenceTransformer</span><span class="p">,</span> <span class="n">util</span>
+<span class="kn">import</span> <span class="nn">torch</span>
+
+<span class="n">embedder</span> <span class="o">=</span> <span class="n">SentenceTransformer</span><span class="p">(</span><span class="s1">&#39;distilbert-base-nli-stsb-mean-tokens&#39;</span><span class="p">)</span>
+
+<span class="c1"># Corpus with example sentences</span>
+<span class="n">corpus</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A man is eating food.&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;A man is eating a piece of bread.&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;The girl is carrying a baby.&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;A man is riding a horse.&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;A woman is playing violin.&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;Two men pushed carts through the woods.&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;A man is riding a white horse on an enclosed ground.&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;A monkey is playing drums.&#39;</span><span class="p">,</span>
+          <span class="s1">&#39;A cheetah is running behind its prey.&#39;</span>
+          <span class="p">]</span>
+<span class="n">corpus_embeddings</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">corpus</span><span class="p">,</span> <span class="n">convert_to_tensor</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="c1"># Query sentences:</span>
+<span class="n">queries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A man is eating pasta.&#39;</span><span class="p">,</span> <span class="s1">&#39;Someone in a gorilla costume is playing a set of drums.&#39;</span><span class="p">,</span> <span class="s1">&#39;A cheetah chases prey on across a field.&#39;</span><span class="p">]</span>
+
+
+<span class="c1"># Find the closest 5 sentences of the corpus for each query sentence based on cosine similarity</span>
+<span class="n">top_k</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">:</span>
+    <span class="n">query_embedding</span> <span class="o">=</span> <span class="n">embedder</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">convert_to_tensor</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">cos_scores</span> <span class="o">=</span> <span class="n">util</span><span class="o">.</span><span class="n">pytorch_cos_sim</span><span class="p">(</span><span class="n">query_embedding</span><span class="p">,</span> <span class="n">corpus_embeddings</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">cos_scores</span> <span class="o">=</span> <span class="n">cos_scores</span><span class="o">.</span><span class="n">cpu</span><span class="p">()</span>
+
+    <span class="c1">#We use torch.topk to find the highest 5 scores</span>
+    <span class="n">top_results</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">topk</span><span class="p">(</span><span class="n">cos_scores</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="n">top_k</span><span class="p">)</span>
+
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n\n</span><span class="s2">======================</span><span class="se">\n\n</span><span class="s2">&#34;</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;Query:&#34;</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&#34;</span><span class="se">\n</span><span class="s2">Top 5 most similar sentences in corpus:&#34;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">score</span><span class="p">,</span> <span class="n">idx</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">top_results</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">top_results</span><span class="p">[</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="k">print</span><span class="p">(</span><span class="n">corpus</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s2">&#34;(Score: </span><span class="si">%.4f</span><span class="s2">)&#34;</span> <span class="o">%</span> <span class="p">(</span><span class="n">score</span><span class="p">))</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="7-tweet-preprocessor">7. <code>Tweet-Preprocessor</code></h3>
+<p>Preprocessing social data can be a bit frustrating at times bacause of irrelevant elements within the text like links, emojis, hashtags, usernames, mentions etc..</p>
+<p>But not any more!</p>
+<p><code>Tweet-Preprocessor</code> is for you. This library cleans your text/tweets in a single line of code.</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install tweet-preprocessor</code></li>
+<li><strong>Github</strong>: <a href="https://github.com/s/preprocessor" target="_blank" rel="noopener noreffer"><code>Tweet-Preprocessor</code></a></li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">preprocessor</span> <span class="kn">as</span> <span class="nn">p</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">p</span><span class="o">.</span><span class="n">clean</span><span class="p">(</span><span class="s1">&#39;Preprocessor is #awesome 👍 https://github.com/s/preprocessor&#39;</span><span class="p">)</span>
+
+<span class="c1"># output: &#39;Preprocessor is&#39;</span>
+</code></pre></td></tr></table>
+</div>
+</div><p>Currently supports cleaning, tokenizing and parsing URLs, Hashtags,  Mentions, Reserved words (RT, FAV), Emojis, SmileysNumbers and you have full control over what you want to clean from the text.</p>
+<h3 id="8-gradio">8. <code>Gradio</code></h3>
+<p><a href="https://github.com/gradio-app/gradio" target="_blank" rel="noopener noreffer"><code>Gradio</code></a> is another super cool library to quickly create customizable UI components to demo your ML/DL models within your jupyter notebook or in the browser.</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install gradio</code></li>
+<li><strong>Github</strong>: <a href="https://github.com/gradio-app/gradio" target="_blank" rel="noopener noreffer"><code>Gradio</code></a></li>
+</ul>
+<figure>
+    <img src="/posts/ml/images/gradio.gif"/> <figcaption>
+            <h4>Source: Gradio</h4>
+        </figcaption>
+</figure>
+
+<h3 id="9-ppscore">9. <code>PPScore</code></h3>
+<p><code>PPScore</code> is Predictive Power Score which is a better alternative than <code>df.corr()</code> to find the correlation or relationship between 2 variables.</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install -U ppscore</code></li>
+<li><strong>Github</strong>: <a href="https://github.com/8080labs/ppscore" target="_blank" rel="noopener noreffer"><code>PPScore</code></a></li>
+</ul>
+<p>Why is it better than correlation?</p>
+<ul>
+<li>It detects both linear and non-linear relationship between 2 columns</li>
+<li>It gives a normalized score ranging from 0 (no predictive power) to 1 (perfect predictive power)</li>
+<li>It takes both numeric and categorical variables as input, so no need to convert your categorical variables into dummy variables before feeding it to PPScore.</li>
+</ul>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt">1
+</span><span class="lnt">2
+</span><span class="lnt">3
+</span><span class="lnt">4
+</span><span class="lnt">5
+</span><span class="lnt">6
+</span><span class="lnt">7
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">ppscore</span> <span class="kn">as</span> <span class="nn">pps</span>
+
+<span class="c1"># Based on the dataframe we can calculate the PPS of x predicting y</span>
+<span class="n">pps</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&#34;x&#34;</span><span class="p">,</span> <span class="s2">&#34;y&#34;</span><span class="p">)</span>
+
+<span class="c1"># We can calculate the PPS of all the predictors in the dataframe against a target y</span>
+<span class="n">pps</span><span class="o">.</span><span class="n">predictors</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="s2">&#34;y&#34;</span><span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div><h3 id="10-pytorch-forecasting">10. <code>Pytorch-Forecasting</code></h3>
+<p><a href="https://github.com/jdb78/pytorch-forecasting" target="_blank" rel="noopener noreffer"><code>Pytorch-Forecasting</code></a> is python toolkit built on top of <code>pytorch-lightening</code> which aims to solve time series forecasting with neural networks with ease.</p>
+<ul>
+<li><strong>Installation</strong>: <code>pip install pytorch-forecasting</code></li>
+<li><strong>Github</strong>: <a href="https://github.com/jdb78/pytorch-forecasting" target="_blank" rel="noopener noreffer"><code>Pytorch-Forecasting</code></a></li>
+</ul>
+<p>This library provides abstraction over handling missing values, variable transformation, Tensorboard support, prediction &amp; dependency plots, Range optimizer for faster training and Optuna for hyperparamter tuning.</p>
+<p>Usage script: <a href="https://github.com/jdb78/pytorch-forecasting" target="_blank" rel="noopener noreffer">Pytorch-Forecasting</a></p>
+<div class="highlight"><div class="chroma">
+<table class="lntable"><tr><td class="lntd">
+<pre class="chroma"><code><span class="lnt"> 1
+</span><span class="lnt"> 2
+</span><span class="lnt"> 3
+</span><span class="lnt"> 4
+</span><span class="lnt"> 5
+</span><span class="lnt"> 6
+</span><span class="lnt"> 7
+</span><span class="lnt"> 8
+</span><span class="lnt"> 9
+</span><span class="lnt">10
+</span><span class="lnt">11
+</span><span class="lnt">12
+</span><span class="lnt">13
+</span><span class="lnt">14
+</span><span class="lnt">15
+</span><span class="lnt">16
+</span><span class="lnt">17
+</span><span class="lnt">18
+</span><span class="lnt">19
+</span><span class="lnt">20
+</span><span class="lnt">21
+</span><span class="lnt">22
+</span><span class="lnt">23
+</span><span class="lnt">24
+</span><span class="lnt">25
+</span><span class="lnt">26
+</span><span class="lnt">27
+</span><span class="lnt">28
+</span><span class="lnt">29
+</span><span class="lnt">30
+</span><span class="lnt">31
+</span><span class="lnt">32
+</span><span class="lnt">33
+</span><span class="lnt">34
+</span><span class="lnt">35
+</span><span class="lnt">36
+</span><span class="lnt">37
+</span><span class="lnt">38
+</span><span class="lnt">39
+</span><span class="lnt">40
+</span><span class="lnt">41
+</span><span class="lnt">42
+</span><span class="lnt">43
+</span><span class="lnt">44
+</span><span class="lnt">45
+</span><span class="lnt">46
+</span><span class="lnt">47
+</span><span class="lnt">48
+</span><span class="lnt">49
+</span><span class="lnt">50
+</span><span class="lnt">51
+</span><span class="lnt">52
+</span><span class="lnt">53
+</span><span class="lnt">54
+</span><span class="lnt">55
+</span><span class="lnt">56
+</span><span class="lnt">57
+</span><span class="lnt">58
+</span><span class="lnt">59
+</span><span class="lnt">60
+</span><span class="lnt">61
+</span><span class="lnt">62
+</span><span class="lnt">63
+</span><span class="lnt">64
+</span><span class="lnt">65
+</span><span class="lnt">66
+</span><span class="lnt">67
+</span><span class="lnt">68
+</span><span class="lnt">69
+</span><span class="lnt">70
+</span><span class="lnt">71
+</span><span class="lnt">72
+</span></code></pre></td>
+<td class="lntd">
+<pre class="chroma"><code class="language-python" data-lang="python"><span class="kn">import</span> <span class="nn">pytorch_lightning</span> <span class="kn">as</span> <span class="nn">pl</span>
+<span class="kn">from</span> <span class="nn">pytorch_lightning.callbacks</span> <span class="kn">import</span> <span class="n">EarlyStopping</span><span class="p">,</span> <span class="n">LearningRateMonitor</span>
+
+<span class="kn">from</span> <span class="nn">pytorch_forecasting</span> <span class="kn">import</span> <span class="n">TimeSeriesDataSet</span><span class="p">,</span> <span class="n">TemporalFusionTransformer</span>
+
+<span class="c1"># load data</span>
+<span class="n">data</span> <span class="o">=</span> <span class="o">...</span>
+
+<span class="c1"># define dataset</span>
+<span class="n">max_encode_length</span> <span class="o">=</span> <span class="mi">36</span>
+<span class="n">max_prediction_length</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="n">training_cutoff</span> <span class="o">=</span> <span class="s2">&#34;YYYY-MM-DD&#34;</span>  <span class="c1"># day for cutoff</span>
+
+<span class="n">training</span> <span class="o">=</span> <span class="n">TimeSeriesDataSet</span><span class="p">(</span>
+    <span class="n">data</span><span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">date</span> <span class="o">&lt;=</span> <span class="n">training_cutoff</span><span class="p">],</span>
+    <span class="n">time_idx</span><span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+    <span class="n">target</span><span class="o">=</span> <span class="o">...</span><span class="p">,</span>
+    <span class="n">group_ids</span><span class="o">=</span><span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
+    <span class="n">max_encode_length</span><span class="o">=</span><span class="n">max_encode_length</span><span class="p">,</span>
+    <span class="n">max_prediction_length</span><span class="o">=</span><span class="n">max_prediction_length</span><span class="p">,</span>
+    <span class="n">static_categoricals</span><span class="o">=</span><span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
+    <span class="n">static_reals</span><span class="o">=</span><span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
+    <span class="n">time_varying_known_categoricals</span><span class="o">=</span><span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
+    <span class="n">time_varying_known_reals</span><span class="o">=</span><span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
+    <span class="n">time_varying_unknown_categoricals</span><span class="o">=</span><span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
+    <span class="n">time_varying_unknown_reals</span><span class="o">=</span><span class="p">[</span> <span class="o">...</span> <span class="p">],</span>
+<span class="p">)</span>
+
+
+<span class="n">validation</span> <span class="o">=</span> <span class="n">TimeSeriesDataSet</span><span class="o">.</span><span class="n">from_dataset</span><span class="p">(</span><span class="n">training</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">min_prediction_idx</span><span class="o">=</span><span class="n">training</span><span class="o">.</span><span class="n">index</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">stop_randomization</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">batch_size</span> <span class="o">=</span> <span class="mi">128</span>
+<span class="n">train_dataloader</span> <span class="o">=</span> <span class="n">training</span><span class="o">.</span><span class="n">to_dataloader</span><span class="p">(</span><span class="n">train</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">val_dataloader</span> <span class="o">=</span> <span class="n">validation</span><span class="o">.</span><span class="n">to_dataloader</span><span class="p">(</span><span class="n">train</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">num_workers</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+
+
+<span class="n">early_stop_callback</span> <span class="o">=</span> <span class="n">EarlyStopping</span><span class="p">(</span><span class="n">monitor</span><span class="o">=</span><span class="s2">&#34;val_loss&#34;</span><span class="p">,</span> <span class="n">min_delta</span><span class="o">=</span><span class="mf">1e-4</span><span class="p">,</span> <span class="n">patience</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s2">&#34;min&#34;</span><span class="p">)</span>
+<span class="n">lr_logger</span> <span class="o">=</span> <span class="n">LearningRateMonitor</span><span class="p">()</span>
+<span class="n">trainer</span> <span class="o">=</span> <span class="n">pl</span><span class="o">.</span><span class="n">Trainer</span><span class="p">(</span>
+    <span class="n">max_epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">gpus</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">gradient_clip_val</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">limit_train_batches</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">callbacks</span><span class="o">=</span><span class="p">[</span><span class="n">lr_logger</span><span class="p">,</span> <span class="n">early_stop_callback</span><span class="p">],</span>
+<span class="p">)</span>
+
+
+<span class="n">tft</span> <span class="o">=</span> <span class="n">TemporalFusionTransformer</span><span class="o">.</span><span class="n">from_dataset</span><span class="p">(</span>
+    <span class="n">training</span><span class="p">,</span>
+    <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.03</span><span class="p">,</span>
+    <span class="n">hidden_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span>
+    <span class="n">attention_head_size</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">dropout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">hidden_continuous_size</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span>
+    <span class="n">output_size</span><span class="o">=</span><span class="mi">7</span><span class="p">,</span>
+    <span class="n">loss</span><span class="o">=</span><span class="n">QuantileLoss</span><span class="p">(),</span>
+    <span class="n">log_interval</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">reduce_on_plateau_patience</span><span class="o">=</span><span class="mi">4</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;Number of parameters in network: {tft.size()/1e3:.1f}k&#34;</span><span class="p">)</span>
+
+<span class="c1"># find optimal learning rate</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">trainer</span><span class="o">.</span><span class="n">lr_find</span><span class="p">(</span>
+    <span class="n">tft</span><span class="p">,</span> <span class="n">train_dataloader</span><span class="o">=</span><span class="n">train_dataloader</span><span class="p">,</span> <span class="n">val_dataloaders</span><span class="o">=</span><span class="n">val_dataloader</span><span class="p">,</span> <span class="n">early_stop_threshold</span><span class="o">=</span><span class="mf">1000.0</span><span class="p">,</span> <span class="n">max_lr</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&#34;suggested learning rate: {res.suggestion()}&#34;</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">res</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">show</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">suggest</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">trainer</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
+    <span class="n">tft</span><span class="p">,</span> <span class="n">train_dataloader</span><span class="o">=</span><span class="n">train_dataloader</span><span class="p">,</span> <span class="n">val_dataloaders</span><span class="o">=</span><span class="n">val_dataloader</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></td></tr></table>
+</div>
+</div></div><div class="post-footer" id="post-footer">
+    <div class="post-info">
+        <div class="post-info-line">
+            <div class="post-info-mod">
+                <span>Updated on 18/10/2020</span>
+            </div>
+            <div class="post-info-license"></div>
+        </div>
+        <div class="post-info-line">
+            <div class="post-info-md"></div>
+            <div class="post-info-share">
+                <span><a href="javascript:void(0);" title="Share on Twitter" data-sharer="twitter" data-url="http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/" data-title="Top 10 Most Useful But Underrated Python Libraries for Data Science" data-via="snrspeaks" data-hashtags="Data Science,Machine Learning,Python Packages"><i class="fab fa-twitter fa-fw"></i></a><a href="javascript:void(0);" title="Share on Facebook" data-sharer="facebook" data-url="http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/" data-hashtag="Data Science"><i class="fab fa-facebook-square fa-fw"></i></a><a href="javascript:void(0);" title="Share on WhatsApp" data-sharer="whatsapp" data-url="http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/" data-title="Top 10 Most Useful But Underrated Python Libraries for Data Science" data-web><i class="fab fa-whatsapp fa-fw"></i></a><a href="javascript:void(0);" title="Share on Line" data-sharer="line" data-url="http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/" data-title="Top 10 Most Useful But Underrated Python Libraries for Data Science"><i data-svg-src="/lib/simple-icons/icons/line.min.svg"></i></a><a href="javascript:void(0);" title="Share on 微博" data-sharer="weibo" data-url="http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/" data-title="Top 10 Most Useful But Underrated Python Libraries for Data Science"><i class="fab fa-weibo fa-fw"></i></a><a href="javascript:void(0);" title="Share on Myspace" data-sharer="myspace" data-url="http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/" data-title="Top 10 Most Useful But Underrated Python Libraries for Data Science" data-description="Top 10 most useful but underrated python libraries for data science and machine learning"><i data-svg-src="/lib/simple-icons/icons/myspace.min.svg"></i></a><a href="javascript:void(0);" title="Share on Blogger" data-sharer="blogger" data-url="http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/" data-title="Top 10 Most Useful But Underrated Python Libraries for Data Science" data-description="Top 10 most useful but underrated python libraries for data science and machine learning"><i class="fab fa-blogger fa-fw"></i></a><a href="javascript:void(0);" title="Share on Evernote" data-sharer="evernote" data-url="http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/" data-title="Top 10 Most Useful But Underrated Python Libraries for Data Science"><i class="fab fa-evernote fa-fw"></i></a></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="post-info-more">
+        <section class="post-tags"><i class="fas fa-tags fa-fw"></i>&nbsp;<a href="/tags/data-science/">Data Science</a>,&nbsp;<a href="/tags/machine-learning/">Machine Learning</a>,&nbsp;<a href="/tags/python-packages/">Python Packages</a></section>
+        <section>
+            <span><a href="javascript:void(0);" onclick="window.history.back();">Back</a></span>&nbsp;|&nbsp;<span><a href="/">Home</a></span>
+        </section>
+    </div>
+
+    <div class="post-nav"><a href="/resume-analyzer/" class="prev" rel="prev" title="ResumeAnalyzer | An Easy Solution to Rank Resumes using Spacy"><i class="fas fa-angle-left fa-fw"></i>ResumeAnalyzer | An Easy Solution to Rank Resumes using Spacy</a>
+            <a href="/orbit-uber-opensources-python-package-for-time-series-modeling/" class="next" rel="next" title="Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling">Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling<i class="fas fa-angle-right fa-fw"></i></a></div>
+</div>
+<div id="comments"><div id="utterances"></div><noscript>
+                Please enable JavaScript to view the comments powered by <a href="https://utteranc.es/">Utterances</a>.
+            </noscript></div></article></div>
+            </main><footer class="footer">
+        <div class="footer-container"><div class="footer-line"><a href="/policy/">Privacy & Policies</a>&nbsp&nbsp|&nbsp&nbsp<a href="/contact/">Contact Us</a></div><div class="footer-line"><i class="far fa-copyright fa-fw"></i><span itemprop="copyrightYear">2019 - 2021</span><span class="author" itemprop="copyrightHolder">&nbsp;<a href="https://shivanandroy.com" target="_blank">Shivanand Roy</a></span>&nbsp;|&nbsp;<span class="license"><a rel="license external nofollow noopener noreffer" href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank">CC BY-NC 4.0</a></span></div>
+        </div>
+    </footer></div>
+
+        <div id="fixed-buttons"><a href="#" id="back-to-top" class="fixed-button" title="Back to Top">
+                <i class="fas fa-arrow-up fa-fw"></i>
+            </a><a href="#" id="view-comments" class="fixed-button" title="View Comments">
+                <i class="fas fa-comment fa-fw"></i>
+            </a>
+        </div><link rel="stylesheet" href="/lib/lightgallery/lightgallery.min.css"><link rel="stylesheet" href="/lib/katex/katex.min.css"><link rel="stylesheet" href="/lib/katex/copy-tex.min.css"><link rel="stylesheet" href="/lib/cookieconsent/cookieconsent.min.css"><script type="text/javascript" src="/lib/smooth-scroll/smooth-scroll.min.js"></script><script type="text/javascript" src="/lib/autocomplete/autocomplete.min.js"></script><script type="text/javascript" src="/lib/lunr/lunr.min.js"></script><script type="text/javascript" src="/lib/lazysizes/lazysizes.min.js"></script><script type="text/javascript" src="/lib/twemoji/twemoji.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lightgallery.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-thumbnail.min.js"></script><script type="text/javascript" src="/lib/lightgallery/lg-zoom.min.js"></script><script type="text/javascript" src="/lib/clipboard/clipboard.min.js"></script><script type="text/javascript" src="/lib/sharer/sharer.min.js"></script><script type="text/javascript" src="/lib/katex/katex.min.js"></script><script type="text/javascript" src="/lib/katex/auto-render.min.js"></script><script type="text/javascript" src="/lib/katex/copy-tex.min.js"></script><script type="text/javascript" src="/lib/katex/mhchem.min.js"></script><script type="text/javascript" src="/lib/cookieconsent/cookieconsent.min.js"></script><script type="text/javascript">window.config={"code":{"copyTitle":"Copy to clipboard","maxShownLines":1000},"comment":{"utterances":{"darkTheme":"github-dark","issueTerm":"title","label":"","lightTheme":"github-light","repo":"Shivanandroy/Blog"}},"cookieconsent":{"content":{"dismiss":"Got it!","link":"Learn more","message":"This website uses Cookies to improve your experience."},"enable":true,"palette":{"button":{"background":"#f0f0f0"},"popup":{"background":"#1aa3ff"}},"theme":"edgeless"},"lightGallery":{"actualSize":false,"exThumbImage":"data-thumbnail","hideBarsDelay":2000,"selector":".lightgallery","speed":400,"thumbContHeight":80,"thumbWidth":80,"thumbnail":true},"math":{"delimiters":[{"display":true,"left":"$$","right":"$$"},{"display":true,"left":"\\[","right":"\\]"},{"display":false,"left":"$","right":"$"},{"display":false,"left":"\\(","right":"\\)"}],"strict":false},"search":{"highlightTag":"em","lunrIndexURL":"/index.json","maxResultLength":10,"noResultsFound":"No results found","snippetLength":30,"type":"lunr"},"twemoji":true};</script><script type="text/javascript" src="/js/theme.min.js"></script><script type="text/javascript">
+            window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js', new Date());
+            gtag('config', 'UA-177212842-1', { 'anonymize_ip': true });
+        </script><script type="text/javascript" src="https://www.googletagmanager.com/gtag/js?id=UA-177212842-1" async></script></body>
+</html>

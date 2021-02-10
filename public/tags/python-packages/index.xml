@@ -1,0 +1,36 @@
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Python Packages - Tag - Shivanand Roy | Deep Learning</title>
+        <link>http://shivanandroy.com/tags/python-packages/</link>
+        <description>Python Packages - Tag - Shivanand Roy | Deep Learning</description>
+        <generator>Hugo -- gohugo.io</generator><language>en</language><managingEditor>iamshivanandroy@gmail.com (Shivanand Roy)</managingEditor>
+            <webMaster>iamshivanandroy@gmail.com (Shivanand Roy)</webMaster><lastBuildDate>Sat, 31 Oct 2020 00:44:27 &#43;0530</lastBuildDate><atom:link href="http://shivanandroy.com/tags/python-packages/" rel="self" type="application/rss+xml" /><item>
+    <title>NLP360 : Awesome NLP Resources</title>
+    <link>http://shivanandroy.com/awesome-nlp-resources/</link>
+    <pubDate>Sat, 31 Oct 2020 00:44:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/awesome-nlp-resources/</guid>
+    <description><![CDATA[NLP360 is curated list of resources related to Natural Language Processing (NLP) x updated weekly]]></description>
+</item><item>
+    <title>Orbit | Uber&#39;s New Open Source Python Library for Time Series Modeling</title>
+    <link>http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/</link>
+    <pubDate>Fri, 30 Oct 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/orbit-uber-opensources-python-package-for-time-series-modeling/</guid>
+    <description><![CDATA[Uber just open-sourced its time series modeling packagae - Orbit based on probabilistic modeling]]></description>
+</item><item>
+    <title>Top 10 Most Useful But Underrated Python Libraries for Data Science</title>
+    <link>http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/</link>
+    <pubDate>Sun, 18 Oct 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/top-useful-but-underrated-python-libraries-for-data-science/</guid>
+    <description><![CDATA[Top 10 most useful but underrated python libraries for data science and machine learning]]></description>
+</item><item>
+    <title>ResumeAnalyzer | An Easy Solution to Rank Resumes using Spacy</title>
+    <link>http://shivanandroy.com/resume-analyzer/</link>
+    <pubDate>Sat, 10 Oct 2020 00:42:27 &#43;0530</pubDate>
+    <author>Author</author>
+    <guid>http://shivanandroy.com/resume-analyzer/</guid>
+    <description><![CDATA[ResumeAnalyzer is an easy, lightweight python package to rank resumes based on your requirement in just one line of code.]]></description>
+</item></channel>
+</rss>
