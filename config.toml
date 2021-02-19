@@ -42,6 +42,7 @@ theme = "LoveIt"
     iconColor = "#5bbad5"
     # Windows v8-10 tile color
     tileColor = "#da532c"
+    enableRobotsTXT=true
 
 
 

@@ -2,14 +2,14 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
     ><url>
-            <loc>http://shivanandroy.com/tags/deep-learning/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/posts/dl/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/fine-tune-t5-transformer-with-pytorch/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/posts/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/tags/t5/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/tags/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
-            <loc>http://shivanandroy.com/tags/transformers/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>1</priority></url><url>
+            <loc>http://shivanandroy.com/tags/deep-learning/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/posts/dl/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/fine-tune-t5-transformer-with-pytorch/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/posts/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/tags/t5/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/tags/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url><url>
+            <loc>http://shivanandroy.com/tags/transformers/</loc><lastmod>2021-02-08T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url><url>
             <loc>http://shivanandroy.com/tags/bert/</loc><lastmod>2020-11-13T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>0.5</priority></url><url>
             <loc>http://shivanandroy.com/categories/</loc><lastmod>2020-11-13T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>0.5</priority></url><url>
             <loc>http://shivanandroy.com/tags/game-of-thrones/</loc><lastmod>2020-11-13T00:42:27&#43;05:30</lastmod><changefreq>daily</changefreq><priority>0.5</priority></url><url>
