@@ -130,13 +130,12 @@ device = 'cuda' if cuda.is_available() else 'cpu'
 
 <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1337012385171026"
      crossorigin="anonymous"></script>
-<!-- display ads -->
 <ins class="adsbygoogle"
      style="display:block"
+     data-ad-format="fluid"
+     data-ad-layout-key="-f7+5u+4t-da+6l"
      data-ad-client="ca-pub-1337012385171026"
-     data-ad-slot="4880405981"
-     data-ad-format="auto"
-     data-full-width-responsive="true"></ins>
+     data-ad-slot="5212554497"></ins>
 <script>
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
