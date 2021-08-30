@@ -54,11 +54,11 @@ df = pd.read_csv(path)
 dh.head()
 
 ```
-| text                                                                                                                                                                                                                                                                                                                                                                                                          | headlines                                                        |
-|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------|
-| "Kunal Shah's credit card bill payment platform, CRED, gave users a chance to win free food from Swiggy for one year. Pranav Kaushik, a Delhi techie, bagged this reward after spending 2000 CRED coins. Users get one CRED coin per rupee of bill paid, which can be used to avail rewards from brands like Ixigo, BookMyShow, UberEats, Cult.Fit and more."                                                 |     Delhi techie wins free food from Swiggy for one year on CRED |
-| New Zealand defeated India by 8 wickets in the fourth ODI at Hamilton on Thursday to win their first match of the five-match ODI series. India lost an international match under Rohit Sharma's captaincy after 12 consecutive victories dating back to March 2018. The match witnessed India getting all out for 92, their seventh lowest total in ODI cricket history."                                     | New Zealand end Rohit Sharma-led India's 12-match winning streak |
-| With Aegon Life iTerm Insurance plan, customers can enjoy tax benefits on your premiums paid and save up to â\x82¹46,800^ on taxes. The plan provides life cover up to the age of 100 years. Also, customers have options to insure against Critical Illnesses, Disability and Accidental Death Benefit Rider with a life cover up to the age of 80 years.'                                                   | Aegon life iTerm insurance plan helps customers save tax         |
+| text                                                                                                                                                                                                                                                                                                                                                                                                        | headlines                                                        |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
+| "Kunal Shah's credit card bill payment platform, CRED, gave users a chance to win free food from Swiggy for one year. Pranav Kaushik, a Delhi techie, bagged this reward after spending 2000 CRED coins. Users get one CRED coin per rupee of bill paid, which can be used to avail rewards from brands like Ixigo, BookMyShow, UberEats, Cult.Fit and more."                                               | Delhi techie wins free food from Swiggy for one year on CRED     |
+| New Zealand defeated India by 8 wickets in the fourth ODI at Hamilton on Thursday to win their first match of the five-match ODI series. India lost an international match under Rohit Sharma's captaincy after 12 consecutive victories dating back to March 2018. The match witnessed India getting all out for 92, their seventh lowest total in ODI cricket history."                                   | New Zealand end Rohit Sharma-led India's 12-match winning streak |
+| With Aegon Life iTerm Insurance plan, customers can enjoy tax benefits on your premiums paid and save up to â\x82¹46,800^ on taxes. The plan provides life cover up to the age of 100 years. Also, customers have options to insure against Critical Illnesses, Disability and Accidental Death Benefit Rider with a life cover up to the age of 80 years.'                                                 | Aegon life iTerm insurance plan helps customers save tax         |
 | Isha Ghosh, an 81-year-old member of Bharat Scouts and Guides (BSG), has been imparting physical and mental training to schoolchildren in Jharkhand for several decades. Chaibasa-based Ghosh reportedly walks seven kilometres daily and spends eight hours conducting physical training, apart from climbing and yoga sessions. She says, "One should do something for society till one\'s last breath."' | 81-yr-old woman conducts physical training in J'khand schools    |
 
 
@@ -127,6 +127,19 @@ from torch import cuda
 device = 'cuda' if cuda.is_available() else 'cpu'
 
 ```
+
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1337012385171026"
+     crossorigin="anonymous"></script>
+<!-- display ads -->
+<ins class="adsbygoogle"
+     style="display:block"
+     data-ad-client="ca-pub-1337012385171026"
+     data-ad-slot="4880405981"
+     data-ad-format="auto"
+     data-full-width-responsive="true"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 
 ### Dataset Class
 We will write a `Dataset` class for reading our dataset and loading it into the dataloader and then feed it to the neural network for fine tuning the model.
