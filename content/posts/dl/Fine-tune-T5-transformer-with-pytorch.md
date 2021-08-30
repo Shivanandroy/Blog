@@ -127,18 +127,7 @@ from torch import cuda
 device = 'cuda' if cuda.is_available() else 'cpu'
 
 ```
-
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1337012385171026"
-     crossorigin="anonymous"></script>
-<ins class="adsbygoogle"
-     style="display:block"
-     data-ad-format="fluid"
-     data-ad-layout-key="-f7+5u+4t-da+6l"
-     data-ad-client="ca-pub-1337012385171026"
-     data-ad-slot="5212554497"></ins>
-<script>
-     (adsbygoogle = window.adsbygoogle || []).push({});
-</script>
+{{< advert1 >}}
 
 ### Dataset Class
 We will write a `Dataset` class for reading our dataset and loading it into the dataloader and then feed it to the neural network for fine tuning the model.
