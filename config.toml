@@ -176,14 +176,6 @@ theme = "LoveIt"
     url = "/tags/"
     title = "Tags"
     weight = 8
-  [[menu.main]]
-    identifier = "subscribe"
-    pre = ""
-    post = ""
-    name = "Subscribe🚀"
-    url = "/subscribe/"
-    title = "Subscribe🚀"
-    weight = 9
 
 
 # LoveIt NEW | 0.2.0 Search config
