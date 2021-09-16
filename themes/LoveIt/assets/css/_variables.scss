@@ -118,7 +118,7 @@ $code-info-color: #9c9c9c !default;
 $code-info-color-dark: #b1b0b0 !default;
 
 // Font size of the code
-$code-font-size: .875rem !default;
+$code-font-size: 0.9rem !default;
 
 // Font family of the code
 $code-font-family: Source Code Pro, Menlo, Consolas, Monaco, monospace, $global-font-family !default;
@@ -189,7 +189,7 @@ $code-highlight-color-map: (
   /* Name */ 'n': #333333,
   /* NameAttribute */ 'na': #2b77fa,
   /* NameBuiltin */ 'nb': #f74840,
-  /* NameBuiltinPseudo */ 'bp': #f74840,
+  /* NameBuiltinPseudo */ 'bp': #b501a9,
   /* NameClass */ 'nc': #cb8100,
   /* NameConstant */ 'no': #2b77fa,
   /* NameDecorator */ 'nd': #0086c1,
@@ -215,7 +215,7 @@ $code-highlight-color-map: (
   /* LiteralStringChar */ 'sc': #24a443,
   /* LiteralStringDelimiter */ 'dl': #24a443,
   /* LiteralStringDoc */ 'sd': #24a443,
-  /* LiteralStringDouble */ 's2': #24a443,
+  /* LiteralStringDouble */ 's2': #c90505,
   /* LiteralStringEscape */ 'se': #24a443,
   /* LiteralStringHeredoc */ 'sh': #24a443,
   /* LiteralStringInterpol */ 'si': #24a443,
