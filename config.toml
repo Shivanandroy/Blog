@@ -59,7 +59,7 @@ theme = "LoveIt"
       # title name
       name = ""
       # you can add extra information before the name (HTML format is supported), such as icons
-      pre = '<span style="font-size:20px"><span style="font-family:Raleway"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span>'
+      pre = '<span style="font-size:20px"><span style="font-family:Manrope"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span>'
       # you can add extra information after the name (HTML format is supported), such as icons
       post = ""
       # LoveIt NEW | 0.2.5 whether to use typeit animation for title name
@@ -115,7 +115,7 @@ theme = "LoveIt"
       # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
       title = ""
       # subtitle shown in home page
-      subtitle = "Hi, I'm Shivanand Roy • I love to code/write/share about Artificial Intelligence • Doing my bit to make AI/ML resources available to everyone."
+      subtitle = "Doing my bit to make AI/ML resources available to everyone 🚀"
       # whether to use typeit animation for subtitle
       typeit = false
       # whether to show social links
