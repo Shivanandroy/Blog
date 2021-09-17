@@ -434,7 +434,7 @@ def T5Trainer(
 - `MODEL: "t5-base"`,  model_type: t5-base/t5-large
 - `TRAIN_BATCH_SIZE: 8`,  training batch size
 - `VALID_BATCH_SIZE: 8`,  validation batch size
-- `TRAIN_EPOCHS: 3`,  number of training epochs
+- `TRAIN_EPOCHS:3`,  number of training epochs
 - `VAL_EPOCHS: 1`,  number of validation epochs
 - `LEARNING_RATE: 1e-4`,  learning rate
 - `MAX_SOURCE_TEXT_LENGTH: 512`,  max length of source text
