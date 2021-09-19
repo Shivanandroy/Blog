@@ -26,7 +26,7 @@ theme = "LoveIt"
   # LoveIt NEW | 0.2.0 date format
   dateFormat = "02/01/2006"
   # website images for Open Graph and Twitter Cards
-  images = ["/emoticon.png"]
+  images = ["/avatar.jpg"]
 
   # LoveIt NEW | 0.2.0 App icon config
   [params.app]
@@ -111,13 +111,13 @@ theme = "LoveIt"
       # Gravatar Email for preferred avatar in home page
       gravatarEmail = ""
       # URL of avatar shown in home page
-      avatarURL = "/images/avatar.png"
+      avatarURL = "/images/avatar.jpg"
       # LoveIt CHANGED | 0.2.7 title shown in home page (HTML format is supported)
       title = ""
       # subtitle shown in home page
       subtitle = "Doing my bit to make AI/ML resources available to everyone 🚀"
       # whether to use typeit animation for subtitle
-      typeit = false
+      typeit = true
       # whether to show social links
       social = true
       # LoveIt NEW | 0.2.0 disclaimer (HTML format is supported)
