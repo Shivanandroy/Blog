@@ -20,6 +20,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 @import url('https://db.onlinewebfonts.com/c/105007d99d9df64c50cc24d696d79555?family=Graphik+Web+Regular');
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Spartan:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Forum&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Forum&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;1,100;1,200;1,300;1,400;1,500&display=swap');
 
 $code-font-family: Roboto Mono,
 Fira code,
@@ -36,7 +40,7 @@ Source Code Pro,
 Ubuntu,
 Consolas,
 monospace;
-$global-font-family: Graphik Web Regular,
+$global-font-family: Poppins,
 Manrope,
 Raleway,
 Lora,
@@ -77,16 +81,16 @@ Droid Sans,
 Helvetica,
 Arial,
 sans-serif;
-$header-title-font-family: Graphik Web Regular,
+$header-title-font-family: Poppins,
 Manrope,
 Lora,
 Arial,
 Helvetica,
 sans-serif;
-$global-font-size: 17px;
+$global-font-size: 18px;
 $header-height: 3rem;
 $global-line-height: 1.5rem;
-$global-font-weight: 500;
+$global-font-weight: 400;
 $header-background-color: #ebebeb;
 $code-font-size: 0.85rem;
 $code-background-color: #fafafa;

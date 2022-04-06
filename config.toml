@@ -3,7 +3,7 @@ baseURL = "http://shivanandroy.com/"
 defaultContentLanguage = "en"
 # language code
 languageCode = "en"
-title = "Shivanand Roy | Deep Learning"
+title = "Shivanand Roy, Data Scientist"
 
 # Change the default theme to be use when building the site with Hugo
 theme = "LoveIt"
@@ -13,9 +13,9 @@ theme = "LoveIt"
   # LoveIt CHANGED | 0.2.0 LoveIt theme version
   version = "0.2.X"
   # site description
-  description = "This blog presents articles on machine learning and deep learning. The articles covers natural language processing, natural language generation, classification, regression, text analytics, nlp, pretrained nlp models, transformers based models."
+  description = "This blog presents articles on machine learning and deep learning. The articles covers regression, classification, natural language processing, natural language generation, text analytics, nlp, and transformers based models."
   # site keywords
-  keywords = ["Machine Learning", "Deep Learning", "Data Science", "Text Classification","Natural Language Processing","NLP","Summarization","Text Analytics","Analytics", "Regression","Classification"]
+  keywords = ["Machine Learning", "Data Scientist", "Deep Learning", "Data Science", "Text Classification","Natural Language Processing","NLP","Summarization","Text Analytics","Analytics", "Regression","Classification"]
   # site default theme ("light", "dark", "auto")
   defaultTheme = "auto"
   # public git repo url only then enableGitInfo is true
@@ -59,7 +59,7 @@ theme = "LoveIt"
       # title name
       name = ""
       # you can add extra information before the name (HTML format is supported), such as icons
-      pre = '<span style="font-size:20px"><span style="font-family:Manrope"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span>'
+      pre = '<span style="font-size:22px"><span style="font-family:Poppins"><span style="color:#454444">shivanand</span><span style="color:#d14f4f">roy</span></span></span>'
       # you can add extra information after the name (HTML format is supported), such as icons
       post = ""
       # LoveIt NEW | 0.2.5 whether to use typeit animation for title name
